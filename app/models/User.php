@@ -20,6 +20,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password');
 
 	/**
+	 * Defines what methods can be passed to the create field
+	 *
+	 * @var array
+	 */
+	protected $fillable = ['emailAddress', 'password', 'username', 'firstName', 'lastName'];
+
+	/**
 	 * Get the unique identifier for the user.
 	 *
 	 * @return mixed
@@ -47,6 +54,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function getReminderEmail()
 	{
 		return $this->email;
+	}
+
+	public function tasks()
+	{
+		return $this->hasMany('Task');
 	}
 
 }

@@ -9,7 +9,9 @@ class WagersController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('wagers.index');
+			$wagers = Wager::all();
+
+      return View::make('wagers.index')->withWagers($wagers);
 	}
 
 	/**
@@ -40,7 +42,9 @@ class WagersController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('wagers.show');
+		$wager = Wager::find($id);
+
+    return View::make('wagers.show')->withWager($wager);
 	}
 
 	/**

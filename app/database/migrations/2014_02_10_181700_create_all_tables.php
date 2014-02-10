@@ -55,7 +55,7 @@ class CreateAllTables extends Migration {
 			$table->increments('userId');
 			$table->string('emailAddress');
 			$table->string('password');
-			$table->string('displayName');
+			$table->string('username');
 			$table->string('firstName');
 			$table->string('lastName');
 			$table->integer('pointBalance')->default(100);
@@ -96,6 +96,7 @@ class CreateAllTables extends Migration {
 		});
 
 		Schema::create('wagers', function(Blueprint $table) {
+			$table->increments('id');
 			$table->integer('userId')->unsigned();
 			$table->integer('sessionId');
 			$table->integer('wagerUnitValue');
@@ -103,9 +104,9 @@ class CreateAllTables extends Migration {
 			$table->integer('pointsLost')->default(0);
 
 			// Primary Key
-			$table->primary(array('userId', 'sessionId'));
+			// $table->primary(array('userId', 'sessionId'));
 
-			$table->foreign('userId')->references('userId')->on('users');
+			// $table->foreign('userId')->references('userId')->on('users');
 		});
 
 		Schema::create('currentSession', function(Blueprint $table) {

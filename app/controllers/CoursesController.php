@@ -9,7 +9,9 @@ class CoursesController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('courses.index');
+		$courses = Course::all();
+
+        return View::make('courses.index')->withCourses($courses);
 	}
 
 	/**
