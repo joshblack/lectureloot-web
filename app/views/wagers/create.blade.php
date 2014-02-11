@@ -5,14 +5,14 @@
 	<title>New Wager</title>
 </head>
 <body>
-	{{ Form::open() }}
+	{{ Form::open(['route' => 'wagers.store']) }}
 		<div>
 			{{ Form::label('wagerUnitValue', 'How much do you want to bet?:') }}
-			{{ Form::selectRange('wagerUnitValue', 5, 50) }}
+			<input type="number" name="wagerUnitValue" placeholder="10.00" pattern="\d+(\.\d{2})?">
 		</div>
 		<div>
-			{{ Form::label('session', 'What week is the bet for:') }}
-			{{ Form::selectMonth('session') }}
+			{{ Form::label('sessionMonth', 'When would you it to start?') }}
+			<input type="date" name="sessionMonth">
 		</div>
 		<div>
 			{{ Form::submit('Submit') }}

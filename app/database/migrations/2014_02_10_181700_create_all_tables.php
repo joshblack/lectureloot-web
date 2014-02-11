@@ -109,6 +109,14 @@ class CreateAllTables extends Migration {
 			$table->string('courseNumber');
 			$table->string('sectionNumber');
 		});
+
+		Schema::create('tokens', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('token');
+			$table->string('userId');
+			$table->timestamps();
+		});
 	}
 
 
@@ -129,6 +137,7 @@ class CreateAllTables extends Migration {
 		Schema::drop('buildings');
 		Schema::drop('courses');
 		Schema::drop('sessions');
+		Schema::drop('tokens');
 	}
 
 }

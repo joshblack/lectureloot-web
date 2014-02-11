@@ -11,5 +11,9 @@
 		<li>Session ID:{{ $wager->sessionId }}</li>
 		<li>Unit Value:{{ $wager->wagerUnitValue }}</li>
 	</ul>
+	<a href="/wagers/{{ $wager->id }}/edit">Edit</a>
+	{{ Form::open(['method' => 'DELETE', 'url' => 'wagers/' . $wager->id]) }}
+		{{ Form::submit('Delete') }}
+	{{ Form::close() }}
 </body>
 </html>

@@ -31,6 +31,17 @@ class WagersController extends BaseController {
 	 */
 	public function store()
 	{
+		$wager = new Wager;
+		$wager->userId = Auth::user()->id;
+		$wager->wagerUnitValue = intval(Input::get('wagerUnitValue'));
+
+		// find out what the session id is
+		$wager->sessionId = '';
+		// find out the total wager value, unit value * # classes
+		$wager->wagerTotalValue = '';
+
+		$wager->save();
+		dd($wager->toArray());
 		return 'hi';
 	}
 
@@ -68,6 +79,17 @@ class WagersController extends BaseController {
 	 */
 	public function update($id)
 	{
+		$input = Input::all();
+
+		$wager = Wager::find($id);
+		$wager->wagerUnitValue = $input['wagerUnitValue'];
+		// find the session id
+		$wager->sessionId = '';
+		// find the new wager total
+		$wager->wagerTotalValue = '';
+
+		$wager->save();
+
 		return 'hi';
 	}
 
@@ -79,7 +101,10 @@ class WagersController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// $wager = Wager::find($id);
+		// $wager->delete();
+
+		return Redirect::route('wagers.index')->with('success', 'The wager has been removed');
 	}
 
 }
