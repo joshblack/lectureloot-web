@@ -13,11 +13,12 @@
 			<li>Unit Value: {{ $wager->wagerUnitValue }}</li>
 			<li>Total Value: {{ $wager->wagerTotalValue }}</li>
 			<li>Points Lost: {{ $wager->pointsLost }}</li>
-			<li>{{ link_to('user/wagers/create', 'Make a New Wager')}}</li>
-		  <li>{{ link_to('user/wagers/' . $wager->id, 'Edit') }}</li>
+			<li>{{ link_to('/wagers/' . $wager->id . '/edit', 'Edit') }}</li>
+			<li><a href="/wagers/{{ $wager->id }}/edit">Edit</a></li>
 		</ul>
 	</li>
 @endforeach
 </ul>
+<p>{{ link_to('wagers/create', 'Make a New Wager') }}</p>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Api\V1;
 
 class WagersController extends BaseController {
 
@@ -21,7 +21,7 @@ class WagersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('wagers.create');
+        return View::make('wagers.create');
 	}
 
 	/**

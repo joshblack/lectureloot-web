@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>LectureLoot</title>
+	@section('title')
+		<title>Document</title>
+	@show
 </head>
 <body>
-	<h1>Welcome to LectureLoot</h1>
-	<a href="login">Login</a>
-
+	<div>
+		@yield('content')
+	</div>
 </body>
 </html>

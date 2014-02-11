@@ -1,6 +1,6 @@
-<?php
+<?php namespace Api\V1;
 
-class WagersController extends BaseController {
+class SchedulesController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,9 +9,7 @@ class WagersController extends BaseController {
 	 */
 	public function index()
 	{
-		$wagers = Wager::all();
-
-		return View::make('wagers.index')->withWagers($wagers);
+        return View::make('schedules.index');
 	}
 
 	/**
@@ -21,7 +19,7 @@ class WagersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('wagers.create');
+        return View::make('schedules.create');
 	}
 
 	/**
@@ -31,7 +29,7 @@ class WagersController extends BaseController {
 	 */
 	public function store()
 	{
-		return 'hi';
+		//
 	}
 
 	/**
@@ -42,9 +40,7 @@ class WagersController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$wager = Wager::find($id);
-
-    	return View::make('wagers.show')->withWager($wager);
+        return View::make('schedules.show');
 	}
 
 	/**
@@ -55,9 +51,7 @@ class WagersController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$wager = Wager::find($id);
-
-        return View::make('wagers.edit')->withWager($wager);
+        return View::make('schedules.edit');
 	}
 
 	/**
@@ -68,7 +62,7 @@ class WagersController extends BaseController {
 	 */
 	public function update($id)
 	{
-		return 'hi';
+		//
 	}
 
 	/**

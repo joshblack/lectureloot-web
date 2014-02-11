@@ -12,47 +12,43 @@ class CreateAllTables extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('sessions', function(Blueprint $table) {
-			$table->integer('sessionId');
+		Schema::create('sessions', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->integer('sessionId')->unique();
 			$table->date('startDate');
 			$table->date('endDate');
-
-			// Primary Key
-			$table->primary('sessionId');
 		});
 
-		Schema::create('courses', function(Blueprint $table) {
+		Schema::create('courses', function(Blueprint $table)
+		{
+			$table->increments('id');
 			$table->string('deptCode');
 			$table->string('courseNumber');
-			$table->string('sectionNumber');
+			$table->string('sectionNumber')->unique();
 			$table->string('credits');
 			$table->string('instructor');
 			$table->string('courseTitle');
-
-			// Primary Key
-			$table->primary('sectionNumber'); // if sectionNumber is unique
-			// $table->primary(array('deptCode', 'courseNumber', 'sectionNumber'));
 		});
 
-		Schema::create('buildings', function(Blueprint $table) {
-			$table->string('buildingCode');
+		Schema::create('buildings', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('buildingCode')->unique();
 			$table->decimal('gpsLongitude', 8, 6);
 			$table->decimal('gpsLatitude', 8, 6);
-
-			// Primary key
-			$table->primary('buildingCode');
 		});
 
-		Schema::create('periods', function(Blueprint $table) {
-			$table->string('period');
+		Schema::create('periods', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('period')->unique();
 			$table->time('startTime');
-
-			// Primary Key
-			$table->primary('period');
 		});
 
-		Schema::create('users', function(Blueprint $table) {
-			$table->increments('userId');
+		Schema::create('users', function(Blueprint $table)
+		{
+			$table->increments('id');
 			$table->string('emailAddress');
 			$table->string('password');
 			$table->string('username');
@@ -62,7 +58,9 @@ class CreateAllTables extends Migration {
 			$table->timestamps();
 		});
 
-		Schema::create('meetings', function(Blueprint $table) {
+		Schema::create('meetings', function(Blueprint $table)
+		{
+			$table->increments('id');
 			$table->string('deptCode');
 			$table->string('courseNumber');
 			$table->string('sectionNumber');
@@ -70,68 +68,46 @@ class CreateAllTables extends Migration {
 			$table->string('roomNumber');
 			$table->string('meetingDay');
 			$table->string('period');
-
-			$table->primary(array('sectionNumber', 'meetingDay', 'period'));
-
-			// $table->foreign('sectionNumber')->references('sectionNumber')->on('courses');
-			// $table->foreign('buildingCode')->references('buildingCode')->on('buildings');
-			// $table->foreign('period')->references('period')->on('periods');
 		});
 
-		Schema::create('classActions', function(Blueprint $table) {
+		Schema::create('classActions', function(Blueprint $table)
+		{
+			$table->increments('id');
 			$table->integer('userId')->unsigned();
 			$table->string('sectionNumber');
 			$table->string('meetingDay');
 			$table->string('period');
 			$table->boolean('checkedIn')->default(false);
 			$table->boolean('cancelled')->default(false);
-
-			// Primary Key
-			$table->primary(array('userId', 'sectionNumber'));
-
-			// $table->foreign('userId')->references('userId')->on('users');
-			// $table->foreign('sectionNumber')->references('sectionNumber')->on('meetings');
-			// // $table->foreign('meetingDay')->references('meetingDay')->on('meetings');
-			// $table->foreign('period')->references('period')->on('meetings');
 		});
 
-		Schema::create('wagers', function(Blueprint $table) {
+		Schema::create('wagers', function(Blueprint $table)
+		{
 			$table->increments('id');
 			$table->integer('userId')->unsigned();
 			$table->integer('sessionId');
 			$table->integer('wagerUnitValue');
 			$table->integer('wagerTotalValue');
 			$table->integer('pointsLost')->default(0);
-
-			// Primary Key
-			// $table->primary(array('userId', 'sessionId'));
-
-			// $table->foreign('userId')->references('userId')->on('users');
 		});
 
-		Schema::create('currentSession', function(Blueprint $table) {
+		Schema::create('currentSession', function(Blueprint $table)
+		{
+			$table->increments('id');
 			$table->integer('userId')->unsigned();
 			$table->integer('sessionId');
 			$table->integer('wagerUnitValue');
 			$table->integer('wagerTotalValue');
 			$table->integer('pointsLost');
-
-			// Primary Key
-			$table->primary(array('userId', 'sessionId'));
-
-			// $table->foreign('userId')->references('userId')->on('users');
 		});
 
-		Schema::create('schedules', function(Blueprint $table) {
-			$table->integer('userId')->unsigned();
+		Schema::create('schedules', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->integer('userId')->unsigned()->unique();
 			$table->string('deptCode');
 			$table->string('courseNumber');
 			$table->string('sectionNumber');
-
-			// Primary Key
-			$table->primary('userId');
-
-			// $table->foreign('sectionNumber')->references('sectionNumber')->on('courses');
 		});
 	}
 

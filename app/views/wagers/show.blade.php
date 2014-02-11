@@ -2,21 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>New Wager</title>
+	<title>Showing Wager #{{ $wager->id }}</title>
 </head>
 <body>
-	{{ Form::open() }}
-		<div>
-			{{ Form::label('wagerUnitValue', 'How much do you want to bet?:') }}
-			{{ Form::number('wagerUnitValue') }}
-		</div>
-		<div>
-			{{ Form::label('session', 'What week is the bet for:') }}
-			{{ Form::date('session') }}
-		</div>
-		<div>
-			{{ Form::submit('Submit') }}
-		</div>
-	{{ Form::close() }}
+	<h1>Wager #{{ $wager->id }}</h1>
+	<ul>
+		<li>User ID: {{ $wager->userId }}</li>
+		<li>Session ID:{{ $wager->sessionId }}</li>
+		<li>Unit Value:{{ $wager->wagerUnitValue }}</li>
+	</ul>
 </body>
 </html>

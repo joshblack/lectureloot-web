@@ -7,8 +7,8 @@
 <body>
 	<h1>Hi there, {{ $username }}!</h1>
 	<ul>
-		<li>{{ link_to('user/wagers', 'Wagers') }}</li>
-		<li>{{ link_to('user/courses', 'Courses') }}</li>
+		<li>{{ link_to('wagers', 'Wagers') }}</li>
+		<li>{{ link_to('courses', 'Courses') }}</li>
 	</ul>
 	<a href="/logout">Logout</a>
 </body>
