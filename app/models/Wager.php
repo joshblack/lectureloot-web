@@ -10,4 +10,8 @@ class Wager extends Eloquent {
 		return $this->belongsTo('User');
 	}
 
+	public function session()
+	{
+		return $this->belongsTo('WagerSession');
+	}
 }

@@ -10,28 +10,28 @@ class WagersTableSeeder extends Seeder {
 		$wagers = array(
 			[
 				'user_id' => 1,
-				'sessionId' => 1,
+				'session_id' => 1,
 				'wagerUnitValue' => 10,
 				'wagerTotalValue' => 50,
 				'pointsLost' => 0
 			],
 			[
 				'user_id' => 2,
-				'sessionId' => 4,
+				'session_id' => 4,
 				'wagerUnitValue' => 10,
 				'wagerTotalValue' => 50,
 				'pointsLost' => 0
 			],
 			[
 				'user_id' => 3,
-				'sessionId' => 3,
+				'session_id' => 3,
 				'wagerUnitValue' => 10,
 				'wagerTotalValue' => 50,
 				'pointsLost' => 0
 			],
 			[
 				'user_id' => 1,
-				'sessionId' => 2,
+				'session_id' => 2,
 				'wagerUnitValue' => 10,
 				'wagerTotalValue' => 50,
 				'pointsLost' => 0

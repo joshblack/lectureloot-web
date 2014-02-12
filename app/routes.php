@@ -3,7 +3,7 @@
 Route::get('/', 'HomeController@showHome');
 
 Route::get('/login', 'SessionsController@create');
-Route::get('logout', 'SessionsController@destroy');
+Route::get('/logout', 'SessionsController@destroy');
 
 Route::resource('sessions', 'SessionsController');
 

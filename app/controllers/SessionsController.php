@@ -17,10 +17,10 @@ class SessionsController extends BaseController {
 
 		if (Auth::attempt(Input::only('emailAddress', 'password')))
 		{
-			return Redirect::intended('wagers');
+			return Redirect::intended('wagers')->with('success', 'You have succesfully logged in.');
 		}
 
-		return Redirect::back()->withInput();
+		return Redirect::back()->withInput()->with('error', 'Invalid credentials');
 	}
 
 	public function destroy()

@@ -9,7 +9,7 @@ class WagersController extends BaseController {
 	 */
 	public function index()
 	{
-		$wagers = Wager::all();
+		$wagers = Auth::user()->wagers;
 
 		return View::make('wagers.index')->withWagers($wagers);
 	}
@@ -79,12 +79,15 @@ class WagersController extends BaseController {
 	 */
 	public function update($id)
 	{
-		$input = Input::all();
 
+		$session = WagerSession::where('startDate', '=', Input::get('sessionMonth'))->get();
+
+		dd($session->toArray());
 		$wager = Wager::find($id);
-		$wager->wagerUnitValue = $input['wagerUnitValue'];
+		$wager->wagerUnitValue = Input::get('wagerUnitValue');
 		// find the session id
-		$wager->sessionId = '';
+		$wager->sessionId = $session->id;
+		dd('hi');
 		// find the new wager total
 		$wager->wagerTotalValue = '';
 

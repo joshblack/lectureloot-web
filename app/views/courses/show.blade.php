@@ -34,7 +34,6 @@
 </div>
 
 <!-- Add or Remove Class -->
-
 {{ Form::open(['route' => 'courses.store']) }}
 	{{ Form::hidden('course_id', $course->id) }}
 	{{ Form::submit('Add class') }}

@@ -94,7 +94,7 @@ class CreateAllTables extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
-			$table->integer('sessionId');
+			$table->integer('session_id');
 			$table->integer('wagerUnitValue');
 			$table->integer('wagerTotalValue');
 			$table->integer('pointsLost')->default(0);

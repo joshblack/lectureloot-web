@@ -88,5 +88,4 @@ class CoursesController extends BaseController {
 			return Redirect::back()->with('error', 'You do not have this class!');
 		}
 	}
-
 }
