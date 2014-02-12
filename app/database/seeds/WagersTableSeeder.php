@@ -14,7 +14,28 @@ class WagersTableSeeder extends Seeder {
 				'wagerUnitValue' => 10,
 				'wagerTotalValue' => 50,
 				'pointsLost' => 0
-			]
+			],
+			[
+				'user_id' => 2,
+				'sessionId' => 4,
+				'wagerUnitValue' => 10,
+				'wagerTotalValue' => 50,
+				'pointsLost' => 0
+			],
+			[
+				'user_id' => 3,
+				'sessionId' => 3,
+				'wagerUnitValue' => 10,
+				'wagerTotalValue' => 50,
+				'pointsLost' => 0
+			],
+			[
+				'user_id' => 1,
+				'sessionId' => 2,
+				'wagerUnitValue' => 10,
+				'wagerTotalValue' => 50,
+				'pointsLost' => 0
+			],
 		);
 
 		// Uncomment the below to run the seeder

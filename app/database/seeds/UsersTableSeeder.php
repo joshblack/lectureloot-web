@@ -9,16 +9,35 @@ class UsersTableSeeder extends Seeder {
 
 		$users = array(
 			[
-				'emailAddress' => 'joshuatblack@ufl.edu',
+				'emailAddress' => 'josh@ufl.edu',
 				'password' => Hash::make('password'),
-				'username' => 'Josh',
-				'firstName' => 'Josh',
-				'lastName' => 'Black',
+				'username' => 'josh',
+				'firstName' => 'josh',
+				'lastName' => 'black',
+				'pointBalance' => 50,
+				'created_at' => new Datetime,
+				'updated_at' => new Datetime,
+			],
+			[
+				'emailAddress' => 'austin@ufl.edu',
+				'password' => Hash::make('password'),
+				'username' => 'austin',
+				'firstName' => 'austin',
+				'lastName' => 'bruch',
+				'pointBalance' => 50,
+				'created_at' => new Datetime,
+				'updated_at' => new Datetime,
+			],
+			[
+				'emailAddress' => 'justin@ufl.edu',
+				'password' => Hash::make('password'),
+				'username' => 'justin',
+				'firstName' => 'justin',
+				'lastName' => 'black',
 				'pointBalance' => 50,
 				'created_at' => new Datetime,
 				'updated_at' => new Datetime,
 			]
-
 		);
 
 		// Uncomment the below to run the seeder

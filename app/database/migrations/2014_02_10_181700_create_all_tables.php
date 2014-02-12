@@ -63,23 +63,30 @@ class CreateAllTables extends Migration {
 		Schema::create('meetings', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('deptCode');
-			$table->string('courseNumber');
-			$table->string('sectionNumber');
+			$table->string('course_id');
 			$table->string('buildingCode');
 			$table->string('roomNumber');
 			$table->string('meetingDay');
 			$table->string('period');
 		});
 
-		Schema::create('classActions', function(Blueprint $table)
+		// Schema::create('classActions', function(Blueprint $table)
+		// {
+		// 	$table->increments('id');
+		// 	$table->integer('user_id')->unsigned();
+		// 	$table->string('sectionNumber');
+		// 	$table->string('meetingDay');
+		// 	$table->string('period');
+		// 	$table->boolean('checkedIn')->default(false);
+		// 	$table->boolean('cancelled')->default(false);
+		// });
+
+		Schema::create('checkins', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
-			$table->string('sectionNumber');
-			$table->string('meetingDay');
-			$table->string('period');
-			$table->boolean('checkedIn')->default(false);
+			$table->integer('user_id');
+			$table->integer('meeting_id');
+			$table->boolean('checkin')->default(false);
 			$table->boolean('cancelled')->default(false);
 		});
 
@@ -122,7 +129,8 @@ class CreateAllTables extends Migration {
 	{
 		Schema::drop('currentSession');
 		Schema::drop('wagers');
-		Schema::drop('classActions');
+		// Schema::drop('classActions');
+		Schema::drop('checkins');
 		Schema::drop('meetings');
 		Schema::drop('users');
 		Schema::drop('periods');
