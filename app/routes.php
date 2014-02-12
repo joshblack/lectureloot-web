@@ -12,7 +12,6 @@ Route::group(array('before' => 'auth'), function()
 	Route::resource('courses', 'CoursesController');
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController');
-	Route::resource('schedules', 'SchedulesController');
 });
 
 Route::group(array('prefix' => 'api/v1', 'before' => 'auth', 'namespace' => 'Api\V1'), function()
@@ -20,7 +19,6 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'auth', 'namespace' => 'Api
 	Route::resource('courses', 'CoursesController');
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController');
-	Route::resource('schedules', 'SchedulesController');
 });
 
 

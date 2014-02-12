@@ -7,7 +7,7 @@ class Wager extends Eloquent {
 
 	public function user()
 	{
-		return $this->belongsTo('User', 'userId', 'id');
+		return $this->belongsTo('User');
 	}
 
 }

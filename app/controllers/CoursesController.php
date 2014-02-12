@@ -9,19 +9,25 @@ class CoursesController extends BaseController {
 	 */
 	public function index()
 	{
-		$courses = Course::all();
+		$courses = Auth::user()->courses;
 
         return View::make('courses.index')->withCourses($courses);
 	}
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Show the form for creating a new resource, in this case it's our course schedule.
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-        return View::make('courses.create');
+		$allCourses = Course::all();
+		$userCourses = Auth::user()->courses;
+
+        return View::make('courses.create', [
+        		'allCourses' => $allCourses,
+        		'userCourses' => $userCourses
+        	]);
 	}
 
 	/**
@@ -31,7 +37,20 @@ class CoursesController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		$user = User::find(Auth::user()->id);
+		$course = $user->courses->find(Input::get('course_id'));
+
+		// Check to see if the user has the class already
+		if ($course)
+		{
+			return Redirect::back()->with('error', 'You already have this class!');
+		}
+		else
+		{ // The user doesn't have the class
+			$user->courses()->attach(Input::get('course_id'));
+
+			return Redirect::back()->with('success', 'Successfully added the course.');
+		}
 	}
 
 	/**
@@ -42,29 +61,9 @@ class CoursesController extends BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('courses.show');
-	}
+		$course = Course::find($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-        return View::make('courses.edit');
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
+        return View::make('courses.show')->withCourse($course);
 	}
 
 	/**
@@ -75,7 +74,19 @@ class CoursesController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$user = User::find(Auth::user()->id);
+		$course = $user->courses->find($id);
+
+		// Check to see if the user has the class
+		if ($course)
+		{
+			$user->courses()->detach($id);
+			return Redirect::back()->with('success', 'Class removed succesfully');
+		}
+		else
+		{ // The user doesn't have the class
+			return Redirect::back()->with('error', 'You do not have this class!');
+		}
 	}
 
 }

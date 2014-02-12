@@ -29,6 +29,8 @@ class CreateAllTables extends Migration {
 			$table->string('credits');
 			$table->string('instructor');
 			$table->string('courseTitle');
+			$table->string('semester');
+			$table->integer('year');
 		});
 
 		Schema::create('buildings', function(Blueprint $table)
@@ -73,7 +75,7 @@ class CreateAllTables extends Migration {
 		Schema::create('classActions', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('userId')->unsigned();
+			$table->integer('user_id')->unsigned();
 			$table->string('sectionNumber');
 			$table->string('meetingDay');
 			$table->string('period');
@@ -84,7 +86,7 @@ class CreateAllTables extends Migration {
 		Schema::create('wagers', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('userId')->unsigned();
+			$table->integer('user_id')->unsigned();
 			$table->integer('sessionId');
 			$table->integer('wagerUnitValue');
 			$table->integer('wagerTotalValue');
@@ -94,27 +96,18 @@ class CreateAllTables extends Migration {
 		Schema::create('currentSession', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('userId')->unsigned();
+			$table->integer('user_id')->unsigned();
 			$table->integer('sessionId');
 			$table->integer('wagerUnitValue');
 			$table->integer('wagerTotalValue');
 			$table->integer('pointsLost');
 		});
 
-		Schema::create('schedules', function(Blueprint $table)
-		{
-			$table->increments('id');
-			$table->integer('userId');
-			$table->integer('course_id');
-			$table->string('semester');
-			$table->integer('year');
-		});
-
 		Schema::create('tokens', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('token');
-			$table->string('userId');
+			$table->string('user_id');
 			$table->timestamps();
 		});
 	}
@@ -127,7 +120,6 @@ class CreateAllTables extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('schedules');
 		Schema::drop('currentSession');
 		Schema::drop('wagers');
 		Schema::drop('classActions');

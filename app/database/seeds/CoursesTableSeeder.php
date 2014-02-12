@@ -5,7 +5,7 @@ class CoursesTableSeeder extends Seeder {
 	public function run()
 	{
 		// Uncomment the below to wipe the table clean before populating
-		DB::table('courses')->truncate();
+		// DB::table('courses')->truncate();
 
 		$courses = array(
 			[
@@ -14,7 +14,9 @@ class CoursesTableSeeder extends Seeder {
 				'sectionNumber' => '5842',
 				'credits' => '3',
 				'instructor' => 'Manuel Bermudez',
-				'courseTitle' => 'Software Engineering'
+				'courseTitle' => 'Software Engineering',
+				'semester' => 'fall',
+				'year' => 2014
 			],
 			[
 				'deptCode' => 'EEL',
@@ -22,7 +24,9 @@ class CoursesTableSeeder extends Seeder {
 				'sectionNumber' => '7334',
 				'credits' => '4',
 				'instructor' => 'Gugel',
-				'courseTitle' => 'Digital Logic'
+				'courseTitle' => 'Digital Logic',
+				'semester' => 'fall',
+				'year' => 2014
 			],
 			[
 				'deptCode' => 'CIS',
@@ -30,7 +34,9 @@ class CoursesTableSeeder extends Seeder {
 				'sectionNumber' => '11F8',
 				'credits' => '3',
 				'instructor' => 'Small',
-				'courseTitle' => 'Web Application Development'
+				'courseTitle' => 'Web Application Development',
+				'semester' => 'fall',
+				'year' => 2014
 			],
 			[
 				'deptCode' => 'STA',
@@ -38,7 +44,9 @@ class CoursesTableSeeder extends Seeder {
 				'sectionNumber' => '7370',
 				'credits' => '3',
 				'instructor' => 'Johnny Wu',
-				'courseTitle' => 'Statistics for Engineers'
+				'courseTitle' => 'Statistics for Engineers',
+				'semester' => 'fall',
+				'year' => 2014
 			]
 		);
 
