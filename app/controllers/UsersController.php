@@ -6,4 +6,14 @@ class UsersController extends BaseController {
 	{
 		return View::make('user.show')->withUsername(Auth::user()->username);
 	}
+
+	/**
+	 * Create a user
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		//
+	}
 }

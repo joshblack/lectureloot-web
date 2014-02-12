@@ -6,7 +6,9 @@ class SessionsController extends BaseController {
 	{
 		if (Auth::check())
 		{
-			return Redirect::route('/');
+			$user = Auth::user();
+
+			return Redirect::to('dashboard')->withUser($user);
 		}
 
 		return View::make('sessions.create');
@@ -17,7 +19,7 @@ class SessionsController extends BaseController {
 
 		if (Auth::attempt(Input::only('emailAddress', 'password')))
 		{
-			return Redirect::intended('wagers')->with('success', 'You have succesfully logged in.');
+			return Redirect::intended('dashboard')->with('success', 'You have succesfully logged in.');
 		}
 
 		return Redirect::back()->withInput()->with('error', 'Invalid credentials');

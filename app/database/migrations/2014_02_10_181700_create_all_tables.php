@@ -15,7 +15,6 @@ class CreateAllTables extends Migration {
 		Schema::create('sessions', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('sessionId')->unique();
 			$table->date('startDate');
 			$table->date('endDate');
 		});
@@ -98,6 +97,7 @@ class CreateAllTables extends Migration {
 			$table->integer('wagerUnitValue');
 			$table->integer('wagerTotalValue');
 			$table->integer('pointsLost')->default(0);
+			$table->timestamps();
 		});
 
 		Schema::create('currentSession', function(Blueprint $table)

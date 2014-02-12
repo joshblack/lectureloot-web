@@ -31,18 +31,39 @@ class WagersController extends BaseController {
 	 */
 	public function store()
 	{
-		$wager = new Wager;
-		$wager->userId = Auth::user()->id;
-		$wager->wagerUnitValue = intval(Input::get('wagerUnitValue'));
+		// Try to see if a session exists for the wager the user is trying to make
+		try
+		{
+			$session = WagerSession::where('startDate', '=', Input::get('startDate'))->firstOrFail();
+			$numCourses = Auth::user()->courses()->count();
 
-		// find out what the session id is
-		$wager->sessionId = '';
-		// find out the total wager value, unit value * # classes
-		$wager->wagerTotalValue = '';
+			$sessionWager = Auth::user()->wagers()->where('session_id', '=', $session->id)->first();
 
-		$wager->save();
-		dd($wager->toArray());
-		return Redirect::route('wagers.index')->with('success', 'You\'ve successfully created a wager!');
+			// Check if the user already has a wager for the session
+			if ($sessionWager)
+			{
+				return Redirect::back()->with('error', 'You\'ve already made a wager for this session');
+			}
+			else
+			{ // The user hasn't made a wager yet for this session, let's make one for him/her
+				$wager = new Wager;
+				$wager->user_id = Auth::user()->id;
+				$wager->wagerUnitValue = Input::get('wagerUnitValue');
+				$wager->session_id = $session->id;
+				$wager->wagerTotalValue = $wager->wagerUnitValue * $numCourses;
+
+				$wager->save();
+
+				return Redirect::back()->with('success', 'You\'ve successfully created a wager!');
+			}
+
+
+		}
+		catch (Exception $e)
+		{
+			// Invalid session start date
+			return Redirect::back()->with('error', 'Your start date is not valid!');
+		}
 	}
 
 	/**
@@ -80,17 +101,13 @@ class WagersController extends BaseController {
 	public function update($id)
 	{
 
-		$session = WagerSession::where('startDate', '=', Input::get('sessionMonth'))->get();
-
-		dd($session->toArray());
+		$session = WagerSession::where('startDate', '=', Input::get('sessionMonth'))->firstOrFail();
+		$numCourses = Auth::user()->courses()->count();
 		$wager = Wager::find($id);
-		$wager->wagerUnitValue = Input::get('wagerUnitValue');
-		// find the session id
-		$wager->sessionId = $session->id;
-		dd('hi');
-		// find the new wager total
-		$wager->wagerTotalValue = '';
 
+		$wager->wagerUnitValue = Input::get('wagerUnitValue');
+		$wager->session_id = $session->id;
+		$wager->wagerTotalValue = $wager->wagerUnitValue * $numCourses;
 		$wager->save();
 
 		return Redirect::route('wagers.index')->with('success', 'The wager has been updated');
@@ -104,10 +121,20 @@ class WagersController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		// $wager = Wager::find($id);
-		// $wager->delete();
+		$wager = Wager::find($id);
+		$startDate = $wager->session->startDate;
+		$currentDate = new Datetime;
 
-		return Redirect::route('wagers.index')->with('success', 'The wager has been removed');
+		// Check to see if we are already in the session
+		if ($startDate < $currentDate)
+		{
+			$wager->delete();
+			return Redirect::route('wagers.index')->with('success', 'The wager has been removed');
+		}
+		else
+		{
+			return Redirect::back()->with('error', 'The session for this wager has already begun');
+		}
 	}
 
 }
