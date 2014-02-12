@@ -5,8 +5,9 @@ class Course extends Eloquent {
 
 	public static $rules = array();
 
-	public function schedule()
+	public function schedules()
 	{
-		$this->belongsTo('Schedule');
+		$this->belongsToMany('Schedule');
 	}
+
 }

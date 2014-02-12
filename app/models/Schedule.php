@@ -7,11 +7,11 @@ class Schedule extends Eloquent {
 
 	public function user()
 	{
-		return $this->belongsTo('User', 'userId', 'id');
+		return $this->belongsTo('User', 'id', 'userId');
 	}
 
 	public function courses()
 	{
-		return $this->hasMany('Courses', 'courses', 'deptCode', 'courseNumber', 'sectionNumber');
+		return $this->belongsToMany('Course');
 	}
 }

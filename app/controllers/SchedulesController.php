@@ -9,7 +9,13 @@ class SchedulesController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('schedules.index');
+		$schedules = Schedule::where('userId', Auth::user()->id);
+
+		foreach ($schedules as $schedule) {
+			echo $schedule->id;
+		}
+		dd('yo');
+        return View::make('schedules.index')->withSchedules($schedules);
 	}
 
 	/**

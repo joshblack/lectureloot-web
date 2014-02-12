@@ -42,7 +42,7 @@ class WagersController extends BaseController {
 
 		$wager->save();
 		dd($wager->toArray());
-		return 'hi';
+		return Redirect::route('wagers.index')->with('success', 'You\'ve successfully created a wager!');
 	}
 
 	/**
@@ -90,7 +90,7 @@ class WagersController extends BaseController {
 
 		$wager->save();
 
-		return 'hi';
+		return Redirect::route('wagers.index')->with('success', 'The wager has been updated');
 	}
 
 	/**

@@ -104,10 +104,10 @@ class CreateAllTables extends Migration {
 		Schema::create('schedules', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('userId')->unsigned()->unique();
-			$table->string('deptCode');
-			$table->string('courseNumber');
-			$table->string('sectionNumber');
+			$table->integer('userId');
+			$table->integer('course_id');
+			$table->string('semester');
+			$table->integer('year');
 		});
 
 		Schema::create('tokens', function(Blueprint $table)
