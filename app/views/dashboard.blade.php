@@ -5,15 +5,18 @@
 	<title>Dashboard View</title>
 </head>
 <body>
-	<!-- Header -->
-	<h1>Hi, {{ $user->username }}</h1>
-
 	<!-- Links/Nav -->
-	<div>
-		<a href="/wagers">Wagers</a>
-	</div>
-	<div>
-		<a href="/courses">Courses</a>
-	</div>
+	<nav>
+		<ul>
+			<li><a href="/dashboard">Home</a>
+			<li><a href="/wagers">Wagers</a></li>
+			<li><a href="/courses">Courses</a></li>
+		</ul>
+	</nav>
+
+	<!-- Header -->
+	<h1>Hi, {{ ucfirst($user->username) }}!</h1>
+
+
 </body>
 </html>

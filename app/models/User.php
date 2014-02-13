@@ -56,16 +56,31 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	/**
+	 * Defines a many-to-one relationship between User and Wager.
+	 *
+	 * @return Eloquent Relationship
+	 */
 	public function wagers()
 	{
 		return $this->hasMany('Wager');
 	}
 
+	/**
+	 * Defines a many-to-many relationship between User and Course.
+	 *
+	 * @return Eloquent Relationship
+	 */
 	public function courses()
 	{
 		return $this->belongsToMany('Course');
 	}
 
+	/**
+	 * Defines a many-to-one relationship between User and Checkin.
+	 *
+	 * @return Eloquent Relationship
+	 */
 	public function checkins()
 	{
 		return $this->hasMany('Checkin');
