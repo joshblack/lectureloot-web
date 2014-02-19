@@ -36,7 +36,7 @@ class SessionsController extends BaseController {
 			}
 			else if (!$token)
 			{ // No token for the user, we need to create one
-				dd('hi');
+
 				Token::create([
 					'token' => str_random(40),
 					'user_id' => Auth::user()->id,

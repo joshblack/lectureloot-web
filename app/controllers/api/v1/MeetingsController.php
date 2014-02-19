@@ -17,20 +17,9 @@ class MeetingsController extends \BaseController {
 		$value = 'application/json';
 
 		$response = Response::make($contents, $statusCode);
-
 		$response->header('Content-Type', $value);
 
 		return $response;
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-        return View::make('meetings.create');
 	}
 
 	/**
@@ -51,18 +40,25 @@ class MeetingsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('meetings.show');
-	}
+        $meeting = Meeting::find($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-        return View::make('meetings.edit');
+    	if ($meeting)
+		{
+			$statusCode = 200;
+			$value = 'application/json';
+			$response = Response::make($meeting, $statusCode);
+		}
+		else
+		{
+			$statusCode = 400;
+			$value = 'text/plain';
+			$contents = 'Invalid or undefined meeting id';
+			$response = Response::make($contents, $statusCode);
+		}
+
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 
 	/**
@@ -84,7 +80,27 @@ class MeetingsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$meeting = Meeting::find($id);
+
+		if ($meeting)
+		{
+			$meeting->delete();
+
+			$statusCode = 200;
+			$value = 'application/json';
+			$contents = 'Success, meeting deleted';
+		}
+		else
+		{
+			$statusCode = 400;
+			$value = 'text/plain';
+			$contents = 'Invalid or unlisted meeting id';
+		}
+
+		$response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 
 }

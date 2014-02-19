@@ -23,16 +23,6 @@ class CoursesController extends \BaseController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-        return View::make('courses.create');
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
@@ -50,18 +40,24 @@ class CoursesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        return View::make('courses.show');
-	}
+        $contents = Course::find($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-        return View::make('courses.edit');
+        if ($contents)
+        {
+        	$statusCode = 200;
+        	$value = 'application/json';
+        }
+        else
+        {
+        	$statusCode = 400;
+        	$value = 'text/plain';
+        	$contents = 'Invalid Course id';
+        }
+
+        $response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+        return $response;
 	}
 
 	/**
@@ -72,7 +68,7 @@ class CoursesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+
 	}
 
 	/**
@@ -83,7 +79,44 @@ class CoursesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+
+		$course = Course::find($id);
+
+		// Check to see if the Course exists
+		if ($course)
+		{
+			$course->delete();
+
+			$contents = 'Success, course removed';
+			$statusCode = 200;
+			$value = 'text/plain';
+		}
+		else
+		{ // The course does not exist
+
+			$contents = 'Error, the course does not exist';
+			$statusCode = 400;
+			$value = 'text/plain';
+		}
+
+        $response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+        return $response;
+	}
+
+	public function getMeetings($id)
+	{
+		$course = Course::find($id);
+
+		if ($course)
+		{
+			return $course->meetings;
+		}
+		else
+		{
+
+		}
 	}
 
 }

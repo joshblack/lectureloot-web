@@ -12,26 +12,14 @@ class WagersController extends \BaseController {
 	 */
 	public function index()
 	{
-
 		$contents = Wager::all();
 		$statusCode = 200;
 		$value = 'application/json';
 
 		$response = Response::make($contents, $statusCode);
-
 		$response->header('Content-Type', $value);
 
 		return $response;
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-        return View::make('wagers.create');
 	}
 
 	/**
@@ -54,20 +42,23 @@ class WagersController extends \BaseController {
 	{
 		$wager = Wager::find($id);
 
-    	return View::make('wagers.show')->withWager($wager);
-	}
+    	if ($wager)
+		{
+			$statusCode = 200;
+			$value = 'application/json';
+			$response = Response::make($wager, $statusCode);
+		}
+		else
+		{
+			$statusCode = 400;
+			$value = 'text/plain';
+			$contents = 'Invalid or undefined wager id';
+			$response = Response::make($contents, $statusCode);
+		}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$wager = Wager::find($id);
+		$response->header('Content-Type', $value);
 
-        return View::make('wagers.edit')->withWager($wager);
+		return $response;
 	}
 
 	/**
@@ -89,7 +80,27 @@ class WagersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$wager = Wager::find($id);
+
+		if ($wager)
+		{
+			$wager->delete();
+
+			$statusCode = 200;
+			$value = 'application/json';
+			$contents = 'Success, Wager deleted';
+		}
+		else
+		{
+			$statusCode = 400;
+			$value = 'text/plain';
+			$contents = 'Invalid or unlisted Wager id';
+		}
+
+		$response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 
 }
