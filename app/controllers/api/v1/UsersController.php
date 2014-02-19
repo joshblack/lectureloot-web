@@ -1,8 +1,20 @@
-<?php namespace Api\V1;
+<?php namespace Api\v1;
 
-class UsersController extends BaseController {
+use Illuminate\Support\Facades\Response;
+use \User;
 
-	public function showUser() {
-		return View::make('user.show')->withUsername(Auth::user()->username);
+class UsersController extends \BaseController {
+
+	public function index()
+	{
+		$contents = User::all();
+		$statusCode = 200;
+		$value = 'application/json';
+
+		$response = Response::make($contents, $statusCode);
+
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 }

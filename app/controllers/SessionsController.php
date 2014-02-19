@@ -19,24 +19,28 @@ class SessionsController extends BaseController {
 		if (Auth::attempt(Input::only('emailAddress', 'password')))
 		{ // Authentication is successful
 
-			// Grabbing the current date and then finding the expiration date of the user's token
-			$currentDate = new Datetime;
-			$expDate = $currentDate->sub(new DateInterval('P6M'));
-
 			// Lookup to see if the user has a token in the database
 			$token = Token::where('user_id', Auth::user()->id)->first();
 
+			$currentDate = new Datetime;
+			$expDate = $currentDate->add(new DateInterval('P6M'));
+
 			// Check to see if the user's access token is expired
-			if ($token && ($token->updated_at > $expDate))
-			{ // Token is expired
+			if ($token && !$token->isValidToken())
+			{ // Token exists but is not valid
+
+				// Update the token field value and the expiration date.
 				$token->token = str_random(40);
+				$token->valid_until = $expDate;
 				$token->save();
 			}
-			else if (!$token)
+			else
 			{ // No token for the user, we need to create one
+
 				Token::create([
 					'token' => str_random(40),
-					'user_id' => Auth::user()->id
+					'user_id' => Auth::user()->id,
+					'valid_until' => $expDate
 				]);
 			} // Otherwise our token is valid
 

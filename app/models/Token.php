@@ -5,4 +5,17 @@ class Token extends Eloquent {
 
 	public static $rules = array();
 
+	/**
+	 * Check to see if the token's valid_until field is older than the current date. This allows
+	 * us to see if the token has expired.
+	 *
+	 * @return Boolean
+	 */
+	public function isValidToken()
+	{
+		$date = new Datetime;
+
+		return ($this->valid_until > $date) ? false : true;
+	}
+
 }

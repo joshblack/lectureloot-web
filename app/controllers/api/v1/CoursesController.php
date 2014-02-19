@@ -1,6 +1,9 @@
-<?php namespace Api\V1;
+<?php namespace Api\v1;
 
-class CoursesController extends BaseController {
+use Illuminate\Support\Facades\Response;
+use \Course;
+
+class CoursesController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,9 +12,14 @@ class CoursesController extends BaseController {
 	 */
 	public function index()
 	{
-		$courses = Course::all();
+        $contents = Course::all();
+		$statusCode = 200;
+		$value = 'application/json';
 
-        return View::make('courses.index')->withCourses($courses);
+		$response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 
 	/**

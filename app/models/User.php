@@ -85,4 +85,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->hasMany('Checkin');
 	}
+
+	/**
+	 * Defines a one-to-one relationship between User and Token.
+	 *
+	 * @return Eloquent Relationship
+	 */
+	public function token()
+	{
+		return $this->hasOne('Token');
+	}
 }

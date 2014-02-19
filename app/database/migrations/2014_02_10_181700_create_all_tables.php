@@ -115,6 +115,7 @@ class CreateAllTables extends Migration {
 			$table->increments('id');
 			$table->string('token');
 			$table->string('user_id')->unique();
+			$table->datetime('valid_until');
 			$table->timestamps();
 		});
 	}

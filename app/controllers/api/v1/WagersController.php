@@ -1,6 +1,9 @@
-<?php namespace Api\V1;
+<?php namespace Api\v1;
 
-class WagersController extends BaseController {
+use Illuminate\Support\Facades\Response;
+use \Wager;
+
+class WagersController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,9 +12,16 @@ class WagersController extends BaseController {
 	 */
 	public function index()
 	{
-		$wagers = Wager::all();
 
-		return View::make('wagers.index')->withWagers($wagers);
+		$contents = Wager::all();
+		$statusCode = 200;
+		$value = 'application/json';
+
+		$response = Response::make($contents, $statusCode);
+
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 
 	/**

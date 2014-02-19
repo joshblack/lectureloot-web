@@ -1,6 +1,9 @@
-<?php namespace Api\V1;
+<?php namespace Api\v1;
 
-class MeetingsController extends BaseController {
+use Illuminate\Support\Facades\Response;
+use \Meeting;
+
+class MeetingsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +12,15 @@ class MeetingsController extends BaseController {
 	 */
 	public function index()
 	{
-        return View::make('meetings.index');
+        $contents = Meeting::all();
+		$statusCode = 200;
+		$value = 'application/json';
+
+		$response = Response::make($contents, $statusCode);
+
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 
 	/**

@@ -44,10 +44,24 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
-Route::filter('apiAuth', function()
+/*
+|--------------------------------------------------------------------------
+| API Filter
+|--------------------------------------------------------------------------
+|
+| The "api" filter handles the verification of requests for the
+| LectureLoot API. If the token sent in through the Authorization Header
+| is invalid then the app aborts with a 400 code.
+|
+*/
+
+Route::filter('api', function()
 {
-	// ... get database user
-	if (Input::server('token') !== $user->token)
+
+	$requestToken = Request::header('Authorization');
+	$token = Token::where('token', $requestToken)->first();
+
+	if (!$token->isValidToken())
 	{
 		App::abort(400, 'Invalid token');
 	}

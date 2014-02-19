@@ -18,13 +18,14 @@ Route::group(array('before' => 'auth'), function()
 	Route::resource('meetings', 'MeetingsController');
 });
 
-Route::group(array('prefix' => 'api/v1', 'before' => 'auth', 'namespace' => 'Api\V1'), function()
+Route::group(array('prefix' => 'api/v1', 'namespace' => 'Api\v1'), function()
 {
 	Route::resource('courses', 'CoursesController');
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController');
+	Route::resource('users', 'UsersController');
 });
 
-Route::group(['before' => 'apiAuth'], function() {
+// Route::group(['before' => 'api'], function() {
 
-});
+// });
