@@ -57,14 +57,36 @@ Route::filter('auth.basic', function()
 
 Route::filter('api', function()
 {
-
+	// Get the access token passed to the api
 	$requestToken = Request::header('Authorization');
+
+	// Try and find the matching token in our Database
 	$token = Token::where('token', $requestToken)->first();
 
-	if (!$token->isValidToken())
-	{
-		App::abort(400, 'Invalid token');
+	if ($token && !$token->isValidToken())
+	{ // Token exists but has expired
+		$contents = 'Expired Token';
+		$statusCode = 400;
+		$value = 'plain/text';
+
+		$response = Response::make($contents, $statusCode);
+
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
+	else if (!$token)
+	{ // The Authorization Header is missing or the token wasn't found
+		$contents = 'Missing or Invalid Authorization Header';
+		$statusCode = 400;
+		$value = 'plain/text';
+
+		$response = Response::make($contents, $statusCode);
+
+		$response->header('Content-Type', $value);
+
+		return $response;
+	} // Otherwise our token is valid and we are free to make API calls
 });
 
 /*
