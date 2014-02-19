@@ -59,7 +59,7 @@ Route::filter('api', function()
 {
 	// Get the access token passed to the api
 	$requestToken = Request::header('Authorization');
-dd($requestToken);
+dd(Request::header());
 	// Try and find the matching token in our Database
 	$token = Token::where('token', $requestToken)->first();
 
