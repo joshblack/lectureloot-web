@@ -47,21 +47,21 @@ class MeetingsTableSeeder extends Seeder {
 				'course_id' => 3,
 				'buildingCode' => 'CSE',
 				'roomNumber' => 'E221',
-				'meetingDay' => 'th',
+				'meetingDay' => 'r',
 				'period' => '7'
 			],
 			[
 				'course_id' => 2,
 				'buildingCode' => 'CSE',
 				'roomNumber' => 'E221',
-				'meetingDay' => 'th',
+				'meetingDay' => 'r',
 				'period' => '10'
 			],
 			[
 				'course_id' => 4,
 				'buildingCode' => 'CSE',
 				'roomNumber' => 'E221',
-				'meetingDay' => 'th',
+				'meetingDay' => 'r',
 				'period' => '10'
 			]
 		);
