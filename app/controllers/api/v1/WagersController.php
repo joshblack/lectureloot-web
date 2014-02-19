@@ -99,7 +99,7 @@ class WagersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$user = Wager::find($id);
+		$wager = Wager::find($id);
 
 		if ($wager)
 		{ // If we can find the Wager, update the model with the data given
