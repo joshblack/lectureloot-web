@@ -134,12 +134,18 @@ class CoursesController extends \BaseController {
         return $response;
 	}
 
+	/**
+	 * Get the meetings for a specific course.
+	 *
+	 * @return Response
+	 */
 	public function getMeetings($id)
 	{
+		// Try and find the course
 		$course = Course::find($id);
 
 		if ($course)
-		{
+		{ // We found the course, set the contents to this courses meetings'
 			$statusCode = 200;
 			$value = 'application/json';
 			$contents = $course->meetings;
@@ -148,7 +154,7 @@ class CoursesController extends \BaseController {
 		{
 			$statusCode = 400;
 			$value = 'plain/text';
-			$contents = 'Error, could not find Course meetings.';
+			$contents = 'Error, could not find course id.';
 		}
 
 		$response = Response::make($contents, $statusCode);
