@@ -29,7 +29,36 @@ class CoursesController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		try
+		{
+			Course::make([
+				'deptCode' => Input::get('deptCode'),
+				'courseNumber' => Input::get('courseNumber'),
+				'sectionNumber' => Input::get('sectionNumber'),
+				'credits' => Input::get('credits'),
+				'instructor' => Input::get('instructor'),
+				'courseTitle' => Input::get('courseTitle'),
+				'semester' => Input::get('semester'),
+				'year' => Input::get('year')
+			]);
+
+			$statusCode = 200;
+			$value = 'plain/text';
+			$contents = 'Success, the course was created';
+
+			$response = Response::make($contents, $statusCode);
+			$response->header('Content-Type', $value);
+		}
+		catch (Exception $e)
+		{
+			$statusCode = 400;
+			$value = 'plain/text';
+			$contents = 'Error, could not make the Course';
+			$response = Response::make($contents, $statusCode);
+			$response->header('Content-Type', $value);
+		}
+
+		return $response;
 	}
 
 	/**

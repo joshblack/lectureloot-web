@@ -29,7 +29,37 @@ class WagersController extends \BaseController {
 	 */
 	public function store()
 	{
-		return 'hi';
+		// Grab the post data
+		$postInput = file_get_contents('php://input');
+		$data = json_decode($postInput, true);
+
+		try
+		{  // Try to make a wager with the data given
+			Wager::create([
+				'user_id' => $data['user_id'],
+				'session_id' => $data['session_id'],
+				'wagerUnitValue' => $data['wagerUnitValue'],
+				'wagerTotalValue' => $data['wagerTotalValue'],
+				'pointsLost' => $data['pointsLost']
+			]);
+
+			$statusCode = 200;
+			$value = 'plain/text';
+			$contents = 'Success, the wager was created.';
+
+			$response = Response::make($contents, $statusCode);
+			$response->header('Content-Type', $value);
+		}
+		catch (\Exception $e)
+		{ // Something went wrong
+			$statusCode = 400;
+			$value = 'plain/text';
+			$contents = 'Error, could not create the Wager. Exception: ' . $e;
+			$response = Response::make($contents, $statusCode);
+			$response->header('Content-Type', $value);
+		}
+
+		return $response;
 	}
 
 	/**
@@ -69,7 +99,45 @@ class WagersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		return 'hi';
+		$user = Wager::find($id);
+
+		if ($wager)
+		{ // If we can find the Wager, update the model with the data given
+			$postInput = file_get_contents('php://input');
+			$data = json_decode($postInput, true);
+
+			try
+			{ // Try to update the wager's properties by seeing if the property is defined
+			  // in the submitted data, otherwise set it equal to itself
+				$wager->user_id = (isset($data['user_id'])) ? $data['user_id'] : $wager->user_id;
+				$wager->session_id = (isset($data['session_id'])) ? $data['session_id'] : $wager->session_id;
+				$wager->wagerUnitValue = (isset($data['wagerUnitValue'])) ? $data['wagerUnitValue'] : $wager->wagerUnitValue;
+				$wager->wagerTotalValue = (isset($data['wagerTotalValue'])) ? $data['wagerTotalValue'] : $wager->wagerTotalValue;
+				$wager->pointsLost = (isset($data['pointsLost'])) ? $data['pointsLost'] : $uwager>pointsLost;
+				$wager->save();
+
+				$statusCode = 200;
+				$value = 'text/plain';
+				$contents = 'Success, Wager updated.';
+			}
+			catch (\Exception $e)
+			{ // One of the values we were trying to update is invalid
+				$statusCode = 400;
+				$value = 'text/plain';
+				$contents = 'Invalid submitted Wager data. Exception: ' . $e;
+			}
+		}
+		else
+		{
+			$statusCode = 400;
+			$value = 'text/plain';
+			$contents = 'Invalid or unlisted User id';
+		}
+
+		$response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 
 	/**
