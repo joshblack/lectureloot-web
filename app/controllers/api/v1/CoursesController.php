@@ -140,12 +140,21 @@ class CoursesController extends \BaseController {
 
 		if ($course)
 		{
-			return $course->meetings;
+			$statusCode = 200;
+			$value = 'application/json';
+			$contents = $course->meetings;
 		}
 		else
 		{
-
+			$statusCode = 400;
+			$value = 'plain/text';
+			$contents = 'Error, could not find Course meetings.';
 		}
+
+		$response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+		return $response;
 	}
 
 }
