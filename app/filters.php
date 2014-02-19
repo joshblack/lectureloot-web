@@ -44,6 +44,15 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('apiAuth', function()
+{
+	// ... get database user
+	if (Input::server('token') !== $user->token)
+	{
+		App::abort(400, 'Invalid token');
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

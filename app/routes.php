@@ -24,3 +24,7 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'auth', 'namespace' => 'Api
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController');
 });
+
+Route::group(['before' => 'apiAuth'], function() {
+
+});

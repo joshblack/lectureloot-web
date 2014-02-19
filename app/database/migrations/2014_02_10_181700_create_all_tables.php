@@ -50,7 +50,7 @@ class CreateAllTables extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('emailAddress');
+			$table->string('emailAddress')->unique();
 			$table->string('password');
 			$table->string('username');
 			$table->string('firstName');
@@ -114,7 +114,7 @@ class CreateAllTables extends Migration {
 		{
 			$table->increments('id');
 			$table->string('token');
-			$table->string('user_id');
+			$table->string('user_id')->unique();
 			$table->timestamps();
 		});
 	}
