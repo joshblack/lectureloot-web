@@ -18,17 +18,32 @@ class HomeController extends BaseController {
 			->where('endDate', '>=', $date)
 			->pluck('id');
 
-		// Find the user's wager from the current session
-		$wager = $user->wagers()->where('session_id', '=', $session)->get();
+		if ($session)
+		{
+			// Find the user's wager from the current session
+			$wager = $user->wagers()->where('session_id', '=', $session)->get();
 
-		// Find user's courses for the semester.
-		$courses = $user->courses;
+			// Find user's courses for the semester.
+			$courses = $user->courses;
 
-		return View::make('dashboard', [
-				'user' => $user,
-				'wager' => $wager,
-				'courses' => $courses
-			]);
+			return View::make('dashboard', [
+					'user' => $user,
+					'wager' => $wager,
+					'courses' => $courses
+				]);
+		}
+		else
+		{
+			// Find user's courses for the semester.
+			$courses = $user->courses;
+
+			return View::make('dashboard', [
+					'user' => $user,
+					'courses' => $courses
+				]);
+		}
+
+
 	}
 
 }
