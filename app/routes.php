@@ -18,7 +18,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::resource('courses', 'CoursesController');
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController');
-	// Route::resource('checkins', 'CheckinsController');
+	Route::resource('checkins', 'CheckinsController');
+
 });
 
 Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\v1'), function()
@@ -30,6 +31,7 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\
 
 	Route::get('users/{id}/courses', 'UsersController@getCourses');
 	Route::get('courses/{id}/meetings', 'CoursesController@getMeetings');
+	Route::get('buildings/{id}', 'CheckinsController@getBuilding');
 });
 
 // Route::group(['before' => 'api'], function() {
