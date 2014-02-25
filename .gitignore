@@ -12,6 +12,7 @@ Thumbs.db
 .sass_cache
 /public/stylesheets/vendor
 node_modules
+npm-debug.log
 
 # Compiled source #
 ###################
