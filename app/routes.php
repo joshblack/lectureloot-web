@@ -33,7 +33,3 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\
 	Route::get('courses/{id}/meetings', 'CoursesController@getMeetings');
 	Route::get('buildings/{id}', 'CheckinsController@getBuilding');
 });
-
-// Route::group(['before' => 'api'], function() {
-
-// });
