@@ -7,6 +7,7 @@ use \Input;
 use \Datetime;
 use \DateInterval;
 use \Auth;
+use \Hash;
 
 class UsersController extends \BaseController {
 
