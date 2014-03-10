@@ -31,5 +31,7 @@
 			{{ Form::submit('Login') }}
 		</div>
 	{{ Form::close() }}
+
+	{{ link_to('register', 'Make a new account') }}
 </body>
 </html>

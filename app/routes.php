@@ -2,10 +2,11 @@
 
 Route::get('/', 'HomeController@showHome');
 
-Route::get('/login', 'SessionsController@create');
-Route::get('/logout', 'SessionsController@destroy');
+Route::get('login', 'SessionsController@create');
+Route::get('logout', 'SessionsController@destroy');
 
-Route::get('/register', 'UsersController@create');
+Route::get('register', ['as' => 'users.create', 'uses' => 'UsersController@create']);
+Route::post('register', ['as' => 'users.store', 'uses' => 'UsersController@store']);
 
 Route::get('dashboard', 'HomeController@showDashboard');
 

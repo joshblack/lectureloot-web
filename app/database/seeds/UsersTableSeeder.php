@@ -11,7 +11,6 @@ class UsersTableSeeder extends Seeder {
 			[
 				'emailAddress' => 'josh@ufl.edu',
 				'password' => Hash::make('password'),
-				'username' => 'josh',
 				'firstName' => 'josh',
 				'lastName' => 'black',
 				'pointBalance' => 50,
@@ -21,7 +20,6 @@ class UsersTableSeeder extends Seeder {
 			[
 				'emailAddress' => 'austin@ufl.edu',
 				'password' => Hash::make('password'),
-				'username' => 'austin',
 				'firstName' => 'austin',
 				'lastName' => 'bruch',
 				'pointBalance' => 50,
@@ -31,7 +29,6 @@ class UsersTableSeeder extends Seeder {
 			[
 				'emailAddress' => 'justin@ufl.edu',
 				'password' => Hash::make('password'),
-				'username' => 'justin',
 				'firstName' => 'justin',
 				'lastName' => 'black',
 				'pointBalance' => 50,

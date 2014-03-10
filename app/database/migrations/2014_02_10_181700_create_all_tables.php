@@ -52,7 +52,6 @@ class CreateAllTables extends Migration {
 			$table->increments('id');
 			$table->string('emailAddress')->unique();
 			$table->string('password');
-			$table->string('username');
 			$table->string('firstName');
 			$table->string('lastName');
 			$table->integer('pointBalance')->default(100);
