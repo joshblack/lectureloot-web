@@ -3,8 +3,9 @@ body {
 	.awesome {
 		background: yellow;
 		box-sizing: border-box;
-		.awesome--isCool {
+		.awesome--iscool {
 			text-align: center;
+      box-shadow: 0 0 5px black;
 		}
 	}
 }

@@ -18,4 +18,9 @@ class Token extends Eloquent {
 		return ($this->valid_until > $date) ? false : true;
 	}
 
+	public function user()
+	{
+		return $this->belongsTo('User');
+	}
+
 }

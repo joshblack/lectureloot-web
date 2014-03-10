@@ -9,6 +9,8 @@ body .awesome {
   box-sizing: border-box;
 }
 
-body .awesome .awesome--isCool {
+body .awesome .awesome--iscool {
   text-align: center;
+  -webkit-box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px black;
 }

@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Response;
 use \User;
+use \Token;
+use \Input;
+use \Datetime;
+use \DateInterval;
+use \Auth;
 
 class UsersController extends \BaseController {
 
@@ -48,33 +53,44 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		// Grab the post data
-		$postInput = file_get_contents('php://input');
-		$data = json_decode($postInput, true);
+
+		$input = Input::all();
 
 		// Creating a default value for pointBalance for when we create the user
-		$pointBalance = (isset($data['pointBalance'])) ? $data['pointBalance'] : 50;
+		$pointBalance = (isset($input['pointBalance'])) ? $input['pointBalance'] : 100;
 
 		try
-		{  // Try to make a user with the data given
-			User::create([
-				'emailAddress' => $data['emailAddress'],
-				'password' => $data['password'],
-				'username' => $data['username'],
-				'firstName' => $data['firstName'],
-				'lastName' => $data['lastName'],
+		{  // Try to make a user with the input given
+			$user = User::create([
+				'emailAddress' => $input['emailAddress'],
+				'password' => Hash::make($input['password']),
+				'firstName' => $input['firstName'],
+				'lastName' => $input['lastName'],
 				'pointBalance' => $pointBalance
 			]);
 
+			// Create a token for the user
+			$currentDate = new Datetime;
+			$expDate = $currentDate->add(new DateInterval('P6M'));
+
+			$token = Token::create([
+					'token' => str_random(40),
+					'user_id' => $user->id,
+					'valid_until' => $expDate
+				]);
+
+			$content = ['message' => 'Success, the user was registered', 'token' => $token->token];
+
 			$statusCode = 200;
 			$value = 'plain/text';
-			$contents = 'Success, the user was registered';
+			$contents = json_encode($content);
 
 			$response = Response::make($contents, $statusCode);
 			$response->header('Content-Type', $value);
 		}
 		catch (\Exception $e)
 		{ // Something went wrong
+
 			$statusCode = 400;
 			$value = 'plain/text';
 			$contents = 'Error, could not create the User. Exception: ' . $e;
@@ -182,4 +198,39 @@ class UsersController extends \BaseController {
 
 		return $response;
 	}
+	/**
+	 * Login the user and retrieve their access token
+	 *
+	 * @return JSON Response
+	 */
+	public function login()
+	{
+		$credentials = ['emailAddress' => Input::get('emailAddress'), 'password' => Input::get('password')];
+
+		$login = Auth::attempt($credentials);
+
+		if ($login)
+		{ // Valid credentials
+			$statusCode = 200;
+			$value = 'application/json';
+			$content = [
+				'message' => 'Success, valid credentials',
+				'token' => Auth::user()->token->token // need to call twice to access actual token value
+			];
+
+			$contents = json_encode($content);
+		}
+		else
+		{ // Invalid redentials
+			$statusCode = 400;
+			$value = 'application/json';
+			$contents = json_encode(['message' => 'Error, invalid credentials']);
+		}
+
+		$response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+		return $response;
+	}
+
 }
