@@ -18,7 +18,7 @@
 	</nav>
 
 	<!-- Header -->
-	<h1>Hi, {{ ucfirst($user->username) }}!</h1>
+	<h1>Hi, {{ ucfirst($user->firstName) }}!</h1>
 	<a id="checkin" href="#">Checkin</a>
 
 <script type="text/javascript">

@@ -33,7 +33,7 @@
     </div>
     <div>
       {{ Form::label('password', 'Password') }}
-      {{ Form::text('password') }}
+      {{ Form::password('password') }}
     </div>
     <div>{{ Form::submit() }}</div>
   {{ Form::close() }}
