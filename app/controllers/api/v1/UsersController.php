@@ -289,4 +289,45 @@ class UsersController extends \BaseController {
 
     return $response;
   }
+
+  /**
+   * Removes a course from a user's schedule
+   *
+   * @param int
+   * @return Response
+   */
+  public function removeCourse($user_id, $course_id)
+  {
+    $user = User::find($user_id);
+
+    if ($user)
+    { // We found the user, now try and find the course with $course_id
+      $userCourses = $user->courses;
+
+      if ($userCourses->find($course_id))
+      { // We found the course, now remove it
+        $user->courses()->detach($course_id);
+        $statusCode = 200;
+        $value = 'application/json';
+        $contents = json_encode(['message' => 'Success, the course was removed successfully']);
+      }
+      else
+      { // The user doesn't have that course, so they can't remove it
+        $statusCode = 400;
+        $value = 'application/json';
+        $contents = json_encode(['message' => 'Error, the user doesn\'t have any course with that id']);
+      }
+    }
+    else
+    {
+      $statusCode = 400;
+      $value = 'application/json';
+      $contents = json_encode(['message' => 'Error, no user found']);
+    }
+
+    $response = Response::make($contents, $statusCode);
+    $response->header('Content-Type', $value);
+
+    return $response;
+  }
 }

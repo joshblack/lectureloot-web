@@ -1,5 +1,8 @@
 <?php
 
+Route::get('/users/{user_id}/course/{course_id}', function($user_id, $course_id) {
+	return $user_id . ' ' . $course_id;
+});
 Route::get('/', 'HomeController@showHome');
 
 Route::get('login', 'SessionsController@create');
@@ -39,6 +42,8 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\
 
 	Route::get('users/{id}/courses', 'UsersController@getCourses');
 	Route::get('users/{id}/wagers', 'UsersController@getWagers');
+	Route::delete('users/{user_id}/courses/{course_id}', 'UsersController@removeCourse');
+
 	Route::get('courses/{id}/meetings', 'CoursesController@getMeetings');
 	Route::get('buildings/{id}', 'CheckinsController@getBuilding');
 });
