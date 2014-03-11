@@ -1,8 +1,5 @@
 <?php
 
-Route::get('/users/{user_id}/course/{course_id}', function($user_id, $course_id) {
-	return $user_id . ' ' . $course_id;
-});
 Route::get('/', 'HomeController@showHome');
 
 Route::get('login', 'SessionsController@create');
