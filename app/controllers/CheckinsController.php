@@ -23,7 +23,7 @@ class CheckinsController extends BaseController {
 	}
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Checkin a user
 	 *
 	 * @return Response
 	 */

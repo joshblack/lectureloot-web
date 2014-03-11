@@ -260,4 +260,33 @@ class UsersController extends \BaseController {
 		return $response;
 	}
 
+  /**
+   * Grab the wagers for a specific user
+   *
+   * @param int
+   * @return Response
+   */
+  public function getWagers($id)
+  {
+    $user = User::find($id);
+
+    if ($user)
+    { // We found the user, now grab their wagers
+      $statusCode = 200;
+      $value = 'application/json';
+      // Check to see if the Eloquent collection is empty, if so then no wagers exist for the user
+      $contents = ($user->wagers->isEmpty()) ? json_encode(['message' => 'No wagers found for this user']) : $user->wagers;
+    }
+    else
+    { // No record found for that user
+      $statusCode = 400;
+      $value = 'application/json';
+      $contents = json_encode(['message' => 'Error, no user found']);
+    }
+
+    $response = Response::make($contents, $statusCode);
+    $response->header('Content-Type', $value);
+
+    return $response;
+  }
 }

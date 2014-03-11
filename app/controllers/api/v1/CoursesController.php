@@ -12,7 +12,7 @@ class CoursesController extends \BaseController {
 	 */
 	public function index()
 	{
-        $contents = Course::all();
+  	$contents = Course::all();
 		$statusCode = 200;
 		$value = 'application/json';
 
