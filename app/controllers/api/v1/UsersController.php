@@ -8,6 +8,7 @@ use \Datetime;
 use \DateInterval;
 use \Auth;
 use \Hash;
+use \Course;
 
 class UsersController extends \BaseController {
 
@@ -323,6 +324,49 @@ class UsersController extends \BaseController {
       $statusCode = 400;
       $value = 'application/json';
       $contents = json_encode(['message' => 'Error, no user found']);
+    }
+
+    $response = Response::make($contents, $statusCode);
+    $response->header('Content-Type', $value);
+
+    return $response;
+  }
+
+  /**
+   * Add a course to a user's schedule
+   *
+   * @param int
+   * @return Response
+   */
+  public function addCourse($id)
+  {
+    $user = User::find($id);
+    $course = Course::find(Input::get('course_id'));
+
+    if ($user && $course)
+    { // We found the user, now need to check to see if they have the class already
+
+      if ($user->courses->find($course->id))
+      { // The user has the class already
+        $statusCode = 400;
+        $value = 'application/json';
+        $contents = json_encode(['message' => 'Error, the user already has that class']);
+      }
+      else
+      { // Add the class to the user
+        $user->courses()->attach($course->id);
+        $statusCode = 200;
+        $value = 'application/json';
+        $contents = json_encode(['message' => 'Success, the class has been added to the user']);
+      }
+
+    }
+    else
+    { // Either the $user or $course couldn't be found
+      $message = ($user) ? 'Error, no course found for that id' : 'Error, no user found for that id';
+      $statusCode = 400;
+      $value = 'application/json';
+      $contents = json_encode(['message' => $message]);
     }
 
     $response = Response::make($contents, $statusCode);
