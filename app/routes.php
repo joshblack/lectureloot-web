@@ -25,16 +25,16 @@ Route::group(array('before' => 'auth'), function()
 
 /* API Routes */
 
-// Registering and loggin in a user
+// Registering and logging in a user
 Route::post('api/v1/users', 'Api\v1\UsersController@store');
 Route::post('api/v1/users/login', 'Api\v1\UsersController@login');
 
 // Requires valid access token
 Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\v1'), function()
 {
-	Route::resource('courses', 'CoursesController');
+	Route::resource('courses', 'CoursesController', ['except' => ['update', 'destroy']]);
 	Route::resource('wagers', 'WagersController');
-	Route::resource('meetings', 'MeetingsController');
+	Route::resource('meetings', 'MeetingsController', ['except' => ['store', 'update', 'destroy']]);
 	Route::resource('users', 'UsersController', ['except' => ['store']]);
 
 	// User Wagers

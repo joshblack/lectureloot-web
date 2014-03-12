@@ -90,51 +90,6 @@ class CoursesController extends \BaseController {
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-
-		$course = Course::find($id);
-
-		// Check to see if the Course exists
-		if ($course)
-		{
-			$course->delete();
-
-			$contents = 'Success, course removed';
-			$statusCode = 200;
-			$value = 'text/plain';
-		}
-		else
-		{ // The course does not exist
-
-			$contents = 'Error, the course does not exist';
-			$statusCode = 400;
-			$value = 'text/plain';
-		}
-
-        $response = Response::make($contents, $statusCode);
-		$response->header('Content-Type', $value);
-
-        return $response;
-	}
-
-	/**
 	 * Get the meetings for a specific course.
 	 *
 	 * @return Response

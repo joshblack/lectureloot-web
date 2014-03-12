@@ -27,7 +27,7 @@ class CheckinsController extends \BaseController {
 		$response = Response::make($contents, $statusCode);
 		$response->header('Content-Type', $value);
 
-        return $response;
+    return $response;
 	}
 
 }
