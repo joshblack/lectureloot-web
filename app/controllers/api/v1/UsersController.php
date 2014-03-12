@@ -453,14 +453,17 @@ class UsersController extends \BaseController {
    */
   public function editWager($user_id, $wager_id)
   {
+    // Try to find the user and corresponding wager associated with them
     $user = User::find($user_id);
     $wager = ($user) ? $user->wagers()->find($wager_id) : null;
 
+    // Grab the inputs
     $wagerUnitValue = Input::get('wagerUnitValue');
     $wagerTotalValue = Input::get('wagerTotalValue');
 
     if ($user && $wager)
     {
+      // Set wagerUnitValue and wagerTotalValue, both are optional to include in the input
       $wager->wagerUnitValue = ($wagerUnitValue) ? $wagerUnitValue : $wager->wagerUnitValue;
       $wager->wagerTotalvalue = ($wagerTotalValue) ? $wagerTotalValue : $wager->wagerTotalvalue;
       $wager->save();
