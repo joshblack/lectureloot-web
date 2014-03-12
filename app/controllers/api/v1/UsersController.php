@@ -9,6 +9,7 @@ use \DateInterval;
 use \Auth;
 use \Hash;
 use \Course;
+use \Wager;
 
 class UsersController extends \BaseController {
 
@@ -364,6 +365,63 @@ class UsersController extends \BaseController {
     else
     { // Either the $user or $course couldn't be found
       $message = ($user) ? 'Error, no course found for that id' : 'Error, no user found for that id';
+      $statusCode = 400;
+      $value = 'application/json';
+      $contents = json_encode(['message' => $message]);
+    }
+
+    $response = Response::make($contents, $statusCode);
+    $response->header('Content-Type', $value);
+
+    return $response;
+  }
+
+  public function addWager($id)
+  {
+
+    $user = User::find($id);
+
+    if ($user)
+    { // Found the user
+      $wager = Wager::create([
+          'user_id' => $id,
+          'session_id' => Input::get('session_id'),
+          'wagerUnitValue' => Input::get('wagerUnitValue'),
+          'wagerTotalValue' => Input::get('wagerTotalValue')
+        ]);
+
+      $statusCode = 200;
+      $value = 'application/json';
+      $contents = json_encode(['message' => 'Success, wager created and added to the user']);
+    }
+    else
+    { // The user couldn't be found
+      $message = 'Error, no user found for that id';
+      $statusCode = 400;
+      $value = 'application/json';
+      $contents = json_encode(['message' => $message]);
+    }
+
+    $response = Response::make($contents, $statusCode);
+    $response->header('Content-Type', $value);
+
+    return $response;
+  }
+
+  public function removeWager($user_id, $wager_id)
+  {
+    $wager = Wager::find($wager_id);
+
+    if ($wager)
+    {
+      $wager->delete();
+      $statusCode = 200;
+      $value = 'applicatoin/json';
+      $contents = json_encode(['message' => 'Success, wager deleted']);
+    }
+    else
+    { // The wager couldn't be found
+      $message = 'Error, no wager found for that id';
       $statusCode = 400;
       $value = 'application/json';
       $contents = json_encode(['message' => $message]);

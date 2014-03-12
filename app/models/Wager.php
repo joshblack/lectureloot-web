@@ -7,7 +7,7 @@ class Wager extends Eloquent {
 	public static $rules = array();
 
 	/**
-	 * Defines a one-to-many relationship between Wager and User.
+	 * Defines a one-to-many relationship between User and Wager.
 	 *
 	 * @return Eloquent Relationship
 	 */

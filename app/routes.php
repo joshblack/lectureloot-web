@@ -37,9 +37,12 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\
 	Route::resource('meetings', 'MeetingsController');
 	Route::resource('users', 'UsersController', ['except' => ['store']]);
 
+	// User Wagers
 	Route::get('users/{id}/wagers', 'UsersController@getWagers');
+	Route::post('users/{id}/wagers', 'UsersController@addWager');
+	Route::delete('users/{user_id}/wagers/{wager_id}', 'UsersController@removeWager');
 
-	// Endpoints for user courses
+	// User Courses
 	Route::get('users/{id}/courses', 'UsersController@getCourses');
 	Route::post('users/{id}/courses', 'UsersController@addCourse');
 	Route::delete('users/{user_id}/courses/{course_id}', 'UsersController@removeCourse');
