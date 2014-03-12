@@ -40,6 +40,7 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\
 	// User Wagers
 	Route::get('users/{id}/wagers', 'UsersController@getWagers');
 	Route::post('users/{id}/wagers', 'UsersController@addWager');
+	Route::put('users/{id}/wagers/{wager_id}/edit', 'UsersController@editWager');
 	Route::delete('users/{user_id}/wagers/{wager_id}', 'UsersController@removeWager');
 
 	// User Courses

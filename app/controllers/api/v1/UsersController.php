@@ -376,6 +376,12 @@ class UsersController extends \BaseController {
     return $response;
   }
 
+  /**
+   * Add a wager for a user
+   *
+   * @param int
+   * @return Response
+   */
   public function addWager($id)
   {
 
@@ -408,6 +414,12 @@ class UsersController extends \BaseController {
     return $response;
   }
 
+  /**
+   * Delete a wager for a user
+   *
+   * @param int
+   * @return Response
+   */
   public function removeWager($user_id, $wager_id)
   {
     $wager = Wager::find($wager_id);
@@ -422,6 +434,44 @@ class UsersController extends \BaseController {
     else
     { // The wager couldn't be found
       $message = 'Error, no wager found for that id';
+      $statusCode = 400;
+      $value = 'application/json';
+      $contents = json_encode(['message' => $message]);
+    }
+
+    $response = Response::make($contents, $statusCode);
+    $response->header('Content-Type', $value);
+
+    return $response;
+  }
+
+  /**
+   * Edit a specific wager for a user
+   *
+   * @param int
+   * @return Response
+   */
+  public function editWager($user_id, $wager_id)
+  {
+    $user = User::find($user_id);
+    $wager = ($user) ? $user->wagers()->find($wager_id) : null;
+
+    $wagerUnitValue = Input::get('wagerUnitValue');
+    $wagerTotalValue = Input::get('wagerTotalValue');
+
+    if ($user && $wager)
+    {
+      $wager->wagerUnitValue = ($wagerUnitValue) ? $wagerUnitValue : $wager->wagerUnitValue;
+      $wager->wagerTotalvalue = ($wagerTotalValue) ? $wagerTotalValue : $wager->wagerTotalvalue;
+      $wager->save();
+
+      $statusCode = 200;
+      $value = 'application/json';
+      $contents = json_encode(['message' => 'Success, wager updated']);
+    }
+    else
+    { // Either $user or $wager couldn't be found
+      $message = ($user) ? 'Error, no wager found with that id for this user' : 'Error, no user found for that id';
       $statusCode = 400;
       $value = 'application/json';
       $contents = json_encode(['message' => $message]);
