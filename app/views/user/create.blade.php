@@ -37,5 +37,6 @@
     </div>
     <div>{{ Form::submit() }}</div>
   {{ Form::close() }}
+
 </body>
 </html>
