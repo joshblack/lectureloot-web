@@ -17,16 +17,13 @@ module.exports = function(grunt) {
             dist: 'public/dist'
         },
 		watch: {
+            options: {
+                livereload: true,
+            },
 			sass: {
-				files: ['app/assets/css/*.scss'],
-                tasks: ['sass:dev', 'autoprefixer:single_file', 'cssmin']
-			},
-            livereload: {
-                files: ['*.html', '*.php', 'js/**/*.{js,json}', 'css/*.css','img/**/*.{png,jpg,jpeg,gif,webp,svg}'],
-                options: {
-                    livereload: true
-                }
-            }
+				files: ['app/assets/css/**/*.scss'],
+                tasks: ['sass:dev', 'autoprefixer:single_file', 'cssmin', 'notify:watch_css']
+			}
         },
         sass: {
             dist: {
@@ -59,16 +56,6 @@ module.exports = function(grunt) {
                 ext: '.min.css'
             }
         },
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
-            },
-            all: [
-                'Gruntfile.js',
-                'app/assets/js/*.js'
-            ]
-        },
         // The following *-min tasks produce minified files in the dist folder
         imagemin: {
             dist: {
@@ -90,6 +77,14 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        notify: {
+            watch_css: {
+                options: {
+                    title: 'Task Complete',
+                    message: 'Sass finished compiling'
+                }
+            }
+        }
 	});
 
 	grunt.registerTask('default', ['sass:dist', 'watch', 'autoprefixer:single_file', 'cssmin']);
