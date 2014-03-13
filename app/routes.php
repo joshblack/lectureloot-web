@@ -1,7 +1,5 @@
 <?php
-Route::get('/env', function() {
-	dd(getenv('debug'));
-});
+
 Route::get('/', 'HomeController@showHome');
 
 Route::get('login', 'SessionsController@create');
