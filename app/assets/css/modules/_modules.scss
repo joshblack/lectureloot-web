@@ -31,11 +31,16 @@
 }
 
 #login, #register {
-  color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.5);
   text-decoration: none;
   border-radius: 11px;
   border: 1px solid rgba(255,255,255,0.25);
   padding: 10px;
+
+  &:hover {
+    border: 1px solid rgba(255,255,255,0.75);
+    color: rgba(255,255,255,.75);
+  }
 }
 
 #login {
