@@ -491,6 +491,8 @@ th {
   border-radius: 11px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   padding: 10px;
+  -webkit-transition: 0.25s all;
+  transition: 0.25s all;
 }
 
 #login:hover,
