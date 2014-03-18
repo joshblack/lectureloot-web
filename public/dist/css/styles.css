@@ -689,34 +689,6 @@ textarea {
   }
 }
 
-p {
-  color: white;
-}
-
-.normal {
-  font-family: 'Lato';
-  font-weight: normal;
-  font-style: normal;
-}
-
-.bold {
-  font-family: 'Lato';
-  font-weight: bold;
-  font-style: normal;
-}
-
-.normal-italic {
-  font-family: 'Lato';
-  font-weight: normal;
-  font-style: italic;
-}
-
-.bold-italic {
-  font-family: 'Lato';
-  font-weight: bold;
-  font-style: italic;
-}
-
 @font-face {
   font-family: 'Lato';
   src: local('Lato Regular'), local('Lato-Regular'), url('/dist/css/fonts/lato/Lato-Regular.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Regular.ttf') format('truetype');
@@ -894,11 +866,13 @@ p {
 
 #login,
 #register {
+  font-family: 'Lato';
+  font-weight: 300;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
   border-radius: 11px;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 10px;
+  padding: 10px 15px;
   -webkit-transition: 0.25s all;
   transition: 0.25s all;
 }

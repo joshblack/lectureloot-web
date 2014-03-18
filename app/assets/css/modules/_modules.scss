@@ -31,12 +31,15 @@
   margin-top: 200px;
 }
 
-#login, #register {
+#login,
+#register {
+  font-family: 'Lato';
+  font-weight: 300;
   color: rgba(255,255,255,.5);
   text-decoration: none;
   border-radius: 11px;
   border: 1px solid rgba(255,255,255,0.25);
-  padding: 10px;
+  padding: 10px 15px;
   transition: .25s all;
 
   &:hover {
