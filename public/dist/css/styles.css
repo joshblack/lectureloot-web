@@ -441,14 +441,421 @@ th {
   padding: 0;
 }
 
-@font-face {
-  font-family: 'Lato Black';
-  src: local('Lato Black'), local('Lato-Black'), url('/dist/css/fonts/lato/Lato-Black.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Black.ttf') format('truetype');
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+
+audio,
+canvas,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+  /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+p {
+  color: white;
+}
+
+.normal {
+  font-family: 'Lato';
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bold {
+  font-family: 'Lato';
+  font-weight: bold;
+  font-style: normal;
+}
+
+.normal-italic {
+  font-family: 'Lato';
+  font-weight: normal;
+  font-style: italic;
+}
+
+.bold-italic {
+  font-family: 'Lato';
+  font-weight: bold;
+  font-style: italic;
 }
 
 @font-face {
-  font-family: 'Liberation-Sans Regular';
-  src: local('LiberationSans-Regular'), url('/dist/css/fonts/liberation_sans/LiberationSans-Regular.ttf') format('truetype');
+  font-family: 'Lato';
+  src: local('Lato Regular'), local('Lato-Regular'), url('/dist/css/fonts/lato/Lato-Regular.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Italic'), local('Lato-Italic'), url('/dist/css/fonts/lato/Lato-Italic.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Bold'), local('Lato-Bold'), url('/dist/css/fonts/lato/Lato-Bold.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato BoldItalic'), local('Lato-BoldItalic'), url('/dist/css/fonts/lato/Lato-BoldItalic.woff') format('woff'), url('/dist/css/fonts/lato/Lato-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Black'), local('Lato-Black'), url('/dist/css/fonts/lato/Lato-Black.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato BlackItalic'), local('Lato-BlackItalic'), url('/dist/css/fonts/lato/Lato-BlackItalic.woff') format('woff'), url('/dist/css/fonts/lato/Lato-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Light'), local('Lato-Light'), url('/dist/css/fonts/lato/Lato-Light.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Light.ttf') format('truetype');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato LightItalic'), local('Lato-LightItalic'), url('/dist/css/fonts/lato/Lato-LightItalic.woff') format('woff'), url('/dist/css/fonts/lato/Lato-LightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Hairline'), local('Lato-Hairline'), url('/dist/css/fonts/lato/Lato-Hairline.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Hairline.ttf') format('truetype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato HairlineItalic'), local('Lato-HairlineItalic'), url('/dist/css/fonts/lato/Lato-HairlineItalic.woff') format('woff'), url('/dist/css/fonts/lato/Lato-HairlineItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Regular'), local('Open Sans-Regular'), url('/dist/css/fonts/open-sans/OpenSans-Regular.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Italic'), local('Open Sans-Italic'), url('/dist/css/fonts/open-sans/OpenSans-Italic.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Semibold'), local('Open Sans-Semibold'), url('/dist/css/fonts/open-sans/OpenSans-Semibold.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans SemiboldItalic'), local('Open Sans-SemiboldItalic'), url('/dist/css/fonts/open-sans/OpenSans-SemiboldItalic.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-SemiboldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Semibold'), local('Open Sans-Semibold'), url('/dist/css/fonts/open-sans/OpenSans-Semibold.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Bold'), local('Open Sans-Bold'), url('/dist/css/fonts/open-sans/OpenSans-Bold.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans BoldItalic'), local('Open Sans-BoldItalic'), url('/dist/css/fonts/open-sans/OpenSans-BoldItalic.woff') format('woff'), url('/dist/csItalics/fonts/open-sans/OpenSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans ExtraBold'), local('Open Sans-ExtraBold'), url('/dist/css/fonts/open-sans/OpenSans-ExtraBold.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-ExtraBold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans ExtraBoldItalic'), local('Open Sans-ExtraBoldItalic'), url('/dist/css/fonts/open-sans/OpenSans-ExtraBoldItalic.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Light'), local('Open Sans-Light'), url('/dist/css/fonts/open-sans/OpenSans-Light.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-Light.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans LightItalic'), local('Open Sans-LightItalic'), url('/dist/css/fonts/open-sans/OpenSans-LightItalic.woff') format('woff'), url('/dist/css/fonts/open-sans/OpenSans-LightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
 }
 
 #bgvid {
@@ -478,7 +885,8 @@ th {
 #logo {
   margin: 0 auto;
   font-size: 8em;
-  font-family: 'Lato Black';
+  font-family: 'Lato';
+  font-weight: 900;
   color: #ffffff;
   text-align: center;
   margin-top: 200px;
@@ -511,8 +919,4 @@ th {
   position: absolute;
   left: 10px;
   top: 10px;
-}
-
-body {
-  font-family: "Liberation-Sans Regular";
 }

@@ -1,7 +1,206 @@
+// Lato family
 @font-face {
-  font-family: 'Lato Black';
-  src: local('Lato Black'),
-        local('Lato-Black'),
-        url('/dist/css/fonts/lato/Lato-Black.woff') format('woff'),
-        url('/dist/css/fonts/lato/Lato-Black.ttf') format('truetype');
+  font-family: 'Lato';
+  src: local('Lato Regular'),
+       local('Lato-Regular'),
+       url('/dist/css/fonts/lato/Lato-Regular.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
 }
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Italic'),
+       local('Lato-Italic'),
+       url('/dist/css/fonts/lato/Lato-Italic.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Bold'),
+       local('Lato-Bold'),
+       url('/dist/css/fonts/lato/Lato-Bold.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato BoldItalic'),
+       local('Lato-BoldItalic'),
+       url('/dist/css/fonts/lato/Lato-BoldItalic.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Black'),
+       local('Lato-Black'),
+       url('/dist/css/fonts/lato/Lato-Black.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato BlackItalic'),
+       local('Lato-BlackItalic'),
+       url('/dist/css/fonts/lato/Lato-BlackItalic.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Light'),
+       local('Lato-Light'),
+       url('/dist/css/fonts/lato/Lato-Light.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-Light.ttf') format('truetype');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato LightItalic'),
+       local('Lato-LightItalic'),
+       url('/dist/css/fonts/lato/Lato-LightItalic.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-LightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Hairline'),
+       local('Lato-Hairline'),
+       url('/dist/css/fonts/lato/Lato-Hairline.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-Hairline.ttf') format('truetype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato HairlineItalic'),
+       local('Lato-HairlineItalic'),
+       url('/dist/css/fonts/lato/Lato-HairlineItalic.woff') format('woff'),
+       url('/dist/css/fonts/lato/Lato-HairlineItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+// Open Sans Declarations
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Regular'),
+       local('Open Sans-Regular'),
+       url('/dist/css/fonts/open-sans/OpenSans-Regular.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Italic'),
+       local('Open Sans-Italic'),
+       url('/dist/css/fonts/open-sans/OpenSans-Italic.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Semibold'),
+       local('Open Sans-Semibold'),
+       url('/dist/css/fonts/open-sans/OpenSans-Semibold.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans SemiboldItalic'),
+       local('Open Sans-SemiboldItalic'),
+       url('/dist/css/fonts/open-sans/OpenSans-SemiboldItalic.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-SemiboldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Semibold'),
+       local('Open Sans-Semibold'),
+       url('/dist/css/fonts/open-sans/OpenSans-Semibold.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Bold'),
+       local('Open Sans-Bold'),
+       url('/dist/css/fonts/open-sans/OpenSans-Bold.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans BoldItalic'),
+       local('Open Sans-BoldItalic'),
+       url('/dist/css/fonts/open-sans/OpenSans-BoldItalic.woff') format('woff'),
+       url('/dist/csItalics/fonts/open-sans/OpenSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans ExtraBold'),
+       local('Open Sans-ExtraBold'),
+       url('/dist/css/fonts/open-sans/OpenSans-ExtraBold.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-ExtraBold.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans ExtraBoldItalic'),
+       local('Open Sans-ExtraBoldItalic'),
+       url('/dist/css/fonts/open-sans/OpenSans-ExtraBoldItalic.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans Light'),
+       local('Open Sans-Light'),
+       url('/dist/css/fonts/open-sans/OpenSans-Light.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-Light.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans LightItalic'),
+       local('Open Sans-LightItalic'),
+       url('/dist/css/fonts/open-sans/OpenSans-LightItalic.woff') format('woff'),
+       url('/dist/css/fonts/open-sans/OpenSans-LightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
