@@ -88,6 +88,4 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('default', ['sass:dist', 'watch', 'autoprefixer:single_file', 'cssmin']);
-
-
 };
