@@ -5,7 +5,7 @@
 	<title>Login</title>
 	<link rel="stylesheet" href="/dist/css/production.min.css">
 </head>
-<body id="login-page">
+<body class="alternate-page">
 	<nav class="main-nav main-nav__login">
 		<div class="site-width">
 			<span class="icon icon_hamburger"></span>
@@ -38,7 +38,7 @@
 			}}
 			<div class="submit-container">
 				<a class="register--heading" href="register">Forgot your password?</a>
-				<button class="submit--button submit--button__login" type="submit">Submit</button>
+				<button class="submit--button submit--button__login" type="submit">Sign In</button>
 			</div>
 
 		{{ Form::close() }}

@@ -1051,7 +1051,19 @@ h6 {
   background: #f6bd8a;
 }
 
-#login-page {
+.submit--button__register {
+  background: #F5B277;
+  color: #ffffff;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+  width: 30%;
+}
+
+.submit--button__register:hover {
+  background: #f6bd8a;
+}
+
+.alternate-page {
   background: #95E6A0;
 }
 

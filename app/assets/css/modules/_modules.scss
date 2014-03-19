@@ -177,3 +177,14 @@
     background: lighten($active-state-color, 4%);
   }
 }
+
+.submit--button__register {
+  background: $active-state-color;
+  color: $white;
+  transition: background .5s;
+  width: 30%;
+
+  &:hover {
+    background: lighten($active-state-color, 4%);
+  }
+}
