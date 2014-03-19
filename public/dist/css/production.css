@@ -741,6 +741,20 @@ h6 {
   font-weight: 900;
 }
 
+.success-heading,
+.error-heading {
+  color: #ffffff;
+}
+
+.register--heading {
+  position: absolute;
+  left: 10px;
+  top: 13px;
+  color: #ffffff;
+  font-size: 12px;
+  font-style: italic;
+}
+
 @font-face {
   font-family: 'Lato';
   src: local('Lato Regular'), local('Lato-Regular'), url('/dist/css/fonts/lato/Lato-Regular.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Regular.ttf') format('truetype');
@@ -993,8 +1007,8 @@ h6 {
   left: 0;
   z-index: 900;
   width: 100%;
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
   padding: 10px 0;
 }
 
@@ -1021,8 +1035,8 @@ h6 {
   font-family: 'Lato', Georgia, 'Times New Roman', serif;
   font-weight: 900;
   font-size: 1.5em;
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
+  -webkit-transition: background 0.25s;
+  transition: background 0.25s;
 }
 
 .main-nav .icon {
@@ -1030,13 +1044,48 @@ h6 {
   left: 0;
   top: 2px;
   font-size: 2em;
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
+  -webkit-transition: background 0.25s;
+  transition: background 0.25s;
 }
 
 .logo--login {
   color: #95E6A0;
   text-decoration: none;
+}
+
+.text-field {
+  display: block;
+  max-width: 320px;
+  width: 80%;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px auto;
+  outline: 0;
+  letter-spacing: 0.02em;
+  border: 0;
+}
+
+.submit--button {
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 5px;
+  border: 0;
+  font-family: 'Lato', Georgia, 'Times New Roman', serif;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.submit--button__login {
+  background: #F5B277;
+  color: #ffffff;
+  float: right;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+  width: 30%;
+}
+
+.submit--button__login:hover {
+  background: #f6bd8a;
 }
 
 #login-page {
@@ -1052,5 +1101,13 @@ h6 {
 }
 
 .content {
-  margin-top: 75px;
+  margin-top: 100px;
+}
+
+.submit-container {
+  display: inline-block;
+  width: 80%;
+  max-width: 320px;
+  text-align: left;
+  position: relative;
 }

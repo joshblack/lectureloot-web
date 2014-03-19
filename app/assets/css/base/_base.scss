@@ -11,3 +11,16 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Lato', serif;
   font-weight: 900;
 }
+
+.success-heading, .error-heading {
+  color: $white;
+}
+
+.register--heading {
+  position: absolute;
+  left: 10px;
+  top: 13px;
+  color: $white;
+  font-size: 12px;
+  font-style: italic;
+}

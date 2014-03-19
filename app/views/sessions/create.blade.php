@@ -15,29 +15,33 @@
 	<div class="site-width content">
 			@if (Session::has('success'))
 				<div>
-					<h2>{{ Session::get('success') }}</h2>
+					<h2 class="success-heading">{{ Session::get('success') }}</h2>
 				</div>
 			@endif
 			@if (Session::has('error'))
 				<div>
-					<h2>{{ Session::get('error') }}</h2>
+					<h2 class="error-heading">{{ Session::get('error') }}</h2>
 				</div>
 			@endif
 		{{ Form::open(['route' => 'sessions.store']) }}
-			<div>
-				{{ Form::label('emailAddress', 'Email:') }}
-				{{ Form::email('emailAddress') }}
+			{{ Form::email('emailAddress', null,
+				[
+					'placeholder' => 'Email Address',
+					'class' => 'text-field'
+				])
+			}}
+			{{ Form::password('password',
+				[
+					'placeholder' => 'Password',
+					'class' => 'text-field'
+				])
+			}}
+			<div class="submit-container">
+				<a class="register--heading" href="register">Forgot your password?</a>
+				<button class="submit--button submit--button__login" type="submit">Submit</button>
 			</div>
-			<div>
-				{{ Form::label('password', 'Password:') }}
-				{{ Form::password('password') }}
-			</div>
-			<div>
-				{{ Form::submit('Login') }}
-			</div>
-		{{ Form::close() }}
 
-		{{ link_to('register', 'Make a new account') }}
+		{{ Form::close() }}
 	</div>
 </body>
 </html>

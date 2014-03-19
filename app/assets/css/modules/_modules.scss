@@ -99,7 +99,7 @@
   left: 0;
   z-index: 900;
   width: 100%;
-  transition: all .25s;
+  transition: background .5s;
   padding: 10px 0;
 }
 
@@ -126,7 +126,7 @@
   font-family: 'Lato', Georgia, 'Times New Roman', serif;
   font-weight: 900;
   font-size: 1.5em;
-  transition: all .25s;
+  transition: background .25s;
 }
 
 .main-nav .icon {
@@ -134,7 +134,7 @@
   left: 0;
   top: 2px;
   font-size: 2em;
-  transition: all .25s;
+  transition: background .25s;
 }
 
 .logo--login {
@@ -142,4 +142,38 @@
   text-decoration: none;
 }
 
-// Login module =====================================================================
+// Input fields =====================================================================
+.text-field {
+  display: block;
+  max-width: 320px;
+  width: 80%;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px auto;
+  outline: 0;
+  letter-spacing: .02em;
+  border: 0;
+}
+
+// Buttons ==========================================================================
+.submit--button {
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 5px;
+  border: 0;
+  font-family: 'Lato', Georgia, 'Times New Roman', serif;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.submit--button__login {
+  background: $active-state-color;
+  color: $white;
+  float: right;
+  transition: background .5s;
+  width: 30%;
+
+  &:hover {
+    background: lighten($active-state-color, 4%);
+  }
+}
