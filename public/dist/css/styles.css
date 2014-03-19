@@ -830,6 +830,18 @@ textarea {
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'Entypo';
+  src: url('/dist/css/fonts/entypo.eot');
+  src: url('/dist/css/fonts/entypo.eot?#iefix') format('embedded-opentype'), url('/dist/css/fonts/entypo.woff') format('woff'), url('/dist/css/fonts/entypo.ttf') format('truetype'), url('/dist/css/fonts/entypo.svg#entypo') format('svg');
+}
+
+@font-face {
+  font-family: 'Entypo-Social';
+  src: url('/dist/css/fonts/entypo-social.eot');
+  src: url('/dist/css/fonts/entypo-social.eot?#iefix') format('embedded-opentype'), url('/dist/css/fonts/entypo-social.woff') format('woff'), url('/dist/css/fonts/entypo-social.ttf') format('truetype'), url('/dist/css/fonts/entypo-social.svg#entypo-social') format('svg');
+}
+
 #bgvid {
   position: fixed;
   left: 0;
