@@ -10,56 +10,56 @@ class MeetingsTableSeeder extends Seeder {
 		$meetings = array(
 			[
 				'course_id' => 1,
-				'buildingCode' => 'LIT',
+				'building_id' => 1,
 				'roomNumber' => '109',
 				'meetingDay' => 'm',
 				'period' => '6'
 			],
 			[
 				'course_id' => 1,
-				'buildingCode' => 'LIT',
+				'building_id' => 1,
 				'roomNumber' => '109',
 				'meetingDay' => 'w',
 				'period' => '6'
 			],
 			[
 				'course_id' => 1,
-				'buildingCode' => 'LIT',
+				'building_id' => 1,
 				'roomNumber' => '109',
 				'meetingDay' => 'f',
 				'period' => '6'
 			],
 			[
 				'course_id' => 1,
-				'buildingCode' => 'CSE',
+				'building_id' => 2,
 				'roomNumber' => 'E116',
 				'meetingDay' => 'w',
 				'period' => '7'
 			],
 			[
 				'course_id' => 3,
-				'buildingCode' => 'CSE',
+				'building_id' => 2,
 				'roomNumber' => 'E221',
 				'meetingDay' => 't',
 				'period' => '7'
 			],
 			[
 				'course_id' => 3,
-				'buildingCode' => 'CSE',
+				'building_id' => 2,
 				'roomNumber' => 'E221',
 				'meetingDay' => 'r',
 				'period' => '7'
 			],
 			[
 				'course_id' => 2,
-				'buildingCode' => 'CSE',
+				'building_id' => 2,
 				'roomNumber' => 'E221',
 				'meetingDay' => 'r',
 				'period' => '10'
 			],
 			[
 				'course_id' => 4,
-				'buildingCode' => 'CSE',
+				'building_id' => 2,
 				'roomNumber' => 'E221',
 				'meetingDay' => 'r',
 				'period' => '10'

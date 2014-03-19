@@ -921,3 +921,24 @@ h6 {
   left: 10px;
   top: 10px;
 }
+
+.social {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.social-box {
+  display: inline-block;
+  width: 25%;
+  max-width: 250px;
+  color: white;
+  padding: 10px;
+}
+
+.social-box__ios {
+  background: #62BEC7;
+}
+
+.social-box__android {
+  background: #95E6A0;
+}

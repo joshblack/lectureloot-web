@@ -62,7 +62,7 @@ class CreateAllTables extends Migration {
 		{
 			$table->increments('id');
 			$table->string('course_id');
-			$table->string('buildingCode');
+			$table->integer('building_id');
 			$table->string('roomNumber');
 			$table->string('meetingDay');
 			$table->string('period');

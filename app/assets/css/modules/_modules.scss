@@ -1,3 +1,5 @@
+@import '../base/colors';
+
 #bgvid {
   position: fixed;
   left: 0;
@@ -58,4 +60,25 @@
   position: absolute;
   left: 10px;
   top: 10px;
+}
+
+.social {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.social-box {
+  display: inline-block;
+  width: 25%;
+  max-width: 250px;
+  color: white;
+  padding: 10px;
+}
+
+.social-box__ios {
+  background: $ios-background;
+}
+
+.social-box__android {
+  background: $android-background;
 }
