@@ -82,7 +82,10 @@ class UsersController extends \BaseController {
 					'valid_until' => $expDate
 				]);
 
-			$content = ['message' => 'Success, the user was registered', 'token' => $token->token];
+			$content = [
+				'user_id' => Auth::user()->id,
+				'message' => 'Success, the user was registered', 
+				'token' => $token->token];
 
 			$statusCode = 200;
 			$value = 'plain/text';
@@ -243,6 +246,7 @@ class UsersController extends \BaseController {
 			} // Otherwise our token is valid
 
 			$content = [
+				'user_id' => Auth::user()->id,
 				'message' => 'Success, valid credentials',
 				'token' => Auth::user()->token->token // need to call twice to access actual token value
 			];
