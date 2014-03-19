@@ -998,22 +998,27 @@ h6 {
   padding: 10px 0;
 }
 
-.main-nav__login {
+.main-nav__alternate {
   background: #ffffff;
   color: #95E6A0;
 }
 
-.main-nav__login:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.main-nav__login:hover .logo--login {
-  color: #ffffff;
-}
-
-.main-nav__login:hover .icon {
-  color: #ffffff;
+.main-nav__alternate:hover .icon {
   cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) {
+  .main-nav__alternate:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .main-nav__alternate:hover .logo--login {
+    color: #ffffff;
+  }
+
+  .main-nav__alternate:hover .icon {
+    color: #ffffff;
+  }
 }
 
 .main-nav .logo {
@@ -1061,6 +1066,12 @@ h6 {
   padding: 10px;
 }
 
+@media screen and (min-width: 1200px) {
+  .submit--button:hover {
+    background: #f6bd8a;
+  }
+}
+
 .submit--button__login {
   background: #F5B277;
   color: #ffffff;
@@ -1070,20 +1081,12 @@ h6 {
   width: 30%;
 }
 
-.submit--button__login:hover {
-  background: #f6bd8a;
-}
-
 .submit--button__register {
   background: #F5B277;
   color: #ffffff;
   -webkit-transition: background 0.5s;
   transition: background 0.5s;
   width: 30%;
-}
-
-.submit--button__register:hover {
-  background: #f6bd8a;
 }
 
 .success-heading,
@@ -1114,6 +1117,18 @@ h6 {
 
 .content {
   margin-top: 100px;
+}
+
+@media screen and (min-width: 480px) {
+  .content {
+    margin-top: 250px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .content {
+    margin-top: 300px;
+  }
 }
 
 .submit-container {

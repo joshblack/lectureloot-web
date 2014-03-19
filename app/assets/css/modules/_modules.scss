@@ -101,20 +101,27 @@
   padding: 10px 0;
 }
 
-.main-nav__login {
+.main-nav__alternate {
   background: $white;
   color: $primary-nav-color;
 
   &:hover {
-    background: rgba($white, 0.2);
-
-    .logo--login {
-      color: $white;
-    }
-
     .icon {
-      color: $white;
       cursor: pointer;
+    }
+  }
+
+  @media screen and (min-width: $break-medium) {
+    &:hover {
+      background: rgba($white, 0.2);
+
+      .logo--login {
+        color: $white;
+      }
+
+      .icon {
+        color: $white;
+      }
     }
   }
 }
@@ -162,6 +169,12 @@
   font-family: 'Lato', Georgia, 'Times New Roman', serif;
   font-weight: bold;
   padding: 10px;
+
+  @media screen and (min-width: $break-medium) {
+    &:hover {
+      background: lighten($active-state-color, 4%);
+    }
+  }
 }
 
 .submit--button__login {
@@ -170,10 +183,6 @@
   float: right;
   transition: background .5s;
   width: 30%;
-
-  &:hover {
-    background: lighten($active-state-color, 4%);
-  }
 }
 
 .submit--button__register {
@@ -181,10 +190,6 @@
   color: $white;
   transition: background .5s;
   width: 30%;
-
-  &:hover {
-    background: lighten($active-state-color, 4%);
-  }
 }
 
 // Headings =========================================================================

@@ -19,7 +19,6 @@
     "tests"
   ],
   "devDependencies": {
-    "breakpoint-sass": "~2.4.2",
     "bourbon": "~3.1.8",
     "neat": "~1.5.0",
     "jquery": "~2.1.0"

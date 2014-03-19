@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/dist/css/production.min.css">
 </head>
 <body class="alternate-page">
-  <nav class="main-nav main-nav__login">
+  <nav class="main-nav main-nav__alternate">
     <div class="site-width">
       <span class="icon icon_hamburger"></span>
       <a href="/" class="logo logo--login">LectureLoot</a>
