@@ -1,5 +1,3 @@
-@import '../base/colors';
-
 // Front-page styling =============================================================
 #bgvid {
   position: fixed;
@@ -187,4 +185,18 @@
   &:hover {
     background: lighten($active-state-color, 4%);
   }
+}
+
+// Headings =========================================================================
+.success-heading, .error-heading {
+  color: $white;
+}
+
+.register--heading {
+  position: absolute;
+  left: 10px;
+  top: 13px;
+  color: $white;
+  font-size: 12px;
+  font-style: italic;
 }

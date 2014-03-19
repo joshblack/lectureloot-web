@@ -13,6 +13,7 @@ Thumbs.db
 /public/stylesheets/vendor
 node_modules
 npm-debug.log
+bower_components
 
 # Compiled source #
 ###################

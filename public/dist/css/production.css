@@ -741,20 +741,6 @@ h6 {
   font-weight: 900;
 }
 
-.success-heading,
-.error-heading {
-  color: #ffffff;
-}
-
-.register--heading {
-  position: absolute;
-  left: 10px;
-  top: 13px;
-  color: #ffffff;
-  font-size: 12px;
-  font-style: italic;
-}
-
 @font-face {
   font-family: 'Lato';
   src: local('Lato Regular'), local('Lato-Regular'), url('/dist/css/fonts/lato/Lato-Regular.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Regular.ttf') format('truetype');
@@ -1098,6 +1084,20 @@ h6 {
 
 .submit--button__register:hover {
   background: #f6bd8a;
+}
+
+.success-heading,
+.error-heading {
+  color: #ffffff;
+}
+
+.register--heading {
+  position: absolute;
+  left: 10px;
+  top: 13px;
+  color: #ffffff;
+  font-size: 12px;
+  font-style: italic;
 }
 
 .alternate-page {
