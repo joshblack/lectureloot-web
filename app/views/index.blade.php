@@ -9,15 +9,19 @@
 	<h1 id="logo">Lecture Loot</h1>
 	<a id="login" href="login">Login</a>
 	<a id="register" href="register">Register</a>
-  <div class="social">
-    <div class="social-box social-box__ios">
-      <p>Get it for</p>
-      <h2>iOS</h2>
-    </div>
-    <div class="social-box social-box__android">
-      <p>Get it for</p>
-      <h2>Android</h2>
-    </div>
+  <div class="social--container">
+    <a href="#">
+      <div class="social--box social--box__ios">
+        <p class="social--box__description">Get it for</p>
+        <h2 class="social--box__title">iOS</h2>
+      </div>
+    </a>
+    <a href="https://plus.google.com/communities/117209311415691656365">
+      <div class="social--box social--box__android">
+        <p class="social--box__description">Get it for</p>
+        <h2 class="social--box__title">Android</h2>
+      </div>
+    </a>
   </div>
   <div id="poster"></div>
   <video autoplay muted loop poster="/dist/img/phone.jpg" id="bgvid">

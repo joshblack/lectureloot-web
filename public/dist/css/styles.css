@@ -922,23 +922,30 @@ h6 {
   top: 10px;
 }
 
-.social {
+.social--container {
   text-align: center;
   margin: 0 auto;
 }
 
-.social-box {
+.social--box {
   display: inline-block;
-  width: 25%;
-  max-width: 250px;
   color: white;
   padding: 10px;
+  text-align: left;
+  margin: 5px;
+  margin-top: 0;
+  border-radius: 5px;
 }
 
-.social-box__ios {
+.social--box__ios {
   background: #62BEC7;
 }
 
-.social-box__android {
+.social--box__android {
   background: #95E6A0;
+}
+
+.social--box__description,
+.social--box__title {
+  margin: 0;
 }
