@@ -84,6 +84,7 @@ class CreateAllTables extends Migration {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->integer('meeting_id');
+			$table->integer('session_id');
 			$table->boolean('checkin')->default(false);
 			$table->boolean('cancelled')->default(false);
 		});

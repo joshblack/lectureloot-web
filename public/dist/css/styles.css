@@ -689,6 +689,21 @@ textarea {
   }
 }
 
+body {
+  font-family: 'Open Sans', 'Times New Roman', sans-serif;
+  font-size: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lato', serif;
+  font-weight: 900;
+}
+
 @font-face {
   font-family: 'Lato';
   src: local('Lato Regular'), local('Lato-Regular'), url('/dist/css/fonts/lato/Lato-Regular.woff') format('woff'), url('/dist/css/fonts/lato/Lato-Regular.ttf') format('truetype');
