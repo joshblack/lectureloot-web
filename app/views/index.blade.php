@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>LectureLoot</title>
-  <link rel="stylesheet" type="text/css" href="dist/css/styles.min.css">
+  <link rel="stylesheet" type="text/css" href="dist/css/production.min.css">
 </head>
 <body>
 	<h1 id="logo">Lecture Loot</h1>

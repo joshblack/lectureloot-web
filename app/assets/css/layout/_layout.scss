@@ -1,0 +1,17 @@
+@import '../base/colors';
+
+#login-page {
+  background: $primary-nav-color;
+}
+
+.site-width {
+  position: relative;
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.content {
+  margin-top: 75px;
+}

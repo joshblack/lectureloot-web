@@ -22,8 +22,18 @@ module.exports = function(grunt) {
             },
 			sass: {
 				files: ['app/assets/css/**/*.scss'],
-                tasks: ['sass:dev', 'autoprefixer:single_file', 'cssmin', 'notify:watch_css']
-			}
+                tasks: ['sass:dev', 'autoprefixer:multiple_files', 'concat:css', 'cssmin', 'notify:watch_css']
+			},
+            webfont: {
+                files: ['app/assets/img/icons/*.svg', 'app/assets/img/icons-2x/*.svg'],
+                tasks: ['webfont', 'autoprefixer:single_file', 'cssmin', 'notify:watch_svg']
+            }
+        },
+        concat: {
+            css: {
+                src: ['public/dist/css/icons.css', 'public/dist/css/styles.css'],
+                dest: 'public/dist/css/production.css'
+            }
         },
         sass: {
             dist: {
@@ -45,13 +55,19 @@ module.exports = function(grunt) {
 			single_file: {
 				src: 'public/dist/css/styles.css',
 				dest: 'public/dist/css/styles.css'
-			}
+			},
+            multiple_files: {
+                expand: true,
+                flatten: true,
+                src: ['public/dist/css/*.css', '!public/dist/css/production.min.css'],
+                dest: 'public/dist/css'
+            }
         },
         cssmin: {
             minify: {
                 expand: true,
                 cwd: 'public/dist/css/',
-                src: ['*.css', '!*.min.css'],
+                src: ['production.css', '!*.min.css'],
                 dest: 'public/dist/css/',
                 ext: '.min.css'
             }
@@ -77,15 +93,34 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        webfont: {
+            icons: {
+                src: ['app/assets/img/icons/*.svg', 'app/assets/img/icons-2x/*.svg'],
+                dest: 'public/dist/css/fonts',
+                destCss: 'public/dist/css',
+                options: {
+                    htmlDemo: true,
+                    relativeFontPath: '/dist/css/fonts'
+                }
+            }
+        },
         notify: {
             watch_css: {
                 options: {
                     title: 'Task Complete',
                     message: 'Sass finished compiling'
                 }
+            },
+            watch_svg: {
+                options: {
+                    title: 'Task Complete',
+                    message: 'SVG icons have been converted and css compiled'
+                }
             }
         }
 	});
 
 	grunt.registerTask('default', ['sass:dist', 'watch', 'autoprefixer:single_file', 'cssmin']);
+
+    grunt.registerTask('webfonts', ['webfont', 'autoprefixer:multiple_files', 'concat:css', 'cssmin', 'notify:watch_svg']);
 };

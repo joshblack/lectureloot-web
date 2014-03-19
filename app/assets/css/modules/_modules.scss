@@ -1,5 +1,6 @@
 @import '../base/colors';
 
+// Front-page styling =============================================================
 #bgvid {
   position: fixed;
   left: 0;
@@ -62,6 +63,7 @@
   top: 10px;
 }
 
+// Social Connection Boxes ==========================================================
 .social--container {
   text-align: center;
   margin: 0 auto;
@@ -89,3 +91,55 @@
 .social--box__title {
   margin: 0;
 }
+
+// Main Navigation menu ============================================================
+.main-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  transition: all .25s;
+  padding: 10px 0;
+}
+
+.main-nav__login {
+  background: $white;
+  color: $primary-nav-color;
+
+  &:hover {
+    background: rgba($white, 0.2);
+
+    .logo--login {
+      color: $white;
+    }
+
+    .icon {
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}
+
+.main-nav .logo {
+  display: inline-block;
+  font-family: 'Lato', Georgia, 'Times New Roman', serif;
+  font-weight: 900;
+  font-size: 1.5em;
+  transition: all .25s;
+}
+
+.main-nav .icon {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 2em;
+  transition: all .25s;
+}
+
+.logo--login {
+  color: $primary-nav-color;
+  text-decoration: none;
+}
+
+// Login module =====================================================================
