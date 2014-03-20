@@ -1179,9 +1179,11 @@ h6 {
   background: #258ecd;
 }
 
-.cbp-spmenu a:active {
-  background: #afdefa;
-  color: #47a3da;
+@media screen and (min-width: 1200px) {
+  .cbp-spmenu a:active {
+    background: #afdefa;
+    color: #47a3da;
+  }
 }
 
 /* Orientation-dependent styles for the content of the menu */

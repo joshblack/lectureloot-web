@@ -258,8 +258,11 @@
 }
 
 .cbp-spmenu a:active {
-    background: #afdefa;
-    color: #47a3da;
+
+    @media screen and (min-width: $break-medium) {
+      background: #afdefa;
+      color: #47a3da;
+    }
 }
 
 /* Orientation-dependent styles for the content of the menu */
