@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="dist/css/production.min.css">
 </head>
-<body id="video-overlay">
+<body>
 	<h1 id="logo">Lecture Loot</h1>
 	<a id="login" href="login">Login</a>
 	<a id="register" href="register">Register</a>
+  <div id="screen-overlay"></div>
   <div class="social--container">
     <a href="#">
       <div class="social--box social--box__ios">

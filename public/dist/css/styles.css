@@ -872,43 +872,28 @@ h6 {
 }
 
 #bgvid {
-  display: none;
-}
-
-@media screen and (min-width: 1024px) {
-  #bgvid {
-    display: block;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    height: auto;
-    width: auto;
-    z-index: -100;
-    background: url('/dist/img/phone.jpg') no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-  }
-}
-
-#video-overlay {
-  background: url('/dist/img/phone.jpg') no-repeat center center fixed;
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  z-index: -100;
+  background: url('/dist/img/phone.jpg') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
 }
 
-@media screen and (min-width: 1024px) {
-  #video-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(34, 34, 34, 0.7);
-    z-index: -1;
-    background: none;
-  }
+#screen-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(34, 34, 34, 0.7);
+  z-index: -1;
 }
 
 #logo {
@@ -944,11 +929,11 @@ h6 {
 #register {
   font-family: 'Lato';
   font-weight: 300;
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   border-radius: 11px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 5px 10px;
   -webkit-transition: 0.25s all;
   transition: 0.25s all;
@@ -1007,6 +992,16 @@ h6 {
   -webkit-transition: background 0.5s;
   transition: background 0.5s;
   padding: 10px 0;
+  background: #95E6A0;
+  color: #ffffff;
+}
+
+.main-nav:hover .icon {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) {
+
 }
 
 .main-nav__alternate {
@@ -1014,16 +1009,12 @@ h6 {
   color: #95E6A0;
 }
 
-.main-nav__alternate:hover .icon {
-  cursor: pointer;
-}
-
 @media screen and (min-width: 1200px) {
   .main-nav__alternate:hover {
     background: rgba(255, 255, 255, 0.2);
   }
 
-  .main-nav__alternate:hover .logo--login {
+  .main-nav__alternate:hover .logo--alternate {
     color: #ffffff;
   }
 
@@ -1050,7 +1041,7 @@ h6 {
   transition: background 0.25s;
 }
 
-.logo--login {
+.logo--alternate {
   color: #95E6A0;
   text-decoration: none;
 }
@@ -1168,34 +1159,8 @@ h6 {
   left: -240px;
 }
 
-.cbp-spmenu-right {
-  right: -240px;
-}
-
 .cbp-spmenu-left.cbp-spmenu-open {
-  left: 0px;
-}
-
-.cbp-spmenu-right.cbp-spmenu-open {
-  right: 0px;
-}
-
-/* Horizontal menu that slides from the top or bottom */
-
-.cbp-spmenu-top {
-  top: -150px;
-}
-
-.cbp-spmenu-bottom {
-  bottom: -150px;
-}
-
-.cbp-spmenu-top.cbp-spmenu-open {
-  top: 0px;
-}
-
-.cbp-spmenu-bottom.cbp-spmenu-open {
-  bottom: 0px;
+  left: 0;
 }
 
 /* Push classes applied to the body */
@@ -1208,10 +1173,6 @@ h6 {
 
 .cbp-spmenu-push-toright {
   left: 240px;
-}
-
-.cbp-spmenu-push-toleft {
-  left: -240px;
 }
 
 /* Transitions */

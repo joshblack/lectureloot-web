@@ -35,6 +35,7 @@ class UsersController extends BaseController {
 		}
 		else
 		{ // We're good to go, try to create a new user
+
 			try
 			{
 				$user = User::create([

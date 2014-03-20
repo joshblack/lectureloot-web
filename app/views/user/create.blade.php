@@ -10,7 +10,7 @@
   <nav class="main-nav main-nav__alternate">
     <div class="site-width">
       <span id="showLeftPush" class="icon icon_hamburger"></span>
-      <a href="/" class="logo logo--login">LectureLoot</a>
+      <a href="/" class="logo logo--alternate">LectureLoot</a>
     </div>
   </nav>
   <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">

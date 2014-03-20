@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Wagers</title>
-</head>
-<body>
+@extends('master')
+
+@section('title')
+	<title>Wagers - LectureLoot</title>
+@show
+
+@section('content')
 	<!-- Header -->
 	<h1>Wagers for {{ ucfirst(Auth::user()->firstName) . ' ' . ucfirst(Auth::user()->lastName) }}</h1>
 
@@ -39,5 +39,4 @@
 	<div>
 		<p>{{ link_to('wagers/create', 'Make a New Wager') }}</p>
 	</div>
-</body>
-</html>
+@stop
