@@ -53,6 +53,9 @@ module.exports = function(grunt) {
                 }
             },
             dev: {
+                options: {
+                    sourceComments: 'map'
+                },
                 files: {
                     'public/dist/css/styles.css': 'app/assets/css/styles.scss'
                 }
@@ -65,6 +68,9 @@ module.exports = function(grunt) {
 				dest: 'public/dist/css/styles.css'
 			},
             multiple_files: {
+                options: {
+                    map: true
+                },
                 expand: true,
                 flatten: true,
                 src: ['public/dist/css/*.css', '!public/dist/css/production.min.css'],

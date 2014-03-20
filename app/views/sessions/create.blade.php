@@ -15,12 +15,9 @@
 	</nav>
 	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 		<h3>Menu</h3>
-		<a href="#">Celery seakale</a>
-		<a href="#">Dulse daikon</a>
-		<a href="#">Zucchini garlic</a>
-		<a href="#">Catsear azuki bean</a>
-		<a href="#">Dandelion bunya</a>
-		<a href="#">Rutabaga</a>
+		<a href="/">Home</a>
+		<a href="/login">Login</a>
+		<a href="/register">Register</a>
 	</nav>
 	<div class="site-width content">
 			@if (Session::has('success'))
