@@ -35,6 +35,9 @@
 				[
 					'placeholder' => 'Email Address',
 					'class' => 'text-field'
+				],
+				[
+					'required'
 				])
 			}}
 			{{ Form::password('password',

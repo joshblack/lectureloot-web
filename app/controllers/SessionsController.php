@@ -18,7 +18,7 @@ class SessionsController extends BaseController {
 	{
 		$validator = Validator::make(Input::all(), array(
 				'emailAddress' 	=> 'required|email',
-				'password'	=> 'requiered'
+				'password'	=> 'required'
 			));
 
 		if($validator->fails())	{
