@@ -689,6 +689,20 @@ textarea {
   }
 }
 
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+:focus {
+  outline: 0;
+  border: none;
+  color: rgba(255, 255, 255, 0);
+}
+
+div {
+  -webkit-appearance: none;
+}
+
 body {
   font-family: 'Open Sans', 'Times New Roman', sans-serif;
   font-size: 1em;
