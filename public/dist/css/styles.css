@@ -1113,7 +1113,7 @@ h6 {
 .cbp-spmenu h3 {
   color: #ffffff;
   font-size: 1.9em;
-  padding: 20px;
+  display: inline-block;
   margin: 0;
   font-weight: 300;
   background: #454545;
@@ -1141,7 +1141,7 @@ h6 {
 /* Orientation-dependent styles for the content of the menu */
 
 .cbp-spmenu-vertical {
-  width: 240px;
+  width: 270px;
   height: 100%;
   top: 0;
   z-index: 1000;
@@ -1154,7 +1154,7 @@ h6 {
 /* Vertical menu that slides from the left or right */
 
 .cbp-spmenu-left {
-  left: -240px;
+  left: -270px;
 }
 
 .cbp-spmenu-left.cbp-spmenu-open {
@@ -1170,7 +1170,7 @@ h6 {
 }
 
 .cbp-spmenu-push-toright {
-  left: 240px;
+  left: 270px;
 }
 
 /* Transitions */
@@ -1216,6 +1216,38 @@ h6 {
   .cbp-spmenu-push-toright {
     left: 190px;
   }
+}
+
+.hero-avatar {
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  display: inline-block;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.hero-avatar--img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.hero-unit {
+  padding: 15px;
+  text-align: center;
+}
+
+.hero-unit > * {
+  vertical-align: middle;
+}
+
+.hero-avatar--title {
+  padding: 10px;
 }
 
 .alternate-page {

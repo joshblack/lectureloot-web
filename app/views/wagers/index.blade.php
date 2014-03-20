@@ -6,7 +6,7 @@
 
 @section('content')
 	<!-- Header -->
-	<h1>Wagers for {{ ucfirst(Auth::user()->firstName) . ' ' . ucfirst(Auth::user()->lastName) }}</h1>
+	<h1>Your Wagers</h1>
 
 	<!-- Flash Messages -->
 	<div>

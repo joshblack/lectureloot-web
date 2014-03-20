@@ -16,7 +16,14 @@
     </div>
   </nav>
   <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-    <h3>Menu</h3>
+    <div class="hero-unit">
+      <div class="hero-avatar">
+        <span>
+          <img class="hero-avatar--img" src="http://www.cise.ufl.edu/~manuel/manuel.jpg" alt="">
+        </span>
+      </div>
+      <h3 class="hero-avatar--title">{{ ucfirst(Auth::user()->firstName) . ' ' . ucfirst(Auth::user()->lastName) }}</h3>
+    </div>
     <a href="/dashboard"><span class="icon icon_home"></span> Home</a>
     <a href="/courses"><span class="icon icon_book"></span> Courses</a>
     <a href="/wagers"><span class="icon icon_card"></span> Wagers</a>
