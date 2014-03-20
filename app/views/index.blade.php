@@ -24,7 +24,7 @@
       </div>
     </a>
   </div>
-  <div id="poster"></div>
+  <div id="video-overlay"></div>
   <video autoplay muted loop poster="/dist/img/phone.jpg" id="bgvid">
     <source src="/dist/videos/phone.webm" type="video/webm">
     <source src="/dist/videos/phone.mp4" type="video/mp4">
