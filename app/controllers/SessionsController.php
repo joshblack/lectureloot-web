@@ -16,38 +16,48 @@ class SessionsController extends BaseController {
 
 	public function store()
 	{
-		if (Auth::attempt(Input::only('emailAddress', 'password')))
-		{ // Authentication is successful
-
-			// Lookup to see if the user has a token in the database
-			$token = Token::where('user_id', Auth::user()->id)->first();
-
-			$currentDate = new Datetime;
-			$expDate = $currentDate->add(new DateInterval('P6M'));
-
-			// Check to see if the user's access token is expired
-			if ($token && !$token->isValidToken())
-			{ // Token exists but is not valid
-
-				// Update the token field value and the expiration date.
-				$token->token = str_random(40);
-				$token->valid_until = $expDate;
-				$token->save();
+		$validator = Validator::make(Input::all(), array(
+				'emailAddress' 	=> 'required|email',
+				'password'	=> 'requiered'
+			));
+		
+		if($validator->fails())	{
+			return Redirect::back()->withInput()->with('error', 'Invalid credentials');
+		} else {
+		
+			if (Auth::attempt(Input::only('emailAddress', 'password'));)
+			{ // Authentication is successful
+	
+				// Lookup to see if the user has a token in the database
+				$token = Token::where('user_id', Auth::user()->id)->first();
+	
+				$currentDate = new Datetime;
+				$expDate = $currentDate->add(new DateInterval('P6M'));
+	
+				// Check to see if the user's access token is expired
+				if ($token && !$token->isValidToken())
+				{ // Token exists but is not valid
+	
+					// Update the token field value and the expiration date.
+					$token->token = str_random(40);
+					$token->valid_until = $expDate;
+					$token->save();
+				}
+				else if (!$token)
+				{ // No token for the user, we need to create one
+	
+					Token::create([
+						'token' => str_random(40),
+						'user_id' => Auth::user()->id,
+						'valid_until' => $expDate
+					]);
+				} // Otherwise our token is valid
+	
+				return Redirect::intended('dashboard')->with('success', 'You have succesfully logged in.');
 			}
-			else if (!$token)
-			{ // No token for the user, we need to create one
-
-				Token::create([
-					'token' => str_random(40),
-					'user_id' => Auth::user()->id,
-					'valid_until' => $expDate
-				]);
-			} // Otherwise our token is valid
-
-			return Redirect::intended('dashboard')->with('success', 'You have succesfully logged in.');
+	
+			return Redirect::back()->withInput()->with('error', 'Invalid credentials');
 		}
-
-		return Redirect::back()->withInput()->with('error', 'Invalid credentials');
 	}
 
 	public function destroy()
