@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="dist/css/production.min.css">
 </head>
-<body>
+<body id="video-overlay">
 	<h1 id="logo">Lecture Loot</h1>
 	<a id="login" href="login">Login</a>
 	<a id="register" href="register">Register</a>
@@ -24,7 +24,7 @@
       </div>
     </a>
   </div>
-  <div id="video-overlay"></div>
+  <div></div>
   <video autoplay muted loop poster="/dist/img/phone.jpg" id="bgvid">
     <source src="/dist/videos/phone.webm" type="video/webm">
     <source src="/dist/videos/phone.mp4" type="video/mp4">

@@ -27,12 +27,23 @@ module.exports = function(grunt) {
             webfont: {
                 files: ['app/assets/img/icons/*.svg', 'app/assets/img/icons-2x/*.svg'],
                 tasks: ['webfont', 'autoprefixer:single_file', 'cssmin', 'notify:watch_svg']
+            },
+            js: {
+                files: ['app/assets/js/**/*.js'],
+                tasks: ['uglify', 'notify:watch_js']
             }
         },
         concat: {
             css: {
                 src: ['public/dist/css/icons.css', 'public/dist/css/styles.css'],
                 dest: 'public/dist/css/production.css'
+            }
+        },
+        uglify: {
+            my_target: {
+                files: {
+                    'public/dist/js/production.min.js': ['app/assets/js/vendor/classie.js', 'app/assets/js/main.js']
+                }
             }
         },
         sass: {
@@ -42,9 +53,6 @@ module.exports = function(grunt) {
                 }
             },
             dev: {
-				// options: {
-				// sourceMap: 'map'
-				// },
                 files: {
                     'public/dist/css/styles.css': 'app/assets/css/styles.scss'
                 }
@@ -115,6 +123,12 @@ module.exports = function(grunt) {
                 options: {
                     title: 'Task Complete',
                     message: 'SVG icons have been converted and css compiled'
+                }
+            },
+            watch_js: {
+                options: {
+                    title: 'Task Complete',
+                    message: 'Uglify finished running'
                 }
             }
         }

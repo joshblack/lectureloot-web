@@ -1,29 +1,37 @@
 // Front-page styling =============================================================
 #bgvid {
-  position: fixed;
-  left: -250px;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  height: auto;
-  width: auto;
-  z-index: -100;
-  background: url('/dist/img/phone.jpg') no-repeat;
-  background-size: cover;
+  display: none;
 
   @media screen and (min-width: $break-tablet) {
+    display: block;
+    position: fixed;
     left: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    z-index: -100;
+    background: url('/dist/img/phone.jpg') no-repeat;
+    background-size: cover;
   }
 }
 
 #video-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(34,34,34,0.7);
-  z-index: -1;
+  background: url('/dist/img/phone.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+  @media screen and (min-width: $break-tablet) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(34,34,34,0.7);
+    z-index: -1;
+    background: none;
+  }
+
 }
 
 #logo {
@@ -37,11 +45,10 @@
 
   @media screen and (min-width: $break-phone) {
     font-size: 4em;
-    margin-top: 175px;
+    margin-top: 125px;
   }
   @media screen and (min-width: $break-tablet) {
     font-size: 5em;
-    margin-top: 225px;
   }
   @media screen and (min-width: $break-medium) {
     font-size: 8em;
@@ -112,7 +119,7 @@
 // Main Navigation menu ============================================================
 .main-nav {
   position: absolute;
-  top: 0;
+  top: -100px;
   left: 0;
   z-index: 900;
   width: 100%;
@@ -218,9 +225,157 @@
 
 .register--heading {
   position: absolute;
-  left: 10px;
-  top: 13px;
+  left: 0px;
+  top: 11px;
   color: $white;
-  font-size: 12px;
+  font-size: 14px;
   font-style: italic;
+}
+
+// Menu Styling =======================================================================
+/* General styles for all menus */
+
+.cbp-spmenu {
+    background: $menu-color;
+    position: fixed;
+}
+
+.cbp-spmenu h3 {
+    color: $white;
+    font-size: 1.9em;
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+    background: $menu-color;
+}
+
+.cbp-spmenu a {
+    display: block;
+    color: $white;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+.cbp-spmenu a:hover {
+    background: #258ecd;
+}
+
+.cbp-spmenu a:active {
+    background: #afdefa;
+    color: #47a3da;
+}
+
+/* Orientation-dependent styles for the content of the menu */
+
+.cbp-spmenu-vertical {
+    width: 240px;
+    height: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.cbp-spmenu-vertical a {
+    padding: 1em;
+}
+
+/* Vertical menu that slides from the left or right */
+
+.cbp-spmenu-left {
+    left: -240px;
+}
+
+.cbp-spmenu-right {
+    right: -240px;
+}
+
+.cbp-spmenu-left.cbp-spmenu-open {
+    left: 0px;
+}
+
+.cbp-spmenu-right.cbp-spmenu-open {
+    right: 0px;
+}
+
+/* Horizontal menu that slides from the top or bottom */
+
+.cbp-spmenu-top {
+    top: -150px;
+}
+
+.cbp-spmenu-bottom {
+    bottom: -150px;
+}
+
+.cbp-spmenu-top.cbp-spmenu-open {
+    top: 0px;
+}
+
+.cbp-spmenu-bottom.cbp-spmenu-open {
+    bottom: 0px;
+}
+
+/* Push classes applied to the body */
+
+.cbp-spmenu-push {
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+}
+
+.cbp-spmenu-push-toright {
+    left: 240px;
+}
+
+.cbp-spmenu-push-toleft {
+    left: -240px;
+}
+
+/* Transitions */
+
+.cbp-spmenu,
+.cbp-spmenu-push {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+/* Example media queries */
+
+@media screen and (max-width: 55.1875em){
+
+    .cbp-spmenu-horizontal {
+        font-size: 75%;
+        height: 110px;
+    }
+
+    .cbp-spmenu-top {
+        top: -110px;
+    }
+
+    .cbp-spmenu-bottom {
+        bottom: -110px;
+    }
+
+}
+
+@media screen and (max-height: 26.375em){
+
+    .cbp-spmenu-vertical {
+        font-size: 90%;
+        width: 190px;
+    }
+
+    .cbp-spmenu-left,
+    .cbp-spmenu-push-toleft {
+        left: -190px;
+    }
+
+    .cbp-spmenu-right {
+        right: -190px;
+    }
+
+    .cbp-spmenu-push-toright {
+        left: 190px;
+    }
 }
