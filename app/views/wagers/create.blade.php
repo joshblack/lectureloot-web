@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>New Wager</title>
-</head>
-<body>
+@extends('master')
+
+@section('title')
+	<title>Make a Wager - LectureLoot</title>
+@show
+
+@section('content')
 	<!-- Header -->
 	<h1>Make a new Wager</h1>
 
@@ -31,5 +31,4 @@
 			{{ Form::submit('Submit') }}
 		</div>
 	{{ Form::close() }}
-</body>
-</html>
+@stop

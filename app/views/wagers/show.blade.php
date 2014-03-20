@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Showing Wager #{{ $wager->id }}</title>
-</head>
-<body>
+@extends('master')
+
+@section('title')
+	<title>Wager #{{ $wager->id }} - LectureLoot</title>
+@show
+
+@section('content')
 	<h1>Wager #{{ $wager->id }}</h1>
 	<ul>
 		<li>User ID: {{ $wager->userId }}</li>
@@ -15,5 +15,4 @@
 	{{ Form::open(['method' => 'DELETE', 'url' => 'wagers/' . $wager->id]) }}
 		{{ Form::submit('Delete') }}
 	{{ Form::close() }}
-</body>
-</html>
+@stop

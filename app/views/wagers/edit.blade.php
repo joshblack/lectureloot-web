@@ -1,10 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Edit a Wager</title>
-</head>
-<body>
+@extends('master')
+
+@section('title')
+	<title>Edit a Wager - LectureLoot</title>
+@show
+
+@section('content')
 	<h2>Form for editing <a href="/wagers/{{ $wager->id }}">Wager #{{ $wager->id }}</a></h2>
 
 
@@ -21,9 +21,4 @@
 			{{ Form::submit('submit') }}
 			</div>
 	{{ Form::close() }}
-
-
-
-
-</body>
-</html>
+@stop

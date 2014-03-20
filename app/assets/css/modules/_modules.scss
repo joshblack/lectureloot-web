@@ -119,12 +119,6 @@
       cursor: pointer;
     }
   }
-
-  @media screen and (min-width: $break-medium) {
-    &:hover {
-
-    }
-  }
 }
 
 .main-nav__alternate {
@@ -135,11 +129,7 @@
     &:hover {
       background: rgba($white, 0.2);
 
-      .logo--alternate {
-        color: $white;
-      }
-
-      .icon {
+      .logo--alternate, .icon {
         color: $white;
       }
     }
@@ -160,6 +150,11 @@
   top: 2px;
   font-size: 2em;
   transition: background .25s;
+}
+
+.logo {
+  color: $white;
+  text-decoration: none;
 }
 
 .logo--alternate {
