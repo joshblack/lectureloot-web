@@ -25,11 +25,12 @@ class UsersController extends BaseController {
 	public function store()
 	{
 		// Check to see if a user has already been made for the given email address
-		$user = User::where('emailAddress', Input::get('email'))->get();
+		$validator = Validator::make(Input::all(), array(
+				'emailAddress' => 'required|email|unique:users'
+			));
 
-		// Need to check if the $user variable created by the query builder is empty since
-		// the function returns an empty array if nothing is found
-		if (empty($user))
+		// Check to see if validation was succesful
+		if ($validator->fails())
 		{ // A user has already signed up with that email address
 			return Redirect::back()->with('error', 'That email address has already been registered');
 		}
@@ -55,5 +56,6 @@ class UsersController extends BaseController {
 				return Redirect::back()->with('error', 'Something went wrong. Error: ' . $e);
 			}
 		}
+		
 	}
 }
