@@ -35,7 +35,6 @@
 				<li>Credits: {{ $course->credits }}</li>
 				<li>{{ ucfirst($course->semester) . ' ' . $course->year }}</li>
 				<li><a href="/courses/{{ $course->id }}">View Course</a></li>
-				<li><a href="/courses/{{ $course->id }}/edit">Edit Course</a></li>
 			</ul>
 			<br>
 		@endforeach

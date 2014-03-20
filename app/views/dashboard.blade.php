@@ -1,21 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Dashboard View</title>
-</head>
-<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+@extends('master')
 
-<body>
-	<!-- Links/Nav -->
-	<nav>
-		<ul>
-			<li><a href="/dashboard">Home</a>
-			<li><a href="/wagers">Wagers</a></li>
-			<li><a href="/courses">Courses</a></li>
-		</ul>
-	</nav>
+@section('title')
+	<title>Dashboard View</title>
+@show
+
+@section('content')
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
 	<!-- Header -->
 	<h1>Hi, {{ ucfirst($user->firstName) }}!</h1>
@@ -73,5 +64,4 @@
 
 
 </script>
-</body>
-</html>
+@stop

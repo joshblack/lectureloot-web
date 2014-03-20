@@ -12,12 +12,12 @@
   <nav class="main-nav">
     <div class="site-width">
       <span id="showLeftPush" class="icon icon_hamburger"></span>
-      <a href="/" class="logo">LectureLoot</a>
+      <a href="/dashboard" class="logo">LectureLoot</a>
     </div>
   </nav>
   <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
     <h3>Menu</h3>
-    <a href="/"><span class="icon icon_home"></span> Home</a>
+    <a href="/dashboard"><span class="icon icon_home"></span> Home</a>
     <a href="/courses"><span class="icon icon_book"></span> Courses</a>
     <a href="/wagers"><span class="icon icon_card"></span> Wagers</a>
     <a href="#"><span class="icon icon_gear"></span> Settings</a>
