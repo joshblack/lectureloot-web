@@ -35,3 +35,8 @@ function disableOther( button ) {
         classie.toggle( showLeftPush, 'disabled' );
     }
 }
+
+// Instantiate FastClick on the body
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);
