@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 			},
             webfont: {
                 files: ['app/assets/img/icons/*.svg', 'app/assets/img/icons-2x/*.svg'],
-                tasks: ['webfont', 'autoprefixer:single_file', 'cssmin', 'notify:watch_svg']
+                tasks: ['webfont', 'autoprefixer:multiple_files', 'concat:css', 'cssmin', 'notify:watch_svg']
             },
             js: {
                 files: ['app/assets/js/**/*.js'],

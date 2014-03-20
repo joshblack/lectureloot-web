@@ -17,10 +17,10 @@
   </nav>
   <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
     <h3>Menu</h3>
-    <a href="/">Home</a>
-    <a href="#">Courses</a>
-    <a href="/wagers">Wagers</a>
-    <a href="#">Settings</a>
+    <a href="/"><span class="icon icon_home"></span> Home</a>
+    <a href="/courses"><span class="icon icon_book"></span> Courses</a>
+    <a href="/wagers"><span class="icon icon_card"></span> Wagers</a>
+    <a href="#"><span class="icon icon_gear"></span> Settings</a>
   </nav>
   <div class="site-width">
     @yield('content')
