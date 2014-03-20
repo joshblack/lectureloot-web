@@ -15,7 +15,7 @@
 	</nav>
 	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 		<h3>Menu</h3>
-		<a href="/">Home</a>
+		<a href="/"><span class="icon icon_home"></span> Home</a>
 		<a href="/login">Login</a>
 		<a href="/register">Register</a>
 	</nav>
@@ -34,16 +34,15 @@
 			{{ Form::email('emailAddress', null,
 				[
 					'placeholder' => 'Email Address',
-					'class' => 'text-field'
-				],
-				[
+					'class' => 'text-field',
 					'required'
 				])
 			}}
 			{{ Form::password('password',
 				[
 					'placeholder' => 'Password',
-					'class' => 'text-field'
+					'class' => 'text-field',
+					'required'
 				])
 			}}
 			<div class="submit-container">
