@@ -5,7 +5,7 @@
 	@section('title')
 		<title>LectureLoot</title>
 	@show
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maxiumum-scale=1, user-scable=no" />
   <link rel="stylesheet" type="text/css" href="/dist/css/production.min.css">
 </head>
 <body class="cbp-spmenu-push">
