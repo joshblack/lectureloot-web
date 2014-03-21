@@ -1328,12 +1328,46 @@ h6 {
 }
 
 .hero-unit {
+  position: relative;
   padding: 15px 5px 0;
   text-align: center;
 }
 
 .hero-avatar--title {
   padding: 10px;
+}
+
+.hero-avatar::before {
+  content: "";
+  border-bottom: 4px solid #258ecd;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  opacity: 0;
+  position: absolute;
+  left: 114px;
+  bottom: 52px;
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+}
+
+.hero-avatar::after {
+  content: attr(data-tooltip);
+  color: #ffffff;
+  font-size: 12px;
+  background: #258ecd;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  left: 8px;
+  bottom: 16px;
+  -webkit-transition: 0.3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
+  opacity: 0;
+}
+
+.hero-avatar:hover::before,
+.hero-avatar:hover::after {
+  opacity: 1;
 }
 
 .alternate-page {

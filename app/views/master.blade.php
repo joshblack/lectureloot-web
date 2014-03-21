@@ -17,7 +17,7 @@
   </nav>
   <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
     <div class="hero-unit">
-      <div class="hero-avatar">
+      <div class="hero-avatar" data-tooltip="Change your avatar at gravatar.com" >
         <span>
           <img class="hero-avatar--img" src="//www.gravatar.com/avatar/{{ md5(Auth::user()->emailAddress) }}?s=500" alt="">
         </span>
