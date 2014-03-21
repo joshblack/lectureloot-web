@@ -24,7 +24,9 @@
       <h2>{{ Session::get('success') }}</h2>
     @endif
     @if (Session::has('error'))
-      <h2>{{ Session::get('error') }}</h2>
+      @foreach (Session::get('error')->all() as $message)
+        <h2>{{ $message }}</h2>
+      @endforeach
     @endif
     {{ Form::open(['route' => 'users.store']) }}
         {{ Form::text('first_name', null,

@@ -24,15 +24,24 @@ class UsersController extends BaseController {
 	 */
 	public function store()
 	{
-		// Check to see if a user has already been made for the given email address
-		$validator = Validator::make(Input::all(), array(
-				'emailAddress' => 'required|email|unique:users'
-			));
+		// Grab the fields we need
+		$input = Input::only('first_name', 'last_name', 'email', 'password');
+
+		// Setup the validator rules for the inputs
+		$validator = Validator::make($input,
+		[
+			'first_name' => 'required|min:1',
+			'last_name' => 'required|min:1',
+			'email' => 'required|email|unique:users,emailAddress',
+			'password' => 'required|min:6'
+		]);
 
 		// Check to see if validation was succesful
 		if ($validator->fails())
-		{ // A user has already signed up with that email address
-			return Redirect::back()->with('error', 'That email address has already been registered');
+		{ // Something is wrong, grab the validator messages and pass it on to the view
+			$messages = $validator->messages();
+
+			return Redirect::back()->with('error', $messages);
 		}
 		else
 		{ // We're good to go, try to create a new user
@@ -56,6 +65,6 @@ class UsersController extends BaseController {
 				return Redirect::back()->with('error', 'Something went wrong. Error: ' . $e);
 			}
 		}
-		
+
 	}
 }
