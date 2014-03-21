@@ -1,13 +1,13 @@
 @extends('master')
 
 @section('title')
-	<title>Course Index</title>
+	<title>Courses - LectureLoot</title>
 @show
 
 @section('content')
 
 <!-- User Title -->
-<h1>{{ Auth::user()->firstName . ' ' . Auth::user()->lastName . '\'s classes'}}</h1>
+<h1>Your Classes</h1>
 
 <!-- Flash Messages -->
 <div>

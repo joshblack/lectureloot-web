@@ -1242,13 +1242,8 @@ h6 {
 }
 
 .hero-unit {
-  padding: 15px;
-  padding-top: 25px;
+  padding: 15px 5px 0;
   text-align: center;
-}
-
-.hero-unit > * {
-  vertical-align: middle;
 }
 
 .hero-avatar--title {
