@@ -238,6 +238,10 @@
   background: $menu-color;
 }
 
+.cbp-spmenu__alternate {
+  padding: 20px;
+}
+
 .cbp-spmenu a {
   display: block;
   color: $white;
@@ -363,6 +367,7 @@
 
 .hero-unit {
   padding: 15px;
+  padding-top: 25px;
   text-align: center;
 }
 

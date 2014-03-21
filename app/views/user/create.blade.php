@@ -14,7 +14,7 @@
     </div>
   </nav>
   <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-    <h3>Menu</h3>
+    <h3 class="cbp-spmenu__alternate">Menu</h3>
     <a href="/"><span class="icon icon_home"></span> Home</a>
     <a href="/login">Login</a>
     <a href="/register">Register</a>

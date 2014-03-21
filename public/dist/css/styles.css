@@ -1119,6 +1119,10 @@ h6 {
   background: #454545;
 }
 
+.cbp-spmenu__alternate {
+  padding: 20px;
+}
+
 .cbp-spmenu a {
   display: block;
   color: #ffffff;
@@ -1239,6 +1243,7 @@ h6 {
 
 .hero-unit {
   padding: 15px;
+  padding-top: 25px;
   text-align: center;
 }
 
@@ -1274,7 +1279,7 @@ h6 {
 
 @media screen and (min-width: 1200px) {
   .content {
-    margin-top: 250px;
+    margin-top: 150px;
   }
 }
 

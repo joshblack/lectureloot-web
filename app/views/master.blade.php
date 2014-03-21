@@ -19,7 +19,7 @@
     <div class="hero-unit">
       <div class="hero-avatar">
         <span>
-          <img class="hero-avatar--img" src="http://www.cise.ufl.edu/~manuel/manuel.jpg" alt="">
+          <img class="hero-avatar--img" src="//www.gravatar.com/avatar/{{ md5(Auth::user()->emailAddress) }}" alt="">
         </span>
       </div>
       <h3 class="hero-avatar--title">{{ ucfirst(Auth::user()->firstName) . ' ' . ucfirst(Auth::user()->lastName) }}</h3>
