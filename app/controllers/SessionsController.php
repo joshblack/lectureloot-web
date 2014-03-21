@@ -16,15 +16,23 @@ class SessionsController extends BaseController {
 
 	public function store()
 	{
-		$validator = Validator::make(Input::all(), array(
-				'emailAddress' 	=> 'required|email',
-				'password'	=> 'required'
-			));
+		// Grab the input that we need
+		$input = Input::only('emailAddress', 'password');
 
-		if($validator->fails())	{
-			return Redirect::back()->withInput()->with('error', 'Invalid credentials');
-		} else {
+		// Setup our validator rules
+		$validator = Validator::make($input, [
+			'emailAddress' 	=> 'required|email',
+			'password'	=> 'required'
+		]);
 
+		if($validator->fails())
+		{ // Something went wrong
+			$messages = $validator->messages();
+
+			return Redirect::back()->withInput()->with('error', $messages);
+		}
+		else
+		{ // Validation passed, try to login the user
 			if (Auth::attempt(Input::only('emailAddress', 'password')))
 			{ // Authentication is successful
 

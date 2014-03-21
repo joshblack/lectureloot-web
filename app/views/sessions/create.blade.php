@@ -26,9 +26,9 @@
 				</div>
 			@endif
 			@if (Session::has('error'))
-				<div>
-					<h2 class="error-heading">{{ Session::get('error') }}</h2>
-				</div>
+				@foreach (Session::get('error')->all() as $message)
+					<h2 class="error-heading">{{ $message }}</h2>
+				@endforeach
 			@endif
 		{{ Form::open(['route' => 'sessions.store']) }}
 			{{ Form::email('emailAddress', null,
