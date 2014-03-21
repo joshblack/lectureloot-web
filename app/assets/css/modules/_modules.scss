@@ -250,6 +250,23 @@
   font-weight: 300;
 }
 
+.cbp-spmenu span.icon {
+  font-size: 1.4em;
+  width: 25px;
+  margin-right: 10px;
+  position: relative;
+}
+
+.cbp-spmenu .icon_home {
+  bottom: 5px;
+}
+
+.cbp-spmenu .icon_book,
+.cbp-spmenu .icon_card,
+.cbp-spmenu .icon_gear {
+  bottom: 3px;
+}
+
 .cbp-spmenu a:hover {
   background: #258ecd;
 }
@@ -272,7 +289,7 @@
 }
 
 .cbp-spmenu-vertical a {
-  padding: 1em;
+  padding: .8em;
 }
 
 /* Vertical menu that slides from the left or right */
