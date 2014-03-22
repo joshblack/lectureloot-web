@@ -36,8 +36,29 @@ $(document).ready(function() {
         var $this = $(this),
             $optionsBox = $this.closest('div.options-box');
 
-        $div = $this.closest('div');
+        $this.toggleClass('info-box--options__selected');
         $this.next().next().next().toggle();
+    });
+
+    // Check for if we click something on the body that isn't what we were expecting
+    $(document).on('click', function(event) {
+        var $infoBoxOptions = $('.info-box--options');
+
+        if (!$(event.target).is($infoBoxOptions)) {
+            // Make all option toggles inactive
+            $($infoBoxOptions).removeClass('info-box--options__selected');
+
+            // Grab all the option boxes
+            var $optionsBox = $infoBoxOptions.parent().children('.options-box');
+
+            // Go through each and see if it's been toggled already, turn it off it has been
+            // toggled
+            $optionsBox.each(function (index) {
+                var $this = $(this);
+                (!$this.is(':visible')) || $this.toggle();
+            });
+
+        }
     });
 });
 

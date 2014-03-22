@@ -435,7 +435,7 @@
   margin-top: 25px;
 }
 .info-box--heading__date, .info-box--heading__primary {
-  margin: 0;
+  margin: 5px 0;
 }
 
 .info-box--heading__date {
@@ -491,7 +491,7 @@
 .options-box::before {
   position: absolute;
   top: -10px;
-  left: 32px;
+  left: 41px;
   content: "";
   border-bottom: 10px solid $white;
   border-left: 10px solid transparent;
@@ -501,7 +501,7 @@
 .options-box::after {
   position: absolute;
   top: -11px;
-  left: 31px;
+  left: 40px;
   content: "";
   border-bottom: 11px solid $info-box-border-color;
   border-left: 11px solid transparent;
@@ -510,7 +510,7 @@
 }
 
 .option-select {
-  margin: 5px;
+  margin: 15px 10px;
   color: $lesser-faded-text-color;
 }
 
@@ -543,9 +543,14 @@
   top: 5px;
   right: 20px;
 
-  &:hover {
-    color: darken($lesser-faded-text-color, 25%);
-    cursor: pointer;
+  @media screen and (min-width: $break-medium) {
+    &:hover {
+      color: darken($lesser-faded-text-color, 25%);
+      cursor: pointer;
+    }
   }
 }
 
+.info-box--options__selected {
+  color: darken($lesser-faded-text-color, 25%);
+}

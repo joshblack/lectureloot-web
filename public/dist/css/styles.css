@@ -1314,7 +1314,7 @@ h6 {
 
 .info-box--heading__date,
 .info-box--heading__primary {
-  margin: 0;
+  margin: 5px 0;
 }
 
 .info-box--heading__date {
@@ -1373,7 +1373,7 @@ h6 {
 .options-box::before {
   position: absolute;
   top: -10px;
-  left: 32px;
+  left: 41px;
   content: "";
   border-bottom: 10px solid #ffffff;
   border-left: 10px solid transparent;
@@ -1383,7 +1383,7 @@ h6 {
 .options-box::after {
   position: absolute;
   top: -11px;
-  left: 31px;
+  left: 40px;
   content: "";
   border-bottom: 11px solid #DFDFDF;
   border-left: 11px solid transparent;
@@ -1392,7 +1392,7 @@ h6 {
 }
 
 .option-select {
-  margin: 5px;
+  margin: 15px 10px;
   color: #ACB0B2;
 }
 
@@ -1427,9 +1427,15 @@ h6 {
   right: 20px;
 }
 
-.info-box--options:hover {
+@media screen and (min-width: 1200px) {
+  .info-box--options:hover {
+    color: #6b7173;
+    cursor: pointer;
+  }
+}
+
+.info-box--options__selected {
   color: #6b7173;
-  cursor: pointer;
 }
 
 .alternate-page {
