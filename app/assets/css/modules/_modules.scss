@@ -494,9 +494,18 @@
   }
 }
 
+.info-box--jumbo__positive {
+  color: #95E69F;
+}
+
+.info-box--jumbo__negative {
+  color: #F58C87;
+}
+
 .info-box--desc {
   margin-top: 10px;
 }
+
 .info-box--desc__positive .info-box--desc__text,
 .info-box--desc__negative .info-box--desc__text,
 .info-box--desc__future .info-box--desc__text {

@@ -25,21 +25,23 @@
 					<span class="icon icon_card"></span>
 					<a href="/wagers/{{ $wager->id }}/edit">Wager #{{ $wager->id }}</a>
 				</h3>
-				@if ($wager->session->startDate > new Datetime)
+				@if (new Datetime($wager->session->startDate) > new Datetime)
 					<div class="info-box--desc info-box--desc__future">
 						<p class="info-box--desc__text">This session has not started yet.</p>
 					</div>
+					<h1 class="info-box--jumbo">{{ '$' . $wager->wagerTotalValue }}</h1>
 				@elseif ($wager->pointsLost > 0)
 					<div class="info-box--desc info-box--desc__negative">
 						<p class="info-box--desc__text">You lost money this week.</p>
 					</div>
+					<h1 class="info-box--jumbo info-box--jumbo__negative">{{ '$' . -$wager->pointsLost }}</h1>
 				@else
 					<div class="info-box--desc info-box--desc__positive">
 						<p class="info-box--desc__text">You won money this week.</p>
 					</div>
+					<h1 class="info-box--jumbo info-box--jumbo__positive">{{ '$' . -$wager->pointsLost }}</h1>
 				@endif
 			</div>
-			<h1 class="info-box--jumbo">{{ '$' . $wager->wagerTotalValue }}</h1>
 			<div class="options-box">
 				<div class="option-select">
 					<a class="option-select--edit" href="/wagers/{{ $wager->id }}/edit">

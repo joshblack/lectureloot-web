@@ -37,7 +37,7 @@ $(document).ready(function() {
             $optionsBox = $this.closest('div.options-box');
 
         $this.toggleClass('info-box--options__selected');
-        $this.next().next().next().toggle();
+        $this.next().next().toggle();
     });
 
     // Check for if we click something on the body that isn't what we were expecting

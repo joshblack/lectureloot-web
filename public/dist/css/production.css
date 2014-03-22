@@ -1457,6 +1457,14 @@ h6 {
   }
 }
 
+.info-box--jumbo__positive {
+  color: #95E69F;
+}
+
+.info-box--jumbo__negative {
+  color: #F58C87;
+}
+
 .info-box--desc {
   margin-top: 10px;
 }
