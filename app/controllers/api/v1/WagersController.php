@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Response;
 use \Wager;
+use \Input;
 
 class WagersController extends \BaseController {
 
@@ -29,18 +30,16 @@ class WagersController extends \BaseController {
 	 */
 	public function store()
 	{
-		// Grab the post data
-		$postInput = file_get_contents('php://input');
-		$data = json_decode($postInput, true);
+		$input = Input::all();
 
 		try
-		{  // Try to make a wager with the data given
+		{  // Try to make a wager with the input data given
 			Wager::create([
-				'user_id' => $data['user_id'],
-				'session_id' => $data['session_id'],
-				'wagerUnitValue' => $data['wagerUnitValue'],
-				'wagerTotalValue' => $data['wagerTotalValue'],
-				'pointsLost' => $data['pointsLost']
+				'user_id' => $input['user_id'],
+				'session_id' => $input['session_id'],
+				'wagerUnitValue' => $input['wagerUnitValue'],
+				'wagerTotalValue' => $input['wagerTotalValue'],
+				'pointsLost' => $input['pointsLost']
 			]);
 
 			$statusCode = 200;
