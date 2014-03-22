@@ -36,10 +36,19 @@ class WagersController extends BaseController {
 	 */
 	public function store()
 	{
+		$currentDate = new Datetime;
+		$startDate = new Datetime(Input::get('startDate'));
+
+		// Check to see if they are trying to make a wager that starts in the past
+		if ($startDate < $currentDate)
+		{
+			return Redirect::back()->with('error', 'Trying to make a wager for a session that\'s already passed.');
+		}
+
 		// Try to see if a session exists for the wager the user is trying to make
 		try
 		{
-			$session = WagerSession::where('startDate', '=', Input::get('startDate'))->firstOrFail();
+			$session = WagerSession::where('startDate', '=', $startDate)->firstOrFail();
 			$numCourses = Auth::user()->courses()->count();
 
 			$sessionWager = Auth::user()->wagers()->where('session_id', '=', $session->id)->first();
@@ -53,16 +62,14 @@ class WagersController extends BaseController {
 			{ // The user hasn't made a wager yet for this session, let's make one for him/her
 				$wager = new Wager;
 				$wager->user_id = Auth::user()->id;
-				$wager->wagerUnitValue = Input::get('wagerUnitValue');
+				$wager->wagerTotalValue = Input::get('wagerTotalValue');
 				$wager->session_id = $session->id;
-				$wager->wagerTotalValue = $wager->wagerUnitValue * $numCourses;
+				$wager->wagerUnitValue = round($wager->wagerTotalValue / $numCourses, 2);
 
 				$wager->save();
 
 				return Redirect::back()->with('success', 'You\'ve successfully created a wager!');
 			}
-
-
 		}
 		catch (Exception $e)
 		{
@@ -81,7 +88,7 @@ class WagersController extends BaseController {
 	{
 		$wager = Wager::find($id);
 
-    	return View::make('wagers.show')->withWager($wager);
+		return View::make('wagers.show')->withWager($wager);
 	}
 
 	/**
@@ -94,7 +101,7 @@ class WagersController extends BaseController {
 	{
 		$wager = Wager::find($id);
 
-        return View::make('wagers.edit')->withWager($wager);
+		return View::make('wagers.edit')->withWager($wager);
 	}
 
 	/**
@@ -105,17 +112,50 @@ class WagersController extends BaseController {
 	 */
 	public function update($id)
 	{
-
-		$session = WagerSession::where('startDate', '=', Input::get('sessionMonth'))->firstOrFail();
-		$numCourses = Auth::user()->courses()->count();
+		$currentDate = new Datetime;
 		$wager = Wager::find($id);
 
-		$wager->wagerUnitValue = Input::get('wagerUnitValue');
-		$wager->session_id = $session->id;
-		$wager->wagerTotalValue = $wager->wagerUnitValue * $numCourses;
-		$wager->save();
+		$wagerSession = $wager->session;
+		$wagerStartDate = new Datetime($wagerSession->startDate);
 
-		return Redirect::route('wagers.index')->with('success', 'The wager has been updated');
+		// Check to see if it's past the wagers startDate
+		if ($wagerStartDate > $currentDate)
+		{ // We're good to go, update the wager
+
+			// Find the total number of meetings
+			$courses = Auth::user()->courses;
+			$numMeetings = WagersController::getNumOfMeetings($courses);
+
+			// Update the session start date if its changed
+			$sessionMonth = Input::get('sessionMonth');
+
+			if ($wagerStartDate != $sessionMonth)
+			{ // Need to find the new session (if it exists)
+				$sessionId = WagerSession::where('startDate', '=', $sessionMonth)->pluck('id');
+			}
+			else
+			{ // Keep the same wager session id
+				$sessionId = $wagerSession->id;
+			}
+
+			if ($sessionId)
+			{
+				$wager->wagerTotalValue = Input::get('wagerTotalValue');
+				$wager->wagerUnitValue = round($wager->wagerTotalValue / $numMeetings, 2);
+				$wager->session_id = $sessionId;
+				$wager->save();
+
+				return Redirect::route('wagers.index')->with('success', 'The wager has been updated.');
+			}
+			else
+			{
+				return Redirect::back()->with('error', 'Invalid session start date');
+			}
+		}
+		else
+		{
+			return Redirect::back()->with('error', 'The session for this wager has already begun.');
+		}
 	}
 
 	/**
@@ -145,7 +185,7 @@ class WagersController extends BaseController {
 	/**
 	 * Grab the current Session
 	 *
-	 * @return session
+	 * @return WagerSession Eloquent Model
 	 */
 	public function getCurrentSession()
 	{
@@ -159,4 +199,22 @@ class WagersController extends BaseController {
 		return $session;
 	}
 
+	/**
+	 * Gets the number of meetings for a listing of courses
+	 *
+	 * @param Eloquent Collection
+	 * @return int
+	 */
+	public function getNumOfMeetings($courses)
+	{
+		$numMeetings = 0;
+
+		// Go through each course and add its meeting count to the total number of meetings
+		foreach ($courses as $course)
+		{
+			$numMeetings += $course->meetings()->count();
+		}
+
+		return $numMeetings;
+	}
 }

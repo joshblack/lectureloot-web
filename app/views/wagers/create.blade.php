@@ -13,7 +13,7 @@
 		@endif
 
 	{{ Form::open(['route' => 'wagers.store']) }}
-			<input class="text-field" type="number" name="wagerUnitValue" placeholder="10.00" pattern="\d+(\.\d{2})?">
+			<input class="text-field" type="number" name="wagerTotalValue" placeholder="10.00" pattern="\d+(\.\d{2})?">
 			<input class="text-field" type="date" name="startDate">
 			{{ Form::submit('Make Wager') }}
 	{{ Form::close() }}
