@@ -8,14 +8,13 @@ Route::get('logout', 'SessionsController@destroy');
 Route::get('register', ['as' => 'users.create', 'uses' => 'UsersController@create']);
 Route::post('register', ['as' => 'users.store', 'uses' => 'UsersController@store']);
 
-Route::get('dashboard', 'HomeController@showDashboard');
-
 Route::resource('sessions', 'SessionsController');
 
 Route::post('checkins', 'CheckinsController@store');
 
 Route::group(array('before' => 'auth'), function()
 {
+	Route::get('dashboard', 'HomeController@showDashboard');
 	Route::resource('courses', 'CoursesController');
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController');
