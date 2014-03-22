@@ -44,7 +44,7 @@ $(document).ready(function() {
     $(document).on('click', function(event) {
         var $infoBoxOptions = $('.info-box--options');
 
-        if (!$(event.target).is($infoBoxOptions)) {
+        if (!$(event.target).is($infoBoxOptions) && !$(event.target).is('.options-box')) {
             // Make all option toggles inactive
             $($infoBoxOptions).removeClass('info-box--options__selected');
 
@@ -57,7 +57,6 @@ $(document).ready(function() {
                 var $this = $(this);
                 (!$this.is(':visible')) || $this.toggle();
             });
-
         }
     });
 });

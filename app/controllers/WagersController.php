@@ -11,7 +11,12 @@ class WagersController extends BaseController {
 	{
 		$wagers = Auth::user()->wagers;
 
-		return View::make('wagers.index')->withWagers($wagers);
+		$currentSession = WagersController::getCurrentSession();
+
+		return View::make('wagers.index', [
+			'wagers' => $wagers,
+			'currentSession' => $currentSession
+		]);
 	}
 
 	/**
@@ -135,6 +140,23 @@ class WagersController extends BaseController {
 		{
 			return Redirect::back()->with('error', 'The session for this wager has already begun');
 		}
+	}
+
+	/**
+	 * Grab the current Session
+	 *
+	 * @return session
+	 */
+	public function getCurrentSession()
+	{
+
+		$date = new Datetime;
+
+		$session = WagerSession::where('startDate', '<=', $date)
+								->where('endDate', '>=', $date)
+								->first();
+
+		return $session;
 	}
 
 }

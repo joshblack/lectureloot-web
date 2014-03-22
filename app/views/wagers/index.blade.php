@@ -5,35 +5,39 @@
 @show
 
 @section('content')
-	<!-- Header -->
-	<h1>Your Wagers</h1>
-
-	<!-- Flash Messages -->
-	<div>
-		@if (Session::has('success'))
-			<h2>{{ Session::get('success') }}</h2>
-		@endif
-		@if (Session::has('error'))
-			<h2>{{ Session::get('error') }}</h2>
-		@endif
-	</div>
-
-	<!-- Wagers -->
+	<h1 class="page-title">Your Wagers</h1>
+	{{ link_to('wagers/create', 'Make a New Wager', ['class' => 'link--add']) }}
+	@if (Session::has('success'))
+		<h2>{{ Session::get('success') }}</h2>
+	@endif
+	@if (Session::has('error'))
+		<h2>{{ Session::get('error') }}</h2>
+	@endif
 	@foreach ($wagers as $wager)
 		<div class="info-box">
 			<span class="icon icon_ellipses info-box--options"></span>
 			<div class="info-box--heading">
 				<h6 class="info-box--heading__date">
 					<span class="icon icon_calendar"></span>
-					{{ $wager->session->startDate . ' - ' . $wager->session->endDate }}
+					{{ date('jS M', strtotime($wager->session->startDate)) . ' - ' . date('jS M', strtotime($wager->session->endDate)) }}
 				</h6>
 				<h3 class="info-box--heading__primary">
 					<span class="icon icon_card"></span>
 					<a href="/wagers/{{ $wager->id }}/edit">Wager #{{ $wager->id }}</a>
 				</h3>
-				<div class="info-box--desc">
-					<p class="info-box--desc__text">This session has not started yet.</p>
-				</div>
+				@if ($wager->session->startDate > new Datetime)
+					<div class="info-box--desc info-box--desc__future">
+						<p class="info-box--desc__text">This session has not started yet.</p>
+					</div>
+				@elseif ($wager->pointsLost > 0)
+					<div class="info-box--desc info-box--desc__negative">
+						<p class="info-box--desc__text">You lost money this week.</p>
+					</div>
+				@else
+					<div class="info-box--desc info-box--desc__positive">
+						<p class="info-box--desc__text">You won money this week.</p>
+					</div>
+				@endif
 			</div>
 			<h1 class="info-box--jumbo">{{ '$' . $wager->wagerTotalValue }}</h1>
 			<div class="options-box">
@@ -52,9 +56,4 @@
 			</div>
 		</div>
 	@endforeach
-
-	<!-- Utility -->
-	<div>
-		<p>{{ link_to('wagers/create', 'Make a New Wager') }}</p>
-	</div>
 @stop
