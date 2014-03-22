@@ -422,3 +422,130 @@
 .hero-avatar:hover::after {
   opacity: 1;
 }
+
+// Info Boxes ==============================================================================
+.info-box {
+  width: 100%;
+  border-top: 1px solid $info-box-border-color;
+  text-align: left;
+  position: relative;
+}
+
+.info-box--heading {
+  margin-top: 25px;
+}
+.info-box--heading__date, .info-box--heading__primary {
+  margin: 0;
+}
+
+.info-box--heading__date {
+  color: $lesser-faded-text-color;
+  font-weight: normal;
+}
+
+.info-box--heading__primary,
+.info-box--heading__primary a {
+  text-decoration: none;
+  color: $base-text-color;
+  transition: all .3s;
+}
+
+.info-box--heading__primary a:hover {
+  color: lighten($base-text-color, 50%);
+}
+
+.info-box--jumbo {
+  font-size: 4em;
+  color: $lesser-faded-text-color;
+  font-weight: normal;
+  margin: 0;
+}
+
+.info-box--desc {
+  margin-top: 10px;
+}
+
+.info-box--desc__text {
+  display: inline-block;
+  background: $neutral-box-color;
+  padding: 5px;
+  font-size: .9em;
+  margin: 0;
+  color: $lesser-faded-text-color;
+}
+
+.options-box {
+  background: $white;
+  position: absolute;
+  right: -10px;
+  top: 45px;
+  display: inline-block;
+  border: 1px solid $info-box-border-color;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(#C9C9C9, 0.5);
+  padding: 5px;
+  transition: all .3s ease;
+  display: none;
+}
+
+.options-box::before {
+  position: absolute;
+  top: -10px;
+  left: 32px;
+  content: "";
+  border-bottom: 10px solid $white;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.options-box::after {
+  position: absolute;
+  top: -11px;
+  left: 31px;
+  content: "";
+  border-bottom: 11px solid $info-box-border-color;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  z-index: -1;
+}
+
+.option-select {
+  margin: 5px;
+  color: $lesser-faded-text-color;
+}
+
+.option-select .icon {
+  width: 15px;
+}
+
+.option-select--edit,
+.option-select--delete {
+  text-decoration: none;
+  color: $lesser-faded-text-color;
+}
+.option-select--edit:hover {
+  color: darken($lesser-faded-text-color, 25%);
+}
+
+.option-select--delete:hover {
+  color: $error-color;
+}
+
+.option-select--text {
+  display: inline-block;
+  margin: 0;
+}
+
+.info-box--options {
+  position: absolute;
+  color: $lesser-faded-text-color;
+  font-size: 2em;
+  top: 5px;
+  right: 20px;
+
+  &:hover {
+    color: darken($lesser-faded-text-color, 25%);
+    cursor: pointer;
+  }
+}
+

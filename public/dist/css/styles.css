@@ -1301,6 +1301,137 @@ h6 {
   opacity: 1;
 }
 
+.info-box {
+  width: 100%;
+  border-top: 1px solid #DFDFDF;
+  text-align: left;
+  position: relative;
+}
+
+.info-box--heading {
+  margin-top: 25px;
+}
+
+.info-box--heading__date,
+.info-box--heading__primary {
+  margin: 0;
+}
+
+.info-box--heading__date {
+  color: #ACB0B2;
+  font-weight: normal;
+}
+
+.info-box--heading__primary,
+.info-box--heading__primary a {
+  text-decoration: none;
+  color: #434343;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.info-box--heading__primary a:hover {
+  color: #c3c3c3;
+}
+
+.info-box--jumbo {
+  font-size: 4em;
+  color: #ACB0B2;
+  font-weight: normal;
+  margin: 0;
+}
+
+.info-box--desc {
+  margin-top: 10px;
+}
+
+.info-box--desc__text {
+  display: inline-block;
+  background: #F7F7F8;
+  padding: 5px;
+  font-size: 0.9em;
+  margin: 0;
+  color: #ACB0B2;
+}
+
+.options-box {
+  background: #ffffff;
+  position: absolute;
+  right: -10px;
+  top: 45px;
+  display: inline-block;
+  border: 1px solid #DFDFDF;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 4px rgba(201, 201, 201, 0.5);
+  box-shadow: 0 2px 4px rgba(201, 201, 201, 0.5);
+  padding: 5px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.options-box::before {
+  position: absolute;
+  top: -10px;
+  left: 32px;
+  content: "";
+  border-bottom: 10px solid #ffffff;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.options-box::after {
+  position: absolute;
+  top: -11px;
+  left: 31px;
+  content: "";
+  border-bottom: 11px solid #DFDFDF;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  z-index: -1;
+}
+
+.option-select {
+  margin: 5px;
+  color: #ACB0B2;
+}
+
+.option-select .icon {
+  width: 15px;
+}
+
+.option-select--edit,
+.option-select--delete {
+  text-decoration: none;
+  color: #ACB0B2;
+}
+
+.option-select--edit:hover {
+  color: #6b7173;
+}
+
+.option-select--delete:hover {
+  color: #F47D77;
+}
+
+.option-select--text {
+  display: inline-block;
+  margin: 0;
+}
+
+.info-box--options {
+  position: absolute;
+  color: #ACB0B2;
+  font-size: 2em;
+  top: 5px;
+  right: 20px;
+}
+
+.info-box--options:hover {
+  color: #6b7173;
+  cursor: pointer;
+}
+
 .alternate-page {
   background: #95E6A0;
 }

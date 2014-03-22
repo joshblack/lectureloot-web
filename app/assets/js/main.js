@@ -29,7 +29,21 @@ function disableOther( button ) {
     }
 }
 
+$(document).ready(function() {
+    var toggleOptions = $('.info-box--options');
+
+    toggleOptions.on('click', function() {
+        var $this = $(this),
+            $optionsBox = $this.closest('div.options-box');
+
+        $div = $this.closest('div');
+        $this.next().next().next().toggle();
+    });
+});
+
+
 // Instantiate FastClick on the body
 window.addEventListener('load', function() {
     FastClick.attach(document.body);
 }, false);
+

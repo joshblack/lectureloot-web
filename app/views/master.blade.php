@@ -5,7 +5,7 @@
 	@section('title')
 		<title>LectureLoot</title>
 	@show
-  <meta name="viewport" content="width=device-width, initial-scale=1, maxiumum-scale=1, user-scable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet" type="text/css" href="/dist/css/production.min.css">
 </head>
 <body class="cbp-spmenu-push">
@@ -32,6 +32,7 @@
   <div class="site-width">
     @yield('content')
   </div>
+  <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
   <script src="/dist/js/production.min.js"></script>
 </body>
 </html>
