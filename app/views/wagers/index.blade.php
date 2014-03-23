@@ -50,7 +50,7 @@
 					</a>
 				</div>
 				<div class="option-select">
-					<button class="option-select--delete md-trigger" data-modal="modal-1" data-delete-url="/wagers/{{ $wager->id }}">
+					<button class="option-select--delete md-trigger" data-modal="modal-1" data-url="/wagers/{{ $wager->id }}">
 						<span class="icon icon_trash"></span>
 						<p class="option-select--text">Delete</p>
 					</button>

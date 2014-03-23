@@ -37,7 +37,7 @@
 					</a>
 				</div>
 				<div class="option-select">
-					<button class="option-select--delete md-trigger" data-modal="modal-1" data-delete-url="/courses/{{ $course->id }}">
+					<button class="option-select--delete md-trigger" data-modal="modal-1" data-url="/courses/{{ $course->id }}">
 						<span class="icon icon_trash"></span>
 						<p class="option-select--text">Remove</p>
 					</button>

@@ -177,22 +177,29 @@
 
 .input--search {
   margin: 15px auto;
-  margin-bottom: 0;
   font-size: 2em;
   border-radius: 5px;
   width: 100%;
-  max-width: 240px;
   border: 1px solid #D7D7D7;
   position: relative;
-
-  @media screen and (max-width: $break-phone-wide) {
-    width: 70%;
-  }
 }
 
 .input--search .text-field {
-  margin: 0 auto;
   font-size: .5em;
+  border-radius: 0;
+  transition: all .3s ease;
+  padding: 15px;
+  width: 65%;
+  margin: 0;
+  display: inline-block;
+}
+
+.input--search .icon_search {
+  display: inline-block;
+  background: none;
+  color: $lesser-faded-text-color;
+  border: none;
+  position: relative;
 }
 
 // Buttons ==========================================================================
@@ -468,6 +475,28 @@
   }
 }
 
+.info-box__alternate {
+  background: $white;
+  padding: 15px;
+  width: 90%;
+  margin: 0 auto;
+  transition: all .3s ease;
+}
+
+.info-box__alternate:hover {
+  box-shadow: 5px 5px 5px rgba($black, .3);
+  margin: 15px auto;
+}
+
+.info-box__alternate .info-box--heading {
+  margin-top: 0;
+  width: 75%;
+}
+
+.info-box__alternate .info-box--desc__list {
+  margin-bottom: 0;
+}
+
 .info-box--heading {
   margin-top: 25px;
 }
@@ -554,6 +583,7 @@
 
 .info-box--desc__list-item {
   color: $white;
+  list-style-type: none;
 }
 
 .info-box--desc__positive .info-box--desc__text,
@@ -624,10 +654,23 @@
   width: 15px;
 }
 
+.option-select--add,
 .option-select--edit,
 .option-select--delete {
   text-decoration: none;
   color: $lesser-faded-text-color;
+}
+
+.option-select--add {
+  background: #E99549;
+  border-radius: 5px;
+  color: $white;
+  border: none;
+  box-shadow: none;
+  padding: 10px 15px;
+  font-size: 1.2em;
+  position: absolute;
+  right: 15px;
 }
 
 .option-select--delete {
@@ -898,11 +941,36 @@ perspective effects (not including the modals and the overlay).
   text-align: center;
   margin: 0 auto;
   border: none;
+  box-shadow: none;
+  outline: none;
+  background: $white;
+  max-width: 320px;
+  &:hover {
+    box-shadow: 3px 3px 5px rgba($black, .3);
+  }
+
 }
 
-.search--form .text-field,
-.search--form .icon_search {
+.search--input {
+  width: 100%;
+}
+
+// Alerts ==================================================================================
+.alert--search {
+  color: $white;
+  background: #61BEC7;
+  padding: 15px;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.alert--search .icon_bell {
   display: inline-block;
-  margin: 0;
-  padding: 0;
+  color: $white;
+  font-size: 2.5em;
+}
+
+.alert--search__description {
+  display: inline-block;
 }
