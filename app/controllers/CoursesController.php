@@ -63,7 +63,7 @@ class CoursesController extends BaseController {
 	{
 		$course = Course::find($id);
 
-        return View::make('courses.show')->withCourse($course);
+		return View::make('courses.show')->withCourse($course);
 	}
 
 	/**
@@ -87,5 +87,20 @@ class CoursesController extends BaseController {
 		{ // The user doesn't have the class
 			return Redirect::back()->with('error', 'You do not have this class!');
 		}
+	}
+
+	/**
+	 * Searches the courses for a given input query
+	 *
+	 * @param none
+	 * @return View
+	 */
+	public function searchCourses()
+	{
+		$query = Input::get('q');
+
+		$courses = ($query) ? Course::search($query)->get() : Course::all();
+
+		return View::make('courses.create')->withCourses($courses);
 	}
 }

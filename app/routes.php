@@ -15,6 +15,7 @@ Route::post('checkins', 'CheckinsController@store');
 Route::group(array('before' => 'auth'), function()
 {
 	Route::get('dashboard', 'HomeController@showDashboard');
+	Route::get('courses/search', 'CoursesController@searchCourses');
 	Route::resource('courses', 'CoursesController');
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController');

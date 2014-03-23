@@ -190,14 +190,6 @@
   }
 }
 
-.input--search::after {
-  font-family: "icons";
-  content: "\e00e";
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
 .input--search .text-field {
   margin: 0 auto;
   font-size: .5em;
@@ -899,4 +891,18 @@ perspective effects (not including the modals and the overlay).
 .modal--options__confirm {
   text-decoration: none;
   color: $white;
+}
+
+// Forms ===================================================================================
+.search--form {
+  text-align: center;
+  margin: 0 auto;
+  border: none;
+}
+
+.search--form .text-field,
+.search--form .icon_search {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }

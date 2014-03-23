@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         uglify: {
             my_target: {
                 files: {
-                    'public/dist/js/production.min.js': ['app/assets/js/vendor/classie.js', 'app/assets/js/vendor/fastclick.js',  'app/assets/js/vendor/modalEffects.js','app/assets/js/main.js']
+                    'public/dist/js/production.min.js': ['app/assets/js/vendor/classie.js', 'app/assets/js/vendor/fastclick.js',  'app/assets/js/vendor/modalEffects.js' ,'app/assets/js/main.js']
                 }
             }
         },

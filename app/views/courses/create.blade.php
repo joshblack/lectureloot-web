@@ -4,6 +4,18 @@
 	<title>Add a course to your schedule</title>
 @show
 
+@section('body')
+<body class="alternate-page cbp-spmenu-push">
+@stop
+
+@section('main-nav')
+<nav class="main-nav main-nav__alternate">
+@stop
+
+@section('logo')
+<a href="/dashboard" class="logo logo--alternate">LectureLoot</a>
+@stop
+
 @section('content')
 
 @if (Session::has('success'))
@@ -14,8 +26,17 @@
 @endif
 
 <div class="input--search">
-	<input class="text-field" type="text" placeholder="Search for a Class">
+  {{ Form::open(['method' => 'get' ,'url' => '/courses/search', 'class' => 'search--form']) }}
+    {{ Form::input('search', 'q', null, ['placeholder' => 'Search for Classes', 'class' => 'text-field']) }}
+  {{ Form::close() }}
 </div>
-
-
+@if (isset($courses))
+  @if ($courses->count())
+    @foreach ($courses as $course)
+      {{ $course->courseTitle }}
+    @endforeach
+  @else
+    {{ 'No Courses to display' }}
+  @endif
+@endif
 @stop
