@@ -64,7 +64,7 @@
         <div>
             <p>Are you sure you want to delete this wager?</p>
             <div class="modal--options">
-            	{{ Form::open(['method' => 'DELETE', 'url' => '', 'id' => 'deleteWager']) }}
+            	{{ Form::open(['method' => 'DELETE', 'url' => '', 'id' => 'modalForm']) }}
             		<button class="modal--options__confirm">Yes</button>
             	{{ Form::close() }}
             	<button class="modal--options__close md-close">No Way!</button>
