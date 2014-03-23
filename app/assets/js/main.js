@@ -29,6 +29,7 @@ function disableOther( button ) {
     }
 }
 
+// jQuery Scripts
 $(document).ready(function() {
     var toggleOptions = $('.info-box--options');
 
@@ -60,7 +61,6 @@ $(document).ready(function() {
         }
     });
 });
-
 
 // Instantiate FastClick on the body
 window.addEventListener('load', function() {
