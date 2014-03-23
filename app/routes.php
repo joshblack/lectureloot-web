@@ -36,6 +36,7 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController', ['except' => ['store', 'update', 'destroy']]);
 	Route::resource('users', 'UsersController', ['except' => ['store']]);
+	Route::get('sessions', 'WagerSessionsController@index');
 
 	// User Wagers
 	Route::get('users/{id}/wagers', 'UsersController@getWagers');
