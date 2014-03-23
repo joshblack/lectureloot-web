@@ -47,8 +47,10 @@ class WagersController extends BaseController {
 			return Redirect::back()->with('error', $validator->messages());
 		}
 
+		$startDate = Input::get('startDate');
+
 		// Check to see if they are trying to make a wager that starts in the past
-		if (WagersController::invalidStartDate(Input::get('startDate')))
+		if (!WagersController::validStartDate($startDate))
 		{
 			return Redirect::back()->with('error', 'Trying to make a wager for a session that\'s already passed.');
 		}
@@ -130,56 +132,54 @@ class WagersController extends BaseController {
 			return Redirect::back()->with('error', $validator->messages());
 		}
 
-		$currentDate = new Datetime;
 		$wager = Wager::find($id);
+		$startDate = Input::get('startDate');
+		$wagerTotalValue = Input::get('wagerTotalValue');
 
-		$wagerSession = $wager->session;
-		$wagerStartDate = new Datetime($wagerSession->startDate);
+		// Check to see if wager total value has changed
+		if ($wager->wagerTotalValue != $wagerTotalValue)
+		{ // Total value has changed, let's set up the values to update unit value with
 
-		// Check to see if it's past the wagers startDate
-		if ($wagerStartDate > $currentDate)
-		{ // We're good to go, update the wager
-
-			// Find the total number of meetings
+			// Grab the total number of meetings and calculate new unit value
 			$courses = Auth::user()->courses;
-			$numMeetings = WagersController::getNumOfMeetings($courses);
+			$numMeetings  = WagersController::getNumOfMeetings($courses);
+			$wagerUnitValue = round($wagerTotalValue / $numMeetings, 2);
+		}
 
-			// Update the session start date if its changed
-			$startDate = Input::get('startDate');
+		// Check to see if start date has changed
+		$wagerSession = WagerSession::find($wager->session_id);
 
-			if ($wagerStartDate != $startDate)
-			{ // Need to find the new session (if it exists)
-				$sessionId = WagerSession::where('startDate', '=', $startDate)->pluck('id');
-			}
-			else
-			{ // Keep the same wager session id
-				$sessionId = $wagerSession->id;
-			}
+		if ($wagerSession->startDate != $startDate)
+		{ // Start date has changed, check to see if the new start date is valid
 
-			if ($sessionId)
-			{
-				// Check if the user already has a wager for the session
-				if (WagersController::userHasWagerFor($sessionId))
-				{
-					return Redirect::back()->with('error', 'You\'ve already made a wager for this session');
+			$session = WagerSession::where('startDate', '=', $startDate)->first();
+			if ($session)
+			{ // We have a valid session
+
+				// Check to see if user has a wager already for that session
+				if (!WagersController::userHasWagerFor($session->id))
+				{ // No wager found for the user in this session
+					$session_id = $session->id;
 				}
-
-				$wager->wagerTotalValue = Input::get('wagerTotalValue');
-				$wager->wagerUnitValue = round($wager->wagerTotalValue / $numMeetings, 2);
-				$wager->session_id = $sessionId;
-				$wager->save();
-
-				return Redirect::route('wagers.index')->with('success', 'The wager has been updated.');
+				else
+				{ // The user already has a wager for the session
+					return Redirect::back()->with('error', 'You already have made a wager for that session.');
+				}
 			}
 			else
-			{
-				return Redirect::back()->with('error', 'Invalid session start date');
+			{ // We have an invalid session
+				return Redirect::back()->with('error', 'The start date you entered is invalid.');
 			}
+
 		}
-		else
-		{
-			return Redirect::back()->with('error', 'The session for this wager has already begun.');
-		}
+
+		// Make the wager
+		$wager->wagerTotalValue = isset($wagerTotalValue) ? $wagerTotalValue : $wager->wagerTotalValue;
+		$wager->wagerUnitValue = isset($wagerUnitValue) ? $wagerUnitValue : $wager->wagerUnitValue;
+		$wager->session_id = isset($session_id) ? $session_id : $wager->session_id;
+		$wager->save();
+
+		return Redirect::back()->with('success', 'Wager successfully updated!');
 	}
 
 	/**
@@ -262,11 +262,11 @@ class WagersController extends BaseController {
 	 * @param date
 	 * @return bool
 	 */
-	public function invalidStartDate($date)
+	public function validStartDate($date)
 	{
 		$currentDate = new Datetime;
 		$startDate = new Datetime($date);
 
-		return ($startDate < $currentDate) ? true : false;
+		return ($startDate < $currentDate) ? false : true;
 	}
 }
