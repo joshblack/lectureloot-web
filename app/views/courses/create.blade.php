@@ -6,26 +6,16 @@
 
 @section('content')
 
-<!-- User Title -->
-<div>
-	<h1>{{ Auth::user()->firstName . ' ' . Auth::user()->lastName . '\'s classes'}}</h1>
-	<p>Add or remove classes from your schedule</p>
+<div class="input--search">
+	<input class="text-field" type="text" placeholder="Search for a Class">
 </div>
-
-<!-- Flash Messages -->
+@if (Session::has('success'))
+	<h2>{{ Session::get('success') }}</h2>
+@endif
+@if (Session::has('error'))
+	<h2>{{ Session::get('error') }}</h2>
+@endif
 <div>
-	@if (Session::has('success'))
-		<h2>{{ Session::get('success') }}</h2>
-	@endif
-</div>
-<div>
-	@if (Session::has('error'))
-		<h2>{{ Session::get('error') }}</h2>
-	@endif
-</div>
-
-<!-- User Class information -->
-<div style="float:left;">
 	<h3>My Classes</h3>
 	@if (count($userCourses) == 0)
 		{{ 'empty' }}
@@ -49,7 +39,7 @@
 	@endif
 </div>
 
-<div style="float:right;">
+<div>
 	<h3>Available Classes</h3>
 	<ul>
 		@foreach ($allCourses as $course)

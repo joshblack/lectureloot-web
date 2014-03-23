@@ -175,6 +175,34 @@
   border: 0;
 }
 
+.input--search {
+  margin: 15px auto;
+  margin-bottom: 0;
+  font-size: 2em;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 240px;
+  border: 1px solid #D7D7D7;
+  position: relative;
+
+  @media screen and (max-width: $break-phone-wide) {
+    width: 70%;
+  }
+}
+
+.input--search::after {
+  font-family: "icons";
+  content: "\e00e";
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.input--search .text-field {
+  margin: 0 auto;
+  font-size: .5em;
+}
+
 // Buttons ==========================================================================
 .submit--button {
   vertical-align: middle;
@@ -507,8 +535,7 @@
   }
 
   @media screen and (min-width: $break-medium) {
-    font-size: 7em;
-    top: 0;
+    font-size: 5em;
     color: lighten($lesser-faded-text-color, 15%);
   }
 }

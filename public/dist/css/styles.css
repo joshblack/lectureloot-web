@@ -1056,6 +1056,36 @@ h6 {
   border: 0;
 }
 
+.input--search {
+  margin: 15px auto;
+  margin-bottom: 0;
+  font-size: 2em;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 240px;
+  border: 1px solid #D7D7D7;
+  position: relative;
+}
+
+@media screen and (max-width: 700px) {
+  .input--search {
+    width: 70%;
+  }
+}
+
+.input--search::after {
+  font-family: "icons";
+  content: "\e00e";
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.input--search .text-field {
+  margin: 0 auto;
+  font-size: 0.5em;
+}
+
 .submit--button {
   vertical-align: middle;
   text-align: center;
@@ -1397,8 +1427,7 @@ h6 {
 
 @media screen and (min-width: 1200px) {
   .info-box--jumbo {
-    font-size: 7em;
-    top: 0;
+    font-size: 5em;
     color: #d4d6d7;
   }
 }

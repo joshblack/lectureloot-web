@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Sun Mar 23 00:02:08 2014
+Created by FontForge 20120731 at Sun Mar 23 00:57:26 2014
  By Josh Black
 Created by Josh Black with FontForge 2.0 (http://fontforge.sf.net)
 </metadata>
@@ -16,10 +16,10 @@ Created by Josh Black with FontForge 2.0 (http://fontforge.sf.net)
     panose-1="2 0 6 3 0 0 0 0 0 0"
     ascent="448"
     descent="-64"
-    bbox="-0.0434783 -64 512.043 448.679"
+    bbox="-0.0434783 -64 512.41 448.679"
     underline-thickness="25"
     underline-position="-52"
-    unicode-range="U+E001-E00E"
+    unicode-range="U+E001-E00F"
   />
 <missing-glyph horiz-adv-x="187" 
 d="M17 0v341h136v-341h-136zM34 17h102v307h-102v-307z" />
@@ -59,7 +59,9 @@ t22.5 -1.5t15 -7.5t6.5 -17v-186z" />
 d="M445 198h67l-100 -117l-100 117h77q-2 71 -50.5 120.5t-115.5 49.5q-69 0 -118 -51.5t-49 -124.5t49 -124.5t118 -51.5q53 0 98 34l39 -43q-61 -50 -137 -50q-92 0 -157.5 69t-65.5 166t65.5 166t157.5 69q91 0 155.5 -67t66.5 -162z" />
     <glyph glyph-name="uniE00D" unicode="&#xe00d;" horiz-adv-x="288" 
 d="M14 -50q-14 14 -14 34.5t13 34.5l164 173l-164 173q-13 14 -13 34.5t14 34.5q13 14 32.5 14t32.5 -14l163 -173l32 -34q14 -14 14 -34.5t-14 -34.5l-32 -35l-163 -173q-13 -14 -32 -14t-33 14z" />
-    <glyph glyph-name="uniE00E" unicode="&#xe00e;" horiz-adv-x="395" 
+    <glyph glyph-name="uniE00E" unicode="&#xe00e;" 
+d="M62 248q0 -58 43.5 -101.5t101.5 -43.5t98 40t40 98t-43.5 101.5t-101.5 43.5t-98 -40t-40 -98zM500 15q22 -22 5 -39l-31 -31q-9 -9 -21.5 -9t-21.5 9l-123 123q-48 -27 -101 -27q-83 0 -145 62t-62 145t58.5 141.5t141.5 58.5t145 -62t62 -145q0 -56 -29 -104z" />
+    <glyph glyph-name="uniE00F" unicode="&#xe00f;" horiz-adv-x="395" 
 d="M251 348h44q-49 60 -55 68q-7 8 -16 8h-53q-10 0 -17 -8l-55 -68h45l32 36h43zM280 408q49 -9 82 -29t33 -38v-5q0 -31 -58 -53t-140 -22t-139.5 22t-57.5 53v5q0 18 33 38t82 29l22 25q10 15 37 15h47q26 0 36 -15zM26 248q65 -37 171 -37q107 0 172 37l-29 -259
 q-1 -7 -18 -19t-52 -23t-73 -11t-73 11t-52 23t-18 19z" />
   </font>

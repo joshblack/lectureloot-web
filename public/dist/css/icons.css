@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "icons";
-  src: url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.eot");
-  src: url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.eot?#iefix") format("embedded-opentype"),
-		url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.woff") format("woff"),
-		url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.ttf") format("truetype"),
-		url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.svg?#icons") format("svg");
+  src: url("/dist/css/fonts/icons-297cb5cb0040d760a3160633eda8f5dc.eot");
+  src: url("/dist/css/fonts/icons-297cb5cb0040d760a3160633eda8f5dc.eot?#iefix") format("embedded-opentype"),
+		url("/dist/css/fonts/icons-297cb5cb0040d760a3160633eda8f5dc.woff") format("woff"),
+		url("/dist/css/fonts/icons-297cb5cb0040d760a3160633eda8f5dc.ttf") format("truetype"),
+		url("/dist/css/fonts/icons-297cb5cb0040d760a3160633eda8f5dc.svg?#icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -80,6 +80,10 @@
   content: "\e00d";
 }
 
-.icon_trash:before {
+.icon_search:before {
   content: "\e00e";
+}
+
+.icon_trash:before {
+  content: "\e00f";
 }
