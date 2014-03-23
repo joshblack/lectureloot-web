@@ -33,10 +33,9 @@ var ModalEffects = (function() {
 
 			el.addEventListener( 'click', function( ev ) {
 				// Need to change the form action to the right path for this wager id
-				var wagerUrl = $(el).data('wager-delete-url'),
-						form = $('#deleteWager');
-
-				form.attr('action', wagerUrl);
+				var url = $(el).data('delete-url'),
+						form = $('#modalForm');
+				form.attr('action', url);
 
 				classie.add( modal, 'md-show' );
 				overlay.removeEventListener( 'click', removeModalHandler );

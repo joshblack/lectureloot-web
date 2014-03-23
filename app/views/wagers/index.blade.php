@@ -50,14 +50,10 @@
 					</a>
 				</div>
 				<div class="option-select">
-					<button class="option-select--delete md-trigger" data-modal="modal-1" data-wager-delete-url="/wagers/{{ $wager->id }}">
+					<button class="option-select--delete md-trigger" data-modal="modal-1" data-delete-url="/wagers/{{ $wager->id }}">
 						<span class="icon icon_trash"></span>
 						<p class="option-select--text">Delete</p>
 					</button>
-					<!-- <a class="option-select--delete" href="/wagers/{{ $wager->id }}/delete">
-						<span class="icon icon_trash"></span>
-						<p class="option-select--text">Delete</p>
-					</a> -->
 				</div>
 			</div>
 		</div>
@@ -69,7 +65,7 @@
             <p>Are you sure you want to delete this wager?</p>
             <div class="modal--options">
             	{{ Form::open(['method' => 'DELETE', 'url' => '', 'id' => 'deleteWager']) }}
-            	<button class="modal--options__confirm">Yes</button>
+            		<button class="modal--options__confirm">Yes</button>
             	{{ Form::close() }}
             	<button class="modal--options__close md-close">No Way!</button>
             </div>

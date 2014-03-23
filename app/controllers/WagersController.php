@@ -167,18 +167,18 @@ class WagersController extends BaseController {
 	public function destroy($id)
 	{
 		$wager = Wager::find($id);
-		$startDate = $wager->session->startDate;
+		$startDate = new Datetime($wager->session->startDate);
 		$currentDate = new Datetime;
 
-		// Check to see if we are already in the session
-		if ($startDate < $currentDate)
-		{
+		// Check to see if we are already in the session or past it
+		if ($startDate > $currentDate)
+		{ // The session hasn't started yet
 			$wager->delete();
 			return Redirect::route('wagers.index')->with('success', 'The wager has been removed');
 		}
 		else
 		{
-			return Redirect::back()->with('error', 'The session for this wager has already begun');
+			return Redirect::route('wagers.index')->with('error', 'The session for this wager has already begun or has passed');
 		}
 	}
 
