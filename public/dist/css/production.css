@@ -799,6 +799,7 @@ div {
 body {
   font-family: 'Open Sans', 'Times New Roman', sans-serif;
   font-size: 1em;
+  margin-bottom: 75px;
 }
 
 h1,
@@ -1154,6 +1155,7 @@ h6 {
   font-size: 2em;
   border-radius: 5px;
   width: 100%;
+  max-width: 320px;
   border: 1px solid #D7D7D7;
   position: relative;
 }
@@ -1163,10 +1165,12 @@ h6 {
   border-radius: 0;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  padding: 15px;
+  padding: 0;
   width: 65%;
   margin: 0;
   display: inline-block;
+  position: relative;
+  bottom: 5px;
 }
 
 .input--search .icon_search {
@@ -1175,6 +1179,8 @@ h6 {
   color: #ACB0B2;
   border: none;
   position: relative;
+  bottom: 3px;
+  width: 20%;
 }
 
 .submit--button {
@@ -1459,7 +1465,7 @@ h6 {
   transition: all 0.3s ease;
 }
 
-.info-box__alternate:hover {
+.shadow {
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   margin: 15px auto;
@@ -1933,6 +1939,7 @@ perspective effects (not including the modals and the overlay).
   box-shadow: none;
   outline: none;
   background: #ffffff;
+  width: 100%;
   max-width: 320px;
 }
 
@@ -1966,6 +1973,19 @@ perspective effects (not including the modals and the overlay).
 
 .alternate-page {
   background: #95E6A0;
+}
+
+.search-page {
+  background: #61BEC7;
+}
+
+.search-page .icon_hamburger,
+.search-page .logo--alternate {
+  color: #61BEC7;
+}
+
+.search-page .info-box--desc__list {
+  background: #0F565C;
 }
 
 .site-width {

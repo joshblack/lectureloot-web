@@ -4,6 +4,19 @@
   background: $primary-nav-color;
 }
 
+.search-page {
+  background: #61BEC7;
+}
+
+.search-page .icon_hamburger,
+.search-page .logo--alternate {
+  color: #61BEC7;
+}
+
+.search-page .info-box--desc__list {
+  background: #0F565C;
+}
+
 .site-width {
   position: relative;
   max-width: 1000px;

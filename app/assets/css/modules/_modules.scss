@@ -180,6 +180,7 @@
   font-size: 2em;
   border-radius: 5px;
   width: 100%;
+  max-width: 320px;
   border: 1px solid #D7D7D7;
   position: relative;
 }
@@ -188,10 +189,12 @@
   font-size: .5em;
   border-radius: 0;
   transition: all .3s ease;
-  padding: 15px;
+  padding: 0;
   width: 65%;
   margin: 0;
   display: inline-block;
+  position: relative;
+  bottom: 5px;
 }
 
 .input--search .icon_search {
@@ -200,6 +203,8 @@
   color: $lesser-faded-text-color;
   border: none;
   position: relative;
+  bottom: 3px;
+  width: 20%;
 }
 
 // Buttons ==========================================================================
@@ -481,9 +486,14 @@
   width: 90%;
   margin: 0 auto;
   transition: all .3s ease;
+
+  // &:hover {
+  //   box-shadow: 5px 5px 5px rgba($black, .3);
+  //   margin: 15px auto;
+  // }
 }
 
-.info-box__alternate:hover {
+.shadow {
   box-shadow: 5px 5px 5px rgba($black, .3);
   margin: 15px auto;
 }
@@ -944,6 +954,7 @@ perspective effects (not including the modals and the overlay).
   box-shadow: none;
   outline: none;
   background: $white;
+  width: 100%;
   max-width: 320px;
   &:hover {
     box-shadow: 3px 3px 5px rgba($black, .3);

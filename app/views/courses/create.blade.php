@@ -5,7 +5,7 @@
 @show
 
 @section('body')
-<body class="alternate-page cbp-spmenu-push">
+<body class="search-page cbp-spmenu-push">
 @stop
 
 @section('main-nav')
@@ -25,7 +25,7 @@
 	<h2>{{ Session::get('error') }}</h2>
 @endif
 
-<div class="input--search">
+<div class="input--search shadow">
   {{ Form::open(['method' => 'get' ,'url' => '/courses/search', 'class' => 'search--form']) }}
     {{ Form::input('search', 'q', null, ['placeholder' => 'Search for Classes', 'class' => 'text-field']) }}
     <button class="icon icon_search"></button>

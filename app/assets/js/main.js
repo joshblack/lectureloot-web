@@ -43,7 +43,8 @@ $(document).ready(function() {
 
     // Check for if we click something on the body that isn't what we were expecting
     $(document).on('click', function(event) {
-        var $infoBoxOptions = $('.info-box--options');
+        var $infoBoxOptions = $('.info-box--options'),
+            $searchBox = $('.input--search');
 
         if (!$(event.target).is($infoBoxOptions) && !$(event.target).is('.options-box')) {
             // Make all option toggles inactive
@@ -59,6 +60,10 @@ $(document).ready(function() {
                 (!$this.is(':visible')) || $this.toggle();
             });
         }
+    });
+
+    $('.search-page .info-box').on('click', function () {
+        $(this).toggleClass('shadow');
     });
 });
 
