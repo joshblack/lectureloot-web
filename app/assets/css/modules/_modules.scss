@@ -185,14 +185,13 @@
   font-weight: bold;
   padding: 10px;
 
-  @media screen and (min-width: $break-medium) {
-    &:hover {
-      background: lighten($active-state-color, 4%);
-    }
+  &:hover {
+    background: lighten($active-state-color, 4%);
   }
 }
 
-.submit--button__login {
+.submit--button__login,
+.submit--button__register {
   background: $active-state-color;
   color: $white;
   float: right;
@@ -200,11 +199,15 @@
   width: 30%;
 }
 
-.submit--button__register {
+.submit-container.submit-container--center {
+ text-align: center;
+}
+
+.submit--button__create {
+  display: inline-block;
   background: $active-state-color;
   color: $white;
   transition: background .5s;
-  width: 30%;
 }
 
 // Headings =========================================================================
@@ -219,6 +222,10 @@
   color: $white;
   font-size: 14px;
   font-style: italic;
+}
+
+.main-heading {
+  color: $white;
 }
 
 // Menu Styling =======================================================================
@@ -474,6 +481,18 @@
   color: lighten($base-text-color, 50%);
 }
 
+.info-box--heading__link {
+  display: block;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: $base-text-color;
+}
+
+.info-box--heading__course-name {
+  font-size: 1em;
+  margin: 0;
+}
+
 .info-box--jumbo {
   font-size: 4em;
   color: $lesser-faded-text-color;
@@ -484,7 +503,7 @@
     position: absolute;
     right: 10%;
     top: 35px;
-    font-size: 4.5em;
+    font-size: 3.5em;
   }
 
   @media screen and (min-width: $break-medium) {
@@ -504,6 +523,18 @@
 
 .info-box--desc {
   margin-top: 10px;
+}
+
+.info-box--desc__list {
+  background: #62BEC7;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 80%;
+  max-width: 450px;
+}
+
+.info-box--desc__list-item {
+  color: $white;
 }
 
 .info-box--desc__positive .info-box--desc__text,

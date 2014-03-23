@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="144px" height="144px" viewBox="0 0 144 144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>right arrow</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="right-arrow" sketch:type="MSArtboardGroup" fill="#000000">
+            <path d="M35.8360389,139.938333 C30.7720884,134.57653 30.801979,125.851682 35.7514812,120.61106 L81.681506,71.9795186 L35.7514812,23.3479774 C30.7342307,18.0356217 30.7367835,9.41988841 35.8360389,4.02070454 C40.8999894,-1.34109783 49.1401659,-1.30944913 54.0896681,3.93117336 L100.019693,52.5627146 L109.188786,62.2711166 C114.252737,67.6329189 114.288042,76.2887367 109.188786,81.6879206 L100.019693,91.3963226 L54.0896681,140.027864 C49.0724175,145.340219 40.9352943,145.337516 35.8360389,139.938333 Z" id="Right-Chevron" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

@@ -8,11 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet" type="text/css" href="/dist/css/production.min.css">
 </head>
+
+@section('body')
 <body class="cbp-spmenu-push">
+@show
+
+@section('main-nav')
   <nav class="main-nav">
+@show
     <div class="site-width">
       <span id="showLeftPush" class="icon icon_hamburger"></span>
+@section('logo')
       <a href="/dashboard" class="logo">LectureLoot</a>
+@show
     </div>
   </nav>
   <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">

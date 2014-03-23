@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "icons";
-  src: url("/dist/css/fonts/icons-17cebe46df0c857029aad3447a191b76.eot");
-  src: url("/dist/css/fonts/icons-17cebe46df0c857029aad3447a191b76.eot?#iefix") format("embedded-opentype"),
-		url("/dist/css/fonts/icons-17cebe46df0c857029aad3447a191b76.woff") format("woff"),
-		url("/dist/css/fonts/icons-17cebe46df0c857029aad3447a191b76.ttf") format("truetype"),
-		url("/dist/css/fonts/icons-17cebe46df0c857029aad3447a191b76.svg?#icons") format("svg");
+  src: url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.eot");
+  src: url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.eot?#iefix") format("embedded-opentype"),
+		url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.woff") format("woff"),
+		url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.ttf") format("truetype"),
+		url("/dist/css/fonts/icons-856f23961feaf057dcb5d0a7f1e9c7e4.svg?#icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -40,36 +40,48 @@
   content: "\e003";
 }
 
-.icon_ellipses:before {
+.icon_checkin:before {
   content: "\e004";
 }
 
-.icon_gear:before {
+.icon_ellipses:before {
   content: "\e005";
 }
 
-.icon_hamburger:before {
+.icon_gear:before {
   content: "\e006";
 }
 
-.icon_home:before {
+.icon_hamburger:before {
   content: "\e007";
 }
 
-.icon_pencil:before {
+.icon_home:before {
   content: "\e008";
 }
 
-.icon_plus:before {
+.icon_leftarrow:before {
   content: "\e009";
 }
 
-.icon_refresh:before {
+.icon_pencil:before {
   content: "\e00a";
 }
 
-.icon_trash:before {
+.icon_plus:before {
   content: "\e00b";
+}
+
+.icon_refresh:before {
+  content: "\e00c";
+}
+
+.icon_rightarrow:before {
+  content: "\e00d";
+}
+
+.icon_trash:before {
+  content: "\e00e";
 }
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 
@@ -1139,13 +1151,12 @@ h6 {
   padding: 10px;
 }
 
-@media screen and (min-width: 1200px) {
-  .submit--button:hover {
-    background: #f6bd8a;
-  }
+.submit--button:hover {
+  background: #f6bd8a;
 }
 
-.submit--button__login {
+.submit--button__login,
+.submit--button__register {
   background: #F5B277;
   color: #ffffff;
   float: right;
@@ -1154,12 +1165,16 @@ h6 {
   width: 30%;
 }
 
-.submit--button__register {
+.submit-container.submit-container--center {
+  text-align: center;
+}
+
+.submit--button__create {
+  display: inline-block;
   background: #F5B277;
   color: #ffffff;
   -webkit-transition: background 0.5s;
   transition: background 0.5s;
-  width: 30%;
 }
 
 .success-heading,
@@ -1174,6 +1189,10 @@ h6 {
   color: #ffffff;
   font-size: 14px;
   font-style: italic;
+}
+
+.main-heading {
+  color: #ffffff;
 }
 
 /* General styles for all menus */
@@ -1433,6 +1452,18 @@ h6 {
   color: #c3c3c3;
 }
 
+.info-box--heading__link {
+  display: block;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #434343;
+}
+
+.info-box--heading__course-name {
+  font-size: 1em;
+  margin: 0;
+}
+
 .info-box--jumbo {
   font-size: 4em;
   color: #ACB0B2;
@@ -1445,7 +1476,7 @@ h6 {
     position: absolute;
     right: 10%;
     top: 35px;
-    font-size: 4.5em;
+    font-size: 3.5em;
   }
 }
 
@@ -1467,6 +1498,18 @@ h6 {
 
 .info-box--desc {
   margin-top: 10px;
+}
+
+.info-box--desc__list {
+  background: #62BEC7;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 80%;
+  max-width: 450px;
+}
+
+.info-box--desc__list-item {
+  color: #ffffff;
 }
 
 .info-box--desc__positive .info-box--desc__text,

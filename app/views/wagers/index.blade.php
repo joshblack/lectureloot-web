@@ -29,7 +29,7 @@
 					<div class="info-box--desc info-box--desc__future">
 						<p class="info-box--desc__text">This session has not started yet.</p>
 					</div>
-					<h1 class="info-box--jumbo">{{ '$' . $wager->wagerTotalValue }}</h1>
+					<h1 class="info-box--jumbo">{{ '$' . number_format($wager->wagerTotalValue, 2, '.', '') }}</h1>
 				@elseif ($wager->pointsLost > 0)
 					<div class="info-box--desc info-box--desc__negative">
 						<p class="info-box--desc__text">You lost money this week.</p>
