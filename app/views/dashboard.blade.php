@@ -17,7 +17,7 @@
 		<div class="dashboard--panel__desc">
 			<h1>{{ ucfirst($user->firstName) . ' ' . ucfirst($user->lastName) }}</h1>
 @if (isset($wager))
-			<p>${{ $wager->wagerTotalvalue }} is on the line this week</p>
+			<p>${{ $wager->wagerTotalValue }} is on the line this week</p>
 @else
 			<a href="/wagers/create">Make a Wager</a>
 @endif

@@ -21,7 +21,7 @@ class HomeController extends BaseController {
 		if ($session)
 		{
 			// Find the user's wager from the current session
-			$wager = $user->wagers()->where('session_id', '=', $session)->get();
+			$wager = $user->wagers()->where('session_id', '=', $session)->first();
 
 			// Find user's courses for the semester.
 			$courses = $user->courses;
