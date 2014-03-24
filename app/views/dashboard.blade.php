@@ -28,7 +28,7 @@
 
 @section('content')
 <div class="checkin-box">
-	<h1 class="checkin-box--time">13min</h1>
+	<h3 class="checkin-box--time">~{{ $timeTillNextMeeting->format('%d days, %h hours and %i minutes') }}</h3>
 	<p class="checkin-box--desc">till your next class</p>
 	<button id="checkin" class="checkin--button">Checkin</button>
 </div>

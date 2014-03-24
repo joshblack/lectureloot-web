@@ -1931,7 +1931,7 @@ perspective effects (not including the modals and the overlay).
 }
 
 .checkin-box--time {
-  font-size: 4em;
+  font-size: 1em;
   font-weight: normal;
   margin: 0;
   margin-top: 10px;
@@ -1951,6 +1951,12 @@ perspective effects (not including the modals and the overlay).
   font-family: 'Lato';
   font-weight: normal;
   font-size: 1em;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.checkin--button:hover {
+  background: #f6928f;
 }
 
 .alternate-page {

@@ -32,7 +32,7 @@ class MeetingsController extends \BaseController {
 	{
         $meeting = Meeting::find($id);
 
-    	if ($meeting)
+		if ($meeting)
 		{
 			$statusCode = 200;
 			$value = 'application/json';
