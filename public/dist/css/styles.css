@@ -1920,6 +1920,10 @@ perspective effects (not including the modals and the overlay).
   font-weight: 200;
 }
 
+.dashboard--panel__desc p {
+  margin: 0;
+}
+
 .checkin-box {
   background: #ffffff;
   border-radius: 10px;
@@ -1928,6 +1932,7 @@ perspective effects (not including the modals and the overlay).
   margin: 0 auto;
   margin-top: 25px;
   max-width: 425px;
+  padding: 10px;
 }
 
 .checkin-box--time {

@@ -25,10 +25,12 @@
 					<h2 class="success-heading">{{ Session::get('success') }}</h2>
 				</div>
 			@endif
-			@if (Session::has('error'))
-				@foreach (Session::get('error')->all() as $message)
+			@if (Session::has('validation-error'))
+				@foreach (Session::get('validation-error')->all() as $message)
 					<h2 class="error-heading">{{ $message }}</h2>
 				@endforeach
+			@elseif (Session::has('error'))
+				<h2>{{ Session::get('error') }}</h2>
 			@endif
 		{{ Form::open(['route' => 'sessions.store']) }}
 			{{ Form::email('emailAddress', null,

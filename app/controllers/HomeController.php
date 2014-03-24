@@ -70,11 +70,11 @@ class HomeController extends BaseController {
 					continue;
 				}
 				else
-				{ // We know that the period has yet to happen
+				{ // We know that the period has yet to begin
 
 					if (isset($nextMeeting))
 					{ // A nextMeeting value is defined, we need to see which is closer
-						$nextMeetingStartTime = new Datetime($periods[$nextMeeting->period]->startTime);
+						$nextMeetingStartTime = new Datetime($periods[$nextMeeting->period - 1]->startTime);
 
 						$nextMeeting = ($nextMeetingStartTime > $meetingStartTime)
 							? $nextMeeting
@@ -85,8 +85,8 @@ class HomeController extends BaseController {
 						$nextMeeting = $meeting;
 					}
 				}
-
-				$startTime = new Datetime($periods[$nextMeeting->period]->startTime);
+				// $periods array is zero indexed so need to subtract one to get our period
+				$startTime = new Datetime($periods[$nextMeeting->period - 1]->startTime);
 				return $startTime;
 			}
 

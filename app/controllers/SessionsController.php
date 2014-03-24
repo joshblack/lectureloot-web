@@ -25,11 +25,11 @@ class SessionsController extends BaseController {
 			'password'	=> 'required'
 		]);
 
-		if($validator->fails())
+		if ($validator->fails())
 		{ // Something went wrong
 			$messages = $validator->messages();
 
-			return Redirect::back()->withInput()->with('error', $messages);
+			return Redirect::back()->withInput()->with('validation-error', $messages);
 		}
 		else
 		{ // Validation passed, try to login the user
@@ -63,8 +63,10 @@ class SessionsController extends BaseController {
 
 				return Redirect::intended('dashboard')->with('success', 'You have succesfully logged in.');
 			}
-
-			return Redirect::back()->withInput()->with('error', 'Invalid credentials');
+			else
+			{
+				return Redirect::back()->withInput()->with('error', 'Invalid Credentials');
+			}
 		}
 	}
 

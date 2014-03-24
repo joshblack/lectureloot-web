@@ -1,4 +1,5 @@
 <!doctype html>
+<?php dd(Session::get('validation-error')); ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -24,7 +25,9 @@
       <h2>{{ Session::get('success') }}</h2>
     @endif
     @if (Session::has('error'))
-      @foreach (Session::get('error')->all() as $message)
+      <h2>{{ Session::get('error') }}</h2>
+    @elseif (Session::has('validation-error'))
+      @foreach (Session::get('validation-error')->all() as $message)
         <h2>{{ $message }}</h2>
       @endforeach
     @endif
