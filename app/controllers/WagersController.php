@@ -9,6 +9,7 @@ class WagersController extends BaseController {
 	 */
 	public function index()
 	{
+
 		$wagers = Auth::user()->wagers()->orderBy('session_id', 'DESC')->get();
 
 		$currentSession = WagersController::getCurrentSession();

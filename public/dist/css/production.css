@@ -1971,8 +1971,85 @@ perspective effects (not including the modals and the overlay).
   display: inline-block;
 }
 
+.dashboard--panel {
+  width: 100%;
+  background: #343434;
+  color: #ffffff;
+  border-bottom: 5px solid #BFBFBF;
+}
+
+.dashboard--panel__header {
+  display: inline-block;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.dashboard--panel__avatar {
+  display: inline-block;
+  margin: 0;
+  width: 25%;
+}
+
+.dashboard--panel__avatar img {
+  width: 100%;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 2px;
+}
+
+.dashboard--panel__desc {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  margin-left: 15px;
+}
+
+.dashboard--panel__desc h1 {
+  margin: 0;
+}
+
+.dashboard--panel__desc a {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 200;
+}
+
+.checkin-box {
+  background: #ffffff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 25px;
+}
+
+.checkin-box--time {
+  font-size: 4em;
+  font-weight: normal;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.checkin-box--desc {
+  margin: 0;
+}
+
+.checkin--button {
+  background: #F47D77;
+  border-radius: 5px;
+  padding: 10px 25px;
+  margin: 15px;
+  color: #ffffff;
+  border: none;
+  font-family: 'Lato';
+  font-weight: normal;
+  font-size: 1em;
+}
+
 .alternate-page {
   background: #95E6A0;
+}
+
+.dashboard-page {
+  background: #F2F2F2;
 }
 
 .search-page {

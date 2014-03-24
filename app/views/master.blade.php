@@ -37,6 +37,8 @@
     <a href="/wagers"><span class="icon icon_card"></span> Wagers</a>
     <a href="#"><span class="icon icon_gear"></span> Settings</a>
   </nav>
+@section('dashboard')
+@show
   <div class="site-width">
     @yield('content')
   </div>

@@ -4,14 +4,38 @@
 	<title>Dashboard View</title>
 @show
 
+@section('body')
+<body class="cbp-spmenu-push dashboard-page">
+@show
+
+@section('dashboard')
+<header class="dashboard--panel">
+	<div class="dashboard--panel__header">
+		<figure class="dashboard--panel__avatar">
+      <img src="//www.gravatar.com/avatar/{{ md5(Auth::user()->emailAddress) }}?s=500" alt="">
+    </figure>
+		<div class="dashboard--panel__desc">
+			<h1>{{ ucfirst($user->firstName) . ' ' . ucfirst($user->lastName) }}</h1>
+@if (isset($wager))
+			<p>${{ $wager->wagerTotalvalue }} is on the line this week</p>
+@else
+			<a href="/wagers/create">Make a Wager</a>
+@endif
+		</div>
+	</div>
+</header>
+@show
+
 @section('content')
+<div class="checkin-box">
+	<h1 class="checkin-box--time">13min</h1>
+	<p class="checkin-box--desc">till your next class</p>
+	<button id="checkin" class="checkin--button">Checkin</button>
+</div>
+
+@show
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-
-	<!-- Header -->
-	<h1>Hi, {{ ucfirst($user->firstName) }}!</h1>
-	<a id="checkin" href="#">Checkin</a>
-
 <script type="text/javascript">
 
 /* Testing script for user checkin */
