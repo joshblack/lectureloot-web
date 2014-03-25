@@ -1,5 +1,4 @@
 <!doctype html>
-<?php dd(Session::get('validation-error')); ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

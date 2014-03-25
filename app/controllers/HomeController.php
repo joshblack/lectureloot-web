@@ -12,7 +12,7 @@ class HomeController extends BaseController {
 		$user = Auth::user();
 		$date = new Datetime;
 		$nextMeetingTime = HomeController::findNextMeetingTime();
-		$timeTillNextMeeting = $nextMeetingTime->diff($date);
+		$timeTillNextMeeting = $date->diff($nextMeetingTime);
 		$courses = $user->courses;
 
 		// get the current session

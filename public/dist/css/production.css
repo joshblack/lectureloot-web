@@ -1207,6 +1207,10 @@ h6 {
   width: 30%;
 }
 
+.submit--button__register {
+  float: none;
+}
+
 .submit-container.submit-container--center {
   text-align: center;
 }
@@ -1463,6 +1467,10 @@ h6 {
   margin: 0 auto;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+.info-box__alternate:hover {
+  cursor: pointer;
 }
 
 .shadow {
@@ -2048,7 +2056,7 @@ perspective effects (not including the modals and the overlay).
   border: none;
   font-family: 'Lato';
   font-weight: normal;
-  font-size: 1em;
+  font-size: 1.25em;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }

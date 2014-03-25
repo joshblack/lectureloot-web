@@ -231,6 +231,10 @@
   width: 30%;
 }
 
+.submit--button__register {
+  float: none;
+}
+
 .submit-container.submit-container--center {
  text-align: center;
 }
@@ -487,10 +491,9 @@
   margin: 0 auto;
   transition: all .3s ease;
 
-  // &:hover {
-  //   box-shadow: 5px 5px 5px rgba($black, .3);
-  //   margin: 15px auto;
-  // }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .shadow {
@@ -1065,7 +1068,7 @@ perspective effects (not including the modals and the overlay).
   border: none;
   font-family: 'Lato';
   font-weight: normal;
-  font-size: 1em;
+  font-size: 1.25em;
   transition: all .3s;
 
   &:hover {
