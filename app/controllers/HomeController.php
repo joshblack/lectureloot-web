@@ -12,7 +12,9 @@ class HomeController extends BaseController {
 		$user = Auth::user();
 		$date = new Datetime;
 		$nextMeetingTime = HomeController::findNextMeetingTime();
-		$timeTillNextMeeting = $date->diff($nextMeetingTime);
+		$timeTillNextMeeting = ($nextMeetingTime)
+			? $date->diff($nextMeetingTime)->format(' %r %d days, %h hours %i minutes and %s seconds till your next class')
+			: 'No Classes today';
 		$courses = $user->courses;
 
 		// get the current session
@@ -64,33 +66,41 @@ class HomeController extends BaseController {
 				// See when the meeting starts
 				$meetingStartTime = new Datetime($periods[$meeting->period]->startTime);
 
-				// If it's already passed, skip that meeting
+				$currentMeetingDay = date('D');
+				$currentMeetingDay = strtolower($currentMeetingDay[0]);
+
+				// Check to see if the meeting takes place today
+				if ($currentMeetingDay != $meeting->meetingDay)
+				{
+					continue;
+				}
+
+				// If if the meeting start time has already passed, skip that meeting
 				if ($meetingStartTime < $currentTime)
 				{
 					continue;
 				}
-				else
-				{ // We know that the period has yet to begin
 
-					if (isset($nextMeeting))
-					{ // A nextMeeting value is defined, we need to see which is closer
-						$nextMeetingStartTime = new Datetime($periods[$nextMeeting->period - 1]->startTime);
+				if (isset($nextMeeting))
+				{ // A nextMeeting value is defined, we need to see which is closer
+					$nextMeetingStartTime = new Datetime($periods[$nextMeeting->period - 1]->startTime);
 
-						$nextMeeting = ($nextMeetingStartTime > $meetingStartTime)
-							? $nextMeeting
-							: $meeting;
-					}
-					else
-					{ // We need to define the next meeting
-						$nextMeeting = $meeting;
-					}
+					$nextMeeting = ($nextMeetingStartTime > $meetingStartTime)
+						? $nextMeeting
+						: $meeting;
 				}
-				// $periods array is zero indexed so need to subtract one to get our period
-				$startTime = new Datetime($periods[$nextMeeting->period - 1]->startTime);
-				return $startTime;
+				else
+				{ // We need to define the next meeting
+					$nextMeeting = $meeting;
+				}
 			}
 
+			// $periods array is zero indexed so need to subtract one to get our period
+			$startTime = (isset($nextMeetingTime))
+				? new Datetime($periods[$nextMeeting->period - 1]->startTime)
+				: null;
 
+			return $startTime;
 		}
 	}
 
