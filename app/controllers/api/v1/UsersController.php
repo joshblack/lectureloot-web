@@ -402,7 +402,7 @@ class UsersController extends \BaseController {
 
       $statusCode = 200;
       $value = 'application/json';
-      $contents = json_encode(['message' => 'Success, wager created and added to the user']);
+      $contents = json_encode(['message' => 'Success, wager created and added to the user', 'id' => $wager->id]);
     }
     else
     { // The user couldn't be found
