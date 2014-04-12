@@ -24,9 +24,9 @@ class CreateAllTables extends Migration {
 			$table->increments('id');
 			$table->string('deptCode');
 			$table->string('courseNumber');
-			$table->string('sectionNumber')->unique();
+			$table->string('sectionNumber');
 			$table->string('credits');
-			$table->string('instructor');
+			$table->string('instructor', 1000);
 			$table->string('courseTitle');
 			$table->string('semester');
 			$table->integer('year');
