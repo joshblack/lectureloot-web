@@ -118,4 +118,27 @@ class CoursesController extends \BaseController {
 		return $response;
 	}
 
+	public function getSection($section)
+	{
+		$course = Course::where('sectionNumber', $section)->get()->first();
+
+		if ($course)
+		{ 
+			$statusCode = 200;
+			$value = 'application/json';
+			$contents = $course;
+		}
+		else
+		{
+			$statusCode = 400;
+			$value = 'plain/text';
+			$contents = 'Error, could not find course id.';
+		}
+
+		$response = Response::make($contents, $statusCode);
+		$response->header('Content-Type', $value);
+
+		return $response;
+	}
+
 }

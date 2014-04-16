@@ -50,5 +50,6 @@ Route::group(array('prefix' => 'api/v1', 'before' => 'api', 'namespace' => 'Api\
 	Route::delete('users/{user_id}/courses/{course_id}', 'UsersController@removeCourse');
 
 	Route::get('courses/{id}/meetings', 'CoursesController@getMeetings');
+	Route::get('course/{section}', 'CoursesController@getSection');
 	Route::get('buildings/{id}', 'CheckinsController@getBuilding');
 });
