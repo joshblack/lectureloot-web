@@ -26,6 +26,7 @@
     "load-grunt-tasks": "~0.4.0",
     "time-grunt": "~0.2.9",
     "grunt-notify": "~0.2.20",
-    "grunt-webfont": "~0.3.4"
+    "grunt-webfont": "~0.3.4",
+    "grunt-browser-sync": "~0.7.5"
   }
 }

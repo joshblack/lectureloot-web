@@ -16,6 +16,16 @@ module.exports = function(grunt) {
             app: 'app',
             dist: 'public/dist'
         },
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src : 'app/assets/css/**/*.scss'
+                },
+                options: {
+                    host : "192.168.0.1"
+                }
+            }
+        },
 		watch: {
             options: {
                 livereload: true,
@@ -141,6 +151,6 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('default', ['sass:dist', 'watch', 'autoprefixer:single_file', 'cssmin']);
-
+    grunt.registerTask('serve', ['connect:server', 'watch']);
     grunt.registerTask('webfonts', ['webfont', 'autoprefixer:multiple_files', 'concat:css', 'cssmin', 'notify:watch_svg']);
 };

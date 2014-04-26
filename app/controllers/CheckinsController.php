@@ -3,26 +3,6 @@
 class CheckinsController extends BaseController {
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-        //
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-        //
-	}
-
-	/**
 	 * Checkin a user
 	 *
 	 * @return Response
@@ -46,7 +26,7 @@ class CheckinsController extends BaseController {
 			// is implemented, it changes the original variable so the value
 			// needs to be redeclared so the interval returns the correct time
 			$nextPeriodStart = new Datetime($nextPeriod->startTime);
-			$beforeStart = $nextPeriodStart->sub(new DateInterval('PT5M'));
+			$beforeStart = $nextPeriodStart->sub(new DateInterval('PT15M'));
 
 			// Grab the user's courses' meetings
 			$courses = Auth::user()->courses;
@@ -58,45 +38,27 @@ class CheckinsController extends BaseController {
 				// Look through the courses' meetings to find one that matches the period
 				foreach ($meetings as $meeting) {
 
+					// Find the correct beginning of the meeting
+					$meetingPeriod = $this->parseMeetingPeriod($meeting->period);
+
 					// If our meeting period is the next period we want to check
 					// and see if the user is in a specified time interval before the
 					// period in order to check in prior to class starting
-					if ($meeting->period == $nextPeriod->id)
+					if ($meetingPeriod == $nextPeriod->period)
 					{
-						if ($beforeStart >= $date)
-						{ // We have a valid checkin meeting
-							$checkinMeeting = $meeting;
-						}
-						else
-						{
-							// It's too soon to check in
-							$statusCode = 200;
-							$value = 'plain/text';
-							$contents = 'It\'s too soon to check in';
-						}
+						$checkinMeeting = ($beforeStart < $date) ? $meeting : null;
+						$error = 'It\'s too soon to check in';
 					}
-					else if ($meeting->period == $currentPeriod->id)
+					else if ($meetingPeriod == $currentPeriod->period)
 					{
-						if ($afterStart <= $date)
-						{
-							// Don't have to worry about this being redefined because the two
-							// cases are mutually exclusive
-							$checkinMeeting = $meeting;
-						}
-						else
-						{
-							// It's too late to check in
-							$statusCode = 200;
-							$value = 'plain/text';
-							$contents = 'It\'s too late to check in';
-						}
+						$checkinMeeting = ($afterStart > $date) ? $meeting : null;
+						$error = 'It\'s too late to check in';
 					}
 					else
 					{
-						// we can't find a meeting that the user can check into
-						$statusCode = 200;
-						$value = 'plain/text';
-						$contents = 'You don\'t have any classes to check into at this time';
+						// We can't find a meeting that the user can check into
+						$checkinMeeting = null;
+						$error = 'You don\'t have any classes to check into at this time';
 					}
 				}
 			}
@@ -105,32 +67,30 @@ class CheckinsController extends BaseController {
 			$latitude = Input::get('latitude');
 			$longitude = Input::get('longitude');
 
-			try
-			{
-				// Find the building where the meeting is hosted and that also
-				// matches the position of the user
+			// Dummy checkinMeeting
+			// $checkinMeeting = DB::table('meetings')->where('id', 3011)->first();
+
+			if ($checkinMeeting != null)
+			{ // Grab the building where the meeting is located
 				$building = DB::table('buildings')
-					->where('buildingCode', $checkinMeeting->buildingCode)
-					->where('gpsLongitude', $longitude)
-					->where('gpsLatitude', $latitude)
+					->where('id', $checkinMeeting->building_id)
 					->first();
-			}
-			catch (Exception $e)
-			{
-				// If a status code isn't previously defined, make one
-				if ($statusCode != 200)
-				{
-					$statusCode = 200;
-					$value = 'plain/text';
-					$contents = 'Error, the user is not in the right building for the class they are trying to check into.';
-				}
 
-				$contents = $contents . ' Building Error, the user is not in the right building for the class they are trying to check into.';
+				// Check to see if the submitted coordinates are within the acceptable
+				// range of the building location
+				$tolerance = sqrt(pow(-0.001345, 2) + pow(0.001781, 2));
+				$distanceFromBuilding = $this->findDiffInPosition($building, $latitude, $longitude);
+			}
+			else
+			{
+				$error = $error . 'You can\'t checkin at this time';
 			}
 
-			// If we have a valid meeting and building create a checkin for the user
-			if ($checkinMeeting && $building)
+			// Check to see if we have a valid checkin meeting and our distance is within
+			// an acceptable range
+			if ($checkinMeeting && ($tolerance > $distanceFromBuilding))
 			{
+				// Create checkin
 				Checkin::create([
 					'user_id' => Auth::user()->id,
 					'meeting_id' => $checkinMeeting->id,
@@ -138,17 +98,17 @@ class CheckinsController extends BaseController {
 					'cancelled' => false
 				]);
 
-				$statusCode = 200;
-				$value = 'plain/text';
-				$contents = 'Success, you have checked in to your class';
+				$success = 'Success, you have checked in to your class';
 			}
-			else if ($checkinMeeting && !$building)
+			else
 			{ // The user isn't in the right place
 				$statusCode = 200;
 				$value = 'plain/text';
-				$contents = $contents . ' Location Error, you aren\'t in the right location for the class you are trying to check into.';
+				$error = $error . 'Location Error, you aren\'t in the right location for the class you are trying to check into.';
 			}
 
+			$contents = ($error) ? $error : $success;
+			$statusCode = 200;
 			$response = Response::make($contents, $statusCode);
 			$response->header('Content-Type', $value);
 
@@ -157,46 +117,68 @@ class CheckinsController extends BaseController {
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Processes a given string to find the base period for the meeting
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param string $meetingPeriod
+	 * @return int $period
 	 */
-	public function show($id)
+	public function parseMeetingPeriod($meetingPeriod)
 	{
-        //
+		// Determine the meeting period
+		switch (strlen($meetingPeriod)) {
+			case 4:
+				// Check to see if we are in a double block of "E" periods.
+				if (substr($meetingPeriod, 0, 1) == 'E')
+				{ // We know we have an "E" period range
+					$period = substr($meetingPeriod, 0, 2);
+				}
+				else if (substr($meetingPeriod, 1, 1) != '-')
+				{ // We know that we have a double digit period going to "E". E.g. 11E1 (11-E1)
+					$period = substr($meetingPeriod, 0, 2);
+				}
+				else
+				{ // We are still in the normal integer periods
+					$period = substr($meetingPeriod, 0, 1);
+				}
+				break;
+
+			case 3:
+				// We know that we have a range of periods, E.g. 7-8. Grab the first period
+				// in the range
+				$period = substr($meetingPeriod, 0, 1);
+				break;
+
+			case 2:
+			  // We know that we have a singular, double-digit integer period, E.g. 11
+				$period = substr($meetingPeriod, 0, 2);
+				break;
+
+			case 1:
+				// We know that we have a singular, one-digit integer period
+				$period = substr($meetingPeriod, 0, 1);
+				break;
+
+			default:
+				// Something went wrong
+				$period = null;
+				break;
+		}
+
+		return $period;
 	}
 
 	/**
-	 * Show the form for editing the specified resource.
+	 * Find the distance between the supplied building coordinates and the user submitted coordinates
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param Building $building, float $latidude, float $longitude
+	 * @return float
 	 */
-	public function edit($id)
+	public function findDiffInPosition($building, $latitude, $longitude)
 	{
-        //
-	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+		$diffLongitude = $building->gpsLongitude - $longitude;
+		$diffLatitidue = $building->gpsLatitude - $latitude;
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return sqrt(pow($diffLatitidue, 2) + pow($diffLatitidue, 2));
 	}
 }
