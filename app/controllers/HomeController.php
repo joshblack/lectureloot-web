@@ -9,12 +9,15 @@ class HomeController extends BaseController {
 
 	public function showDashboard()
 	{
+		// Grab the current user and date
 		$user = Auth::user();
 		$date = new Datetime;
+
+		// Find and format the next meeting time for the user
 		$nextMeetingTime = $this->findNextMeetingTime();
-		$timeTillNextMeeting = ($nextMeetingTime)
-			? $date->diff($nextMeetingTime)->format(' %r %d days, %h hours %i minutes and %s seconds till your next class')
-			: 'No Classes today';
+		$timeTillNextMeeting = $this->formatMeetingTime($nextMeetingTime);
+
+		// Grab all the user's courses
 		$courses = $user->courses;
 
 		// get the current session
@@ -54,7 +57,6 @@ class HomeController extends BaseController {
 	{
 		$currentTime = new Datetime;
 		$courses = Auth::user()->courses;
-		$periods = DB::table('periods')->get();
 
 		// Go through each course and find each one's meetings
 		foreach ($courses as $course)
@@ -63,42 +65,54 @@ class HomeController extends BaseController {
 
 			foreach ($meetings as $meeting)
 			{
-
 				$meetingPeriod = $this->parseMeetingPeriod($meeting->period);
 
 				// See when the meeting starts
-				$meetingStartTime = new Datetime($periods[$meetingPeriod]->startTime);
+				$meetingStartTime = new Datetime(DB::table('periods')
+					->where('period', $meetingPeriod)
+					->pluck('startTime'));
 
-				$currentMeetingDay = date('D');
-				$currentMeetingDay = strtolower($currentMeetingDay[0]);
+				$currentMeetingDay = date('D')[0];
 
-				// Check to see if the meeting takes place today or
-				// if the meeting start time has already passed, skip that meeting
-				if ($currentMeetingDay != $meeting->meetingDay || $meetingStartTime < $currentTime)
-				{
-					continue;
-				}
-
-				if (isset($nextMeeting))
-				{ // A nextMeeting value is defined, we need to see which is closer
-					$nextMeetingStartTime = new Datetime($periods[$nextMeeting->period - 1]->startTime);
+				if (isset($nextMeeting) && $meeting->meetingDay == $currentMeetingDay && $currentTime < $meetingStartTime)
+				{ // A $nextMeeting value is defined, we need to see which is closer:
+				  // the current iteration of meeting or the one already defined.
+					$nextMeetingStartTime = new Datetime(DB::table('periods')
+						->where('period', $this->parseMeetingPeriod($nextMeeting->period))
+						->pluck('startTime'));
 
 					$nextMeeting = ($nextMeetingStartTime > $meetingStartTime)
 						? $nextMeeting
 						: $meeting;
 				}
-				else
+				else if ($meeting->meetingDay == $currentMeetingDay && $currentTime < $meetingStartTime)
 				{ // We need to define the next meeting
 					$nextMeeting = $meeting;
 				}
 			}
-
-			// $periods array is zero indexed so need to subtract one to get our period
-			$startTime = (isset($nextMeetingTime))
-				? new Datetime($periods[$nextMeeting->period - 1]->startTime)
-				: null;
-
-			return $startTime;
 		}
+
+		$startTime = (isset($nextMeeting))
+			? new Datetime(DB::table('periods')
+				->where('period', $this->parseMeetingPeriod($nextMeeting->period))
+				->pluck('startTime'))
+			: null;
+
+		return $startTime;
+	}
+
+	/**
+	 * Formats the given meeting time for the Dashboard view
+	 *
+	 * @param Datetime $meetingTime
+	 * @return String
+	 */
+	public function formatMeetingTime($meetingTime)
+	{
+		$date = new Datetime;
+
+		return ($meetingTime)
+			? $date->diff($meetingTime)->format(' %r %d days, %h hours %i minutes and %s seconds till your next class')
+			: 'No More Classes today';
 	}
 }
