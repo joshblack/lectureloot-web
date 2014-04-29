@@ -55,6 +55,7 @@
       </ul>
     </div>
     @endforeach
+
   @else
     {{ 'No Courses to display' }}
   @endif

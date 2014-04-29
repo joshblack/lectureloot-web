@@ -35,7 +35,7 @@
     <a href="/dashboard"><span class="icon icon_home"></span> Home</a>
     <a href="/courses"><span class="icon icon_book"></span> Courses</a>
     <a href="/wagers"><span class="icon icon_card"></span> Wagers</a>
-    <a href="#"><span class="icon icon_gear"></span> Settings</a>
+    <a href="/logout"><span class="icon icon_gear"></span> Logout</a>
   </nav>
 @section('dashboard')
 @show

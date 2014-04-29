@@ -11,7 +11,7 @@ class HomeController extends BaseController {
 	{
 		$user = Auth::user();
 		$date = new Datetime;
-		$nextMeetingTime = HomeController::findNextMeetingTime();
+		$nextMeetingTime = $this->findNextMeetingTime();
 		$timeTillNextMeeting = ($nextMeetingTime)
 			? $date->diff($nextMeetingTime)->format(' %r %d days, %h hours %i minutes and %s seconds till your next class')
 			: 'No Classes today';
@@ -63,20 +63,18 @@ class HomeController extends BaseController {
 
 			foreach ($meetings as $meeting)
 			{
+
+				$meetingPeriod = $this->parseMeetingPeriod($meeting->period);
+
 				// See when the meeting starts
-				$meetingStartTime = new Datetime($periods[$meeting->period]->startTime);
+				$meetingStartTime = new Datetime($periods[$meetingPeriod]->startTime);
 
 				$currentMeetingDay = date('D');
 				$currentMeetingDay = strtolower($currentMeetingDay[0]);
 
-				// Check to see if the meeting takes place today
-				if ($currentMeetingDay != $meeting->meetingDay)
-				{
-					continue;
-				}
-
-				// If if the meeting start time has already passed, skip that meeting
-				if ($meetingStartTime < $currentTime)
+				// Check to see if the meeting takes place today or
+				// if the meeting start time has already passed, skip that meeting
+				if ($currentMeetingDay != $meeting->meetingDay || $meetingStartTime < $currentTime)
 				{
 					continue;
 				}
@@ -103,5 +101,4 @@ class HomeController extends BaseController {
 			return $startTime;
 		}
 	}
-
 }

@@ -35,16 +35,16 @@ class Course extends Eloquent {
 	public function scopeSearch($query, $search)
 	{
 		return $query->where('courseTitle', 'LIKE', "%$search%")
-							->orWhere('deptCode', 'LIKE', "%$search%")
-							->orWhere('courseNumber', 'LIKE', "%$search%")
-							->orWhere('instructor', 'LIKE', "%$search%")
-							->orWhere(function($query) use ($search)
-							{
-								$deptCode = substr($search, 0, 3);
-								$courseNumber = substr($search, 3);
-								$query->where('deptCode', 'LIKE', "%$deptCode%")
-											->where('courseNumber', 'LIKE', "%$courseNumber%");
-							});
+					 ->orWhere('deptCode', 'LIKE', "%$search%")
+					 ->orWhere('courseNumber', 'LIKE', "%$search%")
+					 ->orWhere('instructor', 'LIKE', "%$search%")
+					 ->orWhere(function($query) use ($search)
+					 {
+						$deptCode = substr($search, 0, 3);
+						$courseNumber = substr($search, 3);
+						$query->where('deptCode', 'LIKE', "%$deptCode%")
+							  ->where('courseNumber', 'LIKE', "%$courseNumber%");
+					 });
 	}
 
 }

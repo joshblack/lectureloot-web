@@ -20,7 +20,6 @@ Route::group(array('before' => 'auth'), function()
 	Route::resource('wagers', 'WagersController');
 	Route::resource('meetings', 'MeetingsController');
 	Route::resource('checkins', 'CheckinsController');
-
 });
 
 /* API Routes */
