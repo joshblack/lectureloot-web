@@ -5,7 +5,7 @@ return [
 	'connections' => [
 		'mysql' => [
 			'host'      => 'Localhost',
-			'database'  => 'laravel',
+			'database'  => 'lectureloot',
 			'username'  => 'root',
 			'password'  => '',
 		]
