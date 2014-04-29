@@ -47,18 +47,18 @@ class CheckinsController extends BaseController {
 					if ($meetingPeriod == $nextPeriod->period)
 					{
 						$checkinMeeting = ($beforeStart < $date) ? $meeting : null;
-						$error = 'It\'s too soon to check in';
+						$error = ' It\'s too soon to check in.';
 					}
 					else if ($meetingPeriod == $currentPeriod->period)
 					{
 						$checkinMeeting = ($afterStart > $date) ? $meeting : null;
-						$error = 'It\'s too late to check in';
+						$error = ' It\'s too late to check in.';
 					}
 					else
 					{
 						// We can't find a meeting that the user can check into
 						$checkinMeeting = null;
-						$error = 'You don\'t have any classes to check into at this time';
+						$error = ' You don\'t have any classes to check into at this time.';
 					}
 				}
 			}
@@ -83,7 +83,7 @@ class CheckinsController extends BaseController {
 			}
 			else
 			{
-				$error = $error . 'You can\'t checkin at this time';
+				$error = $error . ' You can\'t checkin at this time.';
 			}
 
 			// Check to see if we have a valid checkin meeting and our distance is within
@@ -98,16 +98,16 @@ class CheckinsController extends BaseController {
 					'cancelled' => false
 				]);
 
-				$success = 'Success, you have checked in to your class';
+				$success = 'Success, you have checked in to your class.';
 			}
 			else
 			{ // The user isn't in the right place
 				$statusCode = 200;
 				$value = 'plain/text';
-				$error = $error . 'Location Error, you aren\'t in the right location for the class you are trying to check into.';
+				$error = ['error' => $error . ' You aren\'t in the right location for the class you are trying to check into.'];
 			}
 
-			$contents = ($error) ? $error : $success;
+			$contents = ($error) ? json_encode($error) : $success;
 			$statusCode = 200;
 			$response = Response::make($contents, $statusCode);
 			$response->header('Content-Type', $value);

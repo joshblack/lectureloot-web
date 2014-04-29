@@ -66,9 +66,12 @@ $(document).ready(function() {
         $(this).toggleClass('shadow');
     });
 
-    /* Testing script for user checkin */
+    // Checkin Script
+
+    var $checkin = $('#checkin');
     // Toggle showLocation request
-    $('#checkin').on('click', function() {
+    $checkin.on('click', function() {
+        $checkin.html('Checking you in...');
         showLocation();
     });
 
@@ -80,9 +83,6 @@ $(document).ready(function() {
         var latitude = position.coords.latitude,
             longitude = position.coords.longitude;
 
-            console.log('latitude: ' + latitude);
-            console.log('longitude: ' + longitude);
-
         $.post(
             '/checkins',
             {
@@ -90,7 +90,19 @@ $(document).ready(function() {
                 longitude: longitude
             },
             function(data) {
-                console.log(data);
+                var info = $.parseJSON(data);
+                if (info.error)
+                {
+                    $checkin.html('Whoops! Try again.')
+                        .append('<p>' + info.error + '</p>');
+                }
+                else
+                {
+                    $checkin.attr('disabled', true)
+                        .html('Success! You\'re good to go!')
+                        .css('background', '#5CBD68');
+                }
+                console.log(info.error);
             }
 
             );
@@ -112,10 +124,6 @@ $(document).ready(function() {
                 break;
         }
     }
-
-
-
-
 });
 
 // Instantiate FastClick on the body
