@@ -83,8 +83,8 @@ class UsersController extends \BaseController {
 				]);
 
 			$content = [
-				'user_id' => Auth::user()->id,
-				'message' => 'Success, the user was registered', 
+				'user_id' => $user->id,
+				'message' => 'Success, the user was registered',
 				'token' => $token->token];
 
 			$statusCode = 200;
